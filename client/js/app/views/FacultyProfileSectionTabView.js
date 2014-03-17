@@ -6,6 +6,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	},
 
 	render: function(){
+    var acadProfileSections = ['degreeEarned','degreePursue'];
 		var html = '';
 		html +='<ul class="nav nav-tabs">';
           html +='<li class="active"><a href="#academicProfile" data-toggle="tab">Profile And Experience</a></li>';
@@ -14,7 +15,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           html +='<li><a href="#communityService" data-toggle="tab">Community Service</a></li>';
         html +='</ul>';
         html +='<div class="tab-content">';
-          html +='<div class="tab-pane fade in active" id="academicProfile"><div id="degreeEarned"></div><div id="degreePursue"></div></div>';
+          html +='<div class="tab-pane fade in active" id="academicProfile">';
+          acadProfileSections.forEach(function(section){
+              html+='<div id="'+section+'"></div>'
+          });
+          html +='</div>';
           html +='<div class="tab-pane fade" id="professionalActivity1"></div>';
           html +='<div class="tab-pane fade" id="professionalActivity2"></div>';
           html +='<div class="tab-pane fade" id="communityService"></div>';
@@ -33,7 +38,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
-          el: '#degreeEarned',
+          el: '#'+acadProfileSections[0],
           model: degreeEarnedModel
         }));
 
@@ -47,7 +52,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreePursueModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
-          el: '#degreePursue',
+          el: '#'+acadProfileSections[1],
           model: degreePursueModel
         }));
 
