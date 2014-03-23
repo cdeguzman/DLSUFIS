@@ -11,6 +11,7 @@ var FacultyProfileSectionView = Backbone.View.extend({
 	 	var sectionId = this.model.get('sectionId');
         var noteHead = this.model.get('noteHead')
         var noteFoot = this.model.get('noteFoot');
+		var menu = '<div class="btn-group"><button type="button" class="btn btn-default"><i class="fa fa-pencil"></i></button><button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i></button></div>'
 	 	var html ='';
 	 	html+='<div class="tableSection" id="'+sectionId+'">';
           html+='<h4 class="tableSectionHeader">'+header+'</h4>';
@@ -18,14 +19,15 @@ var FacultyProfileSectionView = Backbone.View.extend({
             html+='<table class="table table-striped">';
             	html+='<thead><tr>';
             	_.each(collumnNames, function(collumnName){html+='<th>'+collumnName+'</th>';});
-            	html+='</tr></thead>';
+            	html+='<td>&nbsp;</td></tr></thead>';
             	html+='<tbody>';
             	for(var i=0; i<values.length; i++){
             		html+='</tr>';
             			_.each(keys, function(key){
-                    var val = eval('values['+i+'].'+key)!=null?eval('values['+i+'].'+key):'N/A';
+							var val = eval('values['+i+'].'+key)!=null?eval('values['+i+'].'+key):'N/A';
             				html+='<td>'+val+'</td>';
             			})
+					html+='<td class="rowMenu">'+menu+'</td>'
             		html+='</tr>';
             	}
             	html+='</tbody>';

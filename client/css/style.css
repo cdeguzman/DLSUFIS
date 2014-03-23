@@ -27,7 +27,7 @@ body{
 	right:0;
 	overflow: auto; 
 	display:block;
-	max-width: 708px;
+	max-width: 758px;
 	max-height: 1158px;
    min-width: 708px;
 	margin:auto; 
@@ -40,7 +40,7 @@ body{
    position:relative; 
    width: 100%; 
    min-width:690px; 
-   max-width:708px; 
+   max-width:758px; 
    height:52px; 
    background:url('../img/barcontact.jpg');
 }
@@ -170,7 +170,7 @@ font-family: Iceland,sans-serif;
    position: absolute;
 	overflow: auto; 
 	display:none;
-   max-width: 587px;
+   max-width: 637px;
    max-height: 613px;
    min-width: 598px;
 	margin:auto; 
@@ -313,4 +313,8 @@ a.active{
 
 .tableSection{
    height:280px;
+}
+
+.rowMenu{
+	width: 90px;
 }
