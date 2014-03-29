@@ -2,15 +2,17 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 
   initialize: function(){
     this.subViews = new Array();
-		this.render();
-	},
+    this.render();
+  },
 
-	render: function(){
+  render: function(){
     //Profile View
     var acadProfileSections = ['degreeEarned','degreePursue', 'specialTraining', 'teachExpr', 'license', 'nonTeachExp'];
-	var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchiements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
-		var html = '';
-		html +='<ul class="nav nav-tabs">';
+  var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchievements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
+  var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
+  var comService = ['ComSrvDLSU', "profOrg", "govOrg", "otherOrg"];
+    var html = '';
+    html +='<ul class="nav nav-tabs">';
           html +='<li class="active"><a href="#academicProfile" data-toggle="tab">Profile And Experience</a></li>';
           html +='<li><a href="#professionalActivity1" data-toggle="tab">Professional Activities 1</a></li>';
           html +='<li><a href="#professionalActivity2" data-toggle="tab">Professional Activities 2</a></li>';
@@ -23,13 +25,20 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           });
           html +='</div>';
           html +='<div class="tab-pane fade" id="professionalActivity1">';
-		  profActivity1.forEach(function(section){
+      profActivity1.forEach(function(section){
               html+='<div id="'+section+'"></div>'
           });
           html +='</div>';
-          html +='<div class="tab-pane fade" id="professionalActivity2"></div>';
-          html +='<div class="tab-pane fade" id="communityService"></div>';
-        html +='</div>';
+          html +='<div class="tab-pane fade" id="professionalActivity2">';
+      profActivity2.forEach(function(section){
+              html+='<div id="'+section+'"></div>'
+          });
+      html +='</div>';
+          html +='<div class="tab-pane fade" id="communityService">';
+          comService.forEach(function(section){
+              html+='<div id="'+section+'"></div>'
+          });
+      html +='</div>';
         $(this.el).html(html);
 
         var facultyProfileSectionModel = new FacultyProfileSectionModel();
@@ -78,9 +87,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           el: '#'+acadProfileSections[2],
           model: specialTrainingModel
         }));
-		
-		//Teach Exp
-		
+    
+    //Teach Exp
+    
         var teachExpModel = facultyProfileSectionModel.clone();
         teachExpModel.set('header','Teaching Experience and Length of Service');
         teachExpModel.set('sectionId', 'teachExpContent');
@@ -93,10 +102,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           el: '#'+acadProfileSections[3],
           model: teachExpModel
         }));
-		
-		//License
-		
-		var licenseModel = facultyProfileSectionModel.clone();
+    
+    //License
+    
+    var licenseModel = facultyProfileSectionModel.clone();
         licenseModel.set('header','Teaching Experience and Length of Service');
         licenseModel.set('sectionId', 'licenseContent');
         licenseModel.set('apiUrl', App.licenseUrl);
@@ -108,10 +117,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           el: '#'+acadProfileSections[4],
           model: licenseModel
         }));
-		
-		//Non Teach Exp Model
-		
-		var nonTeachExpModel = facultyProfileSectionModel.clone();
+    
+    //Non Teach Exp Model
+    
+    var nonTeachExpModel = facultyProfileSectionModel.clone();
         nonTeachExpModel.set('header','Professional Practice, Industrial Practice, or Employment outside DLSU other than teaching ');
         nonTeachExpModel.set('sectionId', 'nonTeachExpContent');
         nonTeachExpModel.set('apiUrl', App.nonTeachExpUrl);
@@ -123,10 +132,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           el: '#'+acadProfileSections[5],
           model: nonTeachExpModel
         }));
-		
-		//Leadership in Prof Org
-		
-		var leadershipInOrgProfModel = facultyProfileSectionModel.clone();
+    
+    //Leadership in Prof Org
+    
+    var leadershipInOrgProfModel = facultyProfileSectionModel.clone();
         leadershipInOrgProfModel.set('header','Leadership in professional organizations');
         leadershipInOrgProfModel.set('sectionId', 'leadershipInOrgProfContent');
         leadershipInOrgProfModel.set('apiUrl', App.facLeaderUrl);
@@ -138,26 +147,296 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           el: '#'+profActivity1[0],
           model: leadershipInOrgProfModel
         }));
-		
-		//Membership in Prof Org
-		
-		var leadershipInOrgProfModel = facultyProfileSectionModel.clone();
-        leadershipInOrgProfModel.set('header','Leadership in professional organizations');
-        leadershipInOrgProfModel.set('sectionId', 'leadershipInOrgProfContent');
-        leadershipInOrgProfModel.set('apiUrl', App.facLeaderUrl);
-        leadershipInOrgProfModel.set('keys', new Array('designation', 'org_name', 'start_date', 'end_date'));
-        leadershipInOrgProfModel.set('collumnNames', new Array('Designation/Role', 'Organization/Institution', 'Start Date', 'End Date'));
-        leadershipInOrgProfModel.getData();
+    
+    //Membership in Prof Org
+    
+    var membershipInOrgProfModel = facultyProfileSectionModel.clone();
+        membershipInOrgProfModel.set('header','Membership in professional organizations');
+        membershipInOrgProfModel.set('sectionId', 'membershipInOrgProfContent');
+        membershipInOrgProfModel.set('apiUrl', App.facMemberUrl);
+        membershipInOrgProfModel.set('keys', new Array('designation', 'org_name', 'start_date', 'end_date'));
+        membershipInOrgProfModel.set('collumnNames', new Array('Designation/Role', 'Organization/Institution', 'Start Date', 'End Date'));
+        membershipInOrgProfModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
-          el: '#'+profActivity1[0],
-          model: leadershipInOrgProfModel
+          el: '#'+profActivity1[1],
+          model: membershipInOrgProfModel
         }));
 
-	},
+    //Faculty Awards
+    
+    var awardsModel = facultyProfileSectionModel.clone();
+        awardsModel.set('header','Outstanding Achievements/Awards/Recognition Received since 2005');
+        awardsModel.set('sectionId', 'awardsContent');
+        awardsModel.set('apiUrl', App.facAwardsUrl);
+        awardsModel.set('keys', new Array('award_title', 'award_body', 'award_date'));
+        awardsModel.set('collumnNames', new Array('Achievements/Awards', 'Awarding Body', 'Award Date'));
+        awardsModel.getData();
 
-	close: function(){
-	  _.each(this.subViews, function(view){view.remove()});
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity1[2],
+          model: awardsModel
+        }));
+    
+    //Internally Funded Research
+    
+    var inResFundedModel = facultyProfileSectionModel.clone();
+        inResFundedModel.set('header','Internally Funded Research Projects/Activities (since 2005)');
+        inResFundedModel.set('sectionId', 'inResFundedContent');
+        inResFundedModel.set('apiUrl', App.facInFundedUrl);
+        inResFundedModel.set('keys', new Array('research_title','funding_agency', 'amount', 'start_date', 'end_date'));
+        inResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Amount of Research Grant', 'Start Date', 'End Date'));
+        inResFundedModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity1[3],
+          model: inResFundedModel
+        }));
+    
+    //Externally Funded Research
+    
+    var exResFundedModel = facultyProfileSectionModel.clone();
+        exResFundedModel.set('header','Externally Funded Research Projects/Activities (since 2005)');
+        exResFundedModel.set('sectionId', 'exResFundedContent');
+        exResFundedModel.set('apiUrl', App.facExFundedUrl);
+        exResFundedModel.set('keys', new Array('research_title','funding_agency', 'currency', 'amount','start_date', 'end_date'));
+        exResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Currency','Amount of Research Grant', 'Start Date', 'End Date'));
+        exResFundedModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity1[4],
+          model: exResFundedModel
+        }));
+    
+    // Research Grants, Fellowship, Scholarship
+    
+    var resGrantsModel = facultyProfileSectionModel.clone();
+        resGrantsModel.set('header','Research Grants, Fellowships, Scholarships Received (since 2005)');
+        resGrantsModel.set('sectionId', 'resGrantsContent');
+        resGrantsModel.set('apiUrl', App.facResGrantsUrl);
+        resGrantsModel.set('keys', new Array('research_title','funding_agency', 'start_date', 'end_date'));
+        resGrantsModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Start Date', 'End Date'));
+        resGrantsModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity1[5],
+          model: resGrantsModel
+        }));
+    
+    // Journal Publication
+    
+    var journalPubModel = facultyProfileSectionModel.clone();
+        journalPubModel.set('header','Journal Publication (since 2005)');
+        journalPubModel.set('sectionId', 'journalPubContent');
+        journalPubModel.set('apiUrl', App.facJournalUrl);
+        journalPubModel.set('keys', new Array('flanme','paper_title', 'journal_name', 'date_publication', 'volume_no', 'issue_no', 'pages', 'publication_type'));
+        journalPubModel.set('collumnNames', new Array('Author(s)', 'Title', 'Journal Name', 'Date', 'Volume Number', 'Issue Number', 'Pages', 'Type'));
+        journalPubModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[0],
+          model: journalPubModel
+        }));
+    
+    // Published Prototype
+    
+    var pubPrototypeModel = facultyProfileSectionModel.clone();
+        pubPrototypeModel.set('header','Protoype (since 2005)');
+        pubPrototypeModel.set('sectionId', 'pubPrototypeContent');
+        pubPrototypeModel.set('apiUrl', App.facPrototypeUrl);
+        pubPrototypeModel.set('keys', new Array('flname','paper_title', 'journal_name', 'date_publication', 'volume_no', 'issue_no', 'pages', 'publication_type'));
+        pubPrototypeModel.set('collumnNames', new Array('Author(s)', 'Title', 'Journal Name', 'Date', 'Volume Number', 'Issue Number', 'Pages', 'ISSN/ISBN'));
+        pubPrototypeModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[1],
+          model: pubPrototypeModel
+        }));
+
+    // Patents
+
+     var patentModel = facultyProfileSectionModel.clone();
+        patentModel.set('header','Patents (since 2005)');
+        patentModel.set('sectionId', 'patentsContent');
+        patentModel.set('apiUrl', App.facPatentsUrl);
+        patentModel.set('keys', new Array('flname','paper_title','date_publication', 'issuing_country', 'patent_no'));
+        patentModel.set('collumnNames', new Array('Author(s)', 'Title', 'Date', 'Issuing Country', 'Patent No'));
+        patentModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[2],
+          model: patentModel
+        }));
+    
+    // Textbooks
+
+     var textbookModel = facultyProfileSectionModel.clone();
+        textbookModel.set('header','Books and Textbooks (since 2005) ');
+        textbookModel.set('sectionId', 'textbooksContent');
+        textbookModel.set('apiUrl', App.facTextbooksUrl);
+        textbookModel.set('keys', new Array('flname','paper_title', 'publisher','date_publication', 'issue_no'));
+        textbookModel.set('collumnNames', new Array('Author(s)', 'Title', 'Publisher', 'Date', 'ISBN'));
+        textbookModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[3],
+          model: textbookModel
+        }));
+
+    // Chapter Textbooks
+
+    var chapTextbookModel = facultyProfileSectionModel.clone();
+        chapTextbookModel.set('header','Chapter in Edited Book (since 2005)');
+        chapTextbookModel.set('sectionId', 'textbooksContent');
+        chapTextbookModel.set('apiUrl', App.facChaperBookUrl);
+        chapTextbookModel.set('keys', new Array('flname','work_title', 'paper_title', 'editors','publisher', 'place_publication', 'date_publication', 'issue_no'));
+        chapTextbookModel.set('collumnNames', new Array('Author(s)', 'Title of Work', 'Title of Book', 'Editor(s)','Publisher', 'Place of Publication','Date of Publication', 'ISBN'));
+        chapTextbookModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[4],
+          model: chapTextbookModel
+        }));
+
+    // Conference Paper
+
+    var confPaperModel = facultyProfileSectionModel.clone();
+        confPaperModel.set('header','Papers published in conference proceedings (since 2005)');
+        confPaperModel.set('sectionId', 'confPaperContent');
+        confPaperModel.set('apiUrl', App.facConPapUrl);
+        confPaperModel.set('keys', new Array('flname','paper_title', 'conf_title','publisher', 'place_publication', 'pages', 'date_publication'));
+        confPaperModel.set('collumnNames', new Array('Author(s)', 'Title of Book', 'Title of Conference Proceedings','Publisher', 'Place of Publication', 'Pages','Date of Publication'));
+        confPaperModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[5],
+          model: confPaperModel
+        }));
+
+    //Published Creative Works
+
+        var creativeWorksModel = facultyProfileSectionModel.clone();
+        creativeWorksModel.set('header','Published short stories, novel, poetry, play, screenplay, creative work (since 2005)');
+        creativeWorksModel.set('sectionId', 'creativeWorkContent');
+        creativeWorksModel.set('apiUrl', App.facPubBookUrl);
+        creativeWorksModel.set('keys', new Array('flname','paper_title', 'published_in','publisher', 'place_publication', 'pages', 'date_publication'));
+        creativeWorksModel.set('collumnNames', new Array('Author(s)', 'Title of Book', 'Published in','Publisher', 'Place of Publication', 'Pages','Date of Publication'));
+        creativeWorksModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[6],
+          model: creativeWorksModel
+        }));
+
+    //Screen Play
+
+        var screenPlayWorksModel = facultyProfileSectionModel.clone();
+        screenPlayWorksModel.set('header','Play, screenplay, film, creative work performed or presented (since 2005)');
+        screenPlayWorksModel.set('sectionId', 'screenPlayContent');
+        screenPlayWorksModel.set('apiUrl', App.facScreenPlayUrl);
+        screenPlayWorksModel.set('keys', new Array('flname','paper_title', 'published_in','publisher', 'place_publication', 'date_publication'));
+        screenPlayWorksModel.set('collumnNames', new Array('Author(s)', 'Title of Book', 'Venue of Performance / Presentation','Publisher', 'Place of Publication','Date'));
+        screenPlayWorksModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[7],
+          model: screenPlayWorksModel
+        }));
+
+    //Other Research
+
+        var otherResearchModel = facultyProfileSectionModel.clone();
+        otherResearchModel.set('header','Other research outputs (working papers; research reports; conference papers/posters, etc) since 2005');
+        otherResearchModel.set('sectionId', 'otherReseachContent');
+        otherResearchModel.set('apiUrl', App.facOtherResearchUrl);
+        otherResearchModel.set('keys', new Array('flname','paper_title', 'paper_type', 'date_publication', 'remarks'));
+        otherResearchModel.set('collumnNames', new Array('Author(s)', 'Title', 'Type','Date', 'Remarks'));
+        otherResearchModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[8],
+          model: otherResearchModel
+        }));
+
+      //Conferences
+
+        var conferenceModel = facultyProfileSectionModel.clone();
+        conferenceModel.set('header',' Conferences, workshops, seminars, and training programs attended (since 2005)');
+        conferenceModel.set('sectionId', 'conferenceContent');
+        conferenceModel.set('apiUrl', App.facConferencesUrl);
+        conferenceModel.set('keys', new Array('title', 'venue', 'date'));
+        conferenceModel.set('collumnNames', new Array('Conferences, Workshops, Seminars, and Training program', 'Venue', 'Date'));
+        conferenceModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+profActivity2[9],
+          model: conferenceModel
+        }));
+
+
+    // Community Service in DLSU
+    
+    var comServeDLSUModel = facultyProfileSectionModel.clone();
+        comServeDLSUModel.set('header','In DLSU (Department, Unit, College, University) Activities (since 2005)');
+        comServeDLSUModel.set('sectionId', 'comServeDLSUContent');
+        comServeDLSUModel.set('apiUrl', App.facComSrvDLSUUrl);
+        comServeDLSUModel.set('keys', new Array('description','committee', 'start_date', 'end_date'));
+        comServeDLSUModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Unit/Committee', 'Start Date','End Date'));
+        comServeDLSUModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+comService[0],
+          model: comServeDLSUModel
+        }));
+
+    //Prof Org
+
+    var profOrgModel = facultyProfileSectionModel.clone();
+        profOrgModel.set('header','In Professional Organizations (Local and International) since 2005');
+        profOrgModel.set('sectionId', 'profOrgContent');
+        profOrgModel.set('apiUrl', App.facProfOrgUrl);
+        profOrgModel.set('keys', new Array('description','org_name', 'project_site', 'start_date', 'end_date'));
+        profOrgModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Professional Organization', 'Project / Activity Site', 'Start Date','End Date'));
+        profOrgModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+comService[1],
+          model: profOrgModel
+        }));
+  //Gov Org
+
+    var govOrgModel = facultyProfileSectionModel.clone();
+        govOrgModel.set('header','With Government Organizations and Agencies (since 2005)');
+        govOrgModel.set('sectionId', 'govOrgContent');
+        govOrgModel.set('apiUrl', App.facGovOrgUrl);
+        govOrgModel.set('keys', new Array('description','agency_name', 'project_site', 'start_date', 'end_date'));
+        govOrgModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Government Organization and Agencies', 'Project / Activity Site', 'Start Date','End Date'));
+        govOrgModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+comService[2],
+          model: govOrgModel
+        }));
+
+    //Other Org
+
+    var otherOrgModel = facultyProfileSectionModel.clone();
+        otherOrgModel.set('header','Others (e.g. NGOs, advocacy groups, neighborhood associations, local communities, Rotary, Lions, church, faith, and community) since 2005');
+        otherOrgModel.set('sectionId', 'otherOrgContent');
+        otherOrgModel.set('apiUrl', App.facOtherOrgUrl);
+        otherOrgModel.set('keys', new Array('description','org_name', 'project_site', 'start_date', 'end_date'));
+        otherOrgModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Professional Organization', 'Project / Activity Site', 'Start Date','End Date'));
+        otherOrgModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+comService[3],
+          model: otherOrgModel
+        }));
+
+  },
+
+  close: function(){
+    _.each(this.subViews, function(view){view.remove()});
       this.remove();
-	}
+  }
 });

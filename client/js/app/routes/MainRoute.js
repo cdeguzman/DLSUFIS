@@ -20,7 +20,6 @@ var ApplicationRouter = Backbone.Router.extend({
 
    //redirect for successfull login
    getProfile: function(){
-      console.log('de');
       this.loadView(new FacultyProfileView({
          el: '#mainContent'
       }));

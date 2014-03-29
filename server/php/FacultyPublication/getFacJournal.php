@@ -7,7 +7,7 @@
                                     FROM faculty f, publication p
 								    WHERE p.fid = $fid AND f.fid = p.fid AND p.paper_type='Journal'");
       $list_journal = array();
-      while($fetch_journal = mysql_fetch_array($select_journal)){
+      while($fetch_journal = mysql_fetch_assoc($select_journal)){
           $list_journal[] = $fetch_journal;
       }
       echo json_encode($list_journal);
