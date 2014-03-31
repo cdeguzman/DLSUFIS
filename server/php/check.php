@@ -2,7 +2,7 @@
  include("connect.php");
  if(isset($_POST["loginBtn"])){
   $fid = $_POST["userName"];
-  $pass = $_POST["pass"];
+  $pass = $_POST["passWord"];
  
   $select_account = mysql_query("SELECT fid, password FROM faculty WHERE fid = '$fid' AND password = '$pass'");
   $count_row = mysql_num_rows($select_account); 
