@@ -8,9 +8,9 @@
   $count_row = mysql_num_rows($select_account); 
  
   if($count_row == '1'){
-   while($disp = mysql_fetch_array($select_account)){
+   while($disp = mysql_fetch_assoc($select_account)){
      echo $disp["fid"]." ";
-	 echo $disp["password"];
+	 //echo $disp["password"];
    }
   }
   
