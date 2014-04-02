@@ -1,0 +1,51 @@
+Query that can be use for Add, Delete and Modify module which are not on the database
+
+Faculty Classification (Use for getFacInfo.php)
+ PT - Part-Time
+ FT - Full-Time
+ ASF - Academic Service Faculty
+ 
+Degrees Earned according to Level (Use for getFacEarnedDegree.php)
+ Doctorate
+ Masters
+ Bachelor's
+ 
+Stage of Graduate Studies (Use for getFacDegreePursue.php)
+ Dissertation
+ Thesis
+ Comprehensives
+ Academic Courses
+
+Teaching Experience Level (Use for getFacTeachExp.php and getFacTeachDLSU.php)
+ Tertiary
+ Secondary
+ Elementary
+
+Publication Type (Use for getFacBook.php and other under the FacultyPublication folder)
+ Journal
+ Prototype
+ Patent
+ Book
+ Textbook
+ Chapter
+ Conference
+ OtherPublished
+
+For Research Type (use for getFacExResearch.php)
+ Research Type:  Funded, Grants
+ if Funded, what Funded_Type: Internal, External
+
+Community Service Type (Use for all the file under the FacultyCommunityService folder)
+ DLSU - (rendered in DLSU)
+ ProfOrg -(rendered in Professional Organization)
+ Government - (rendered to various Government Agency)
+ Other - (rendered other than the 3 choices)
+
+Institution Type (use to determine the institution if it is Academe or Industry)
+ Academe
+ Industry
+
+ 
+
+ 
+ 
