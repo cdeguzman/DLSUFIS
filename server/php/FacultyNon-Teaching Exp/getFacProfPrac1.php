@@ -5,7 +5,11 @@
   
        $select_profprac1 = mysql_query("SELECT pp.work_nature, i.institution_name, pp.no_years, pp.start_date, pp.end_date
                                         FROM professional_prac pp, institution i   
-									    WHERE pp.fid = $fid AND pp.institution_id = i.institution_id");
+									    WHERE pp.fid = $fid AND pp.institution_id = i.institution_id
+									UNION
+									    SELECT pp.work_nature, o.org_name, pp.no_years, pp.start_date, pp.end_date
+                                        FROM professional_prac pp, organization o   
+									    WHERE pp.fid = $fid AND pp.org_id = o.org_id");
        $list_profprac1 = array();
         while($fetch_profprac1 = mysql_fetch_assoc($select_profprac1)){
            $list_profprac1[] = $fetch_profprac1;

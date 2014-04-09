@@ -4,8 +4,10 @@
  	  $fid = $_GET["fid"];
   
       $select_profacty2 = mysql_query("SELECT pa.designation, o.org_name, pa.start_date, pa.end_date
-                                  FROM professional_acty pa, organization o 
-								  WHERE pa.fid = $fid AND pa.org_id = o.org_id AND pa.designation = 'Member'");
+                                       FROM professional_acty pa, organization o 
+								       WHERE pa.fid = $fid 
+									   AND pa.org_id = o.org_id AND 
+									   pa.leader_type = '0'");
       $list_profacty2 = array();
       while($fetch_profacty2 = mysql_fetch_assoc($select_profacty2)){
           $list_profacty2[] = $fetch_profacty2;
