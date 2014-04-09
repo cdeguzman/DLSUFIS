@@ -84,16 +84,22 @@ var LoginBoxView = Backbone.View.extend({
       },{validate: true});
 
       if(this.model.isValid()){
-        //Insert User Login API Call Here
-        var isLoginValid = true;//needs to be negated once there is true validation
-         
-         if(isLoginValid){
-            var sessionHash = ''; // use this to put a unique session has pref from the server
-            createSession(sessionHash);// create a sesssion
-            Backbone.history.navigate('profile', {trigger:true});//trigger redirect route
-         }else{
-            $('#errorLogin').css('display', 'block');// show login error
-         }
+        var self = this;
+        $.ajax({
+           url: App.loginUrl,
+           data: {fid:self.model.get('userName'), password:self.model.get('passWord')},
+           type: 'POST',
+           success: function(data) {
+            if(data!=null&&data!=""){
+              App.currentFacultyId = data;
+              var sessionHash = data; // use this to put a unique session has pref from the server
+              createSession(sessionHash);// create a sesssion
+              Backbone.history.navigate('profile', {trigger:true});//trigger redirect route
+             }else{
+                $('#errorLogin').css('display', 'block');// show login error
+             }
+           }
+        });
       }
    },
 

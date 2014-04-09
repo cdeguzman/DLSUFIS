@@ -20,9 +20,14 @@ var ApplicationRouter = Backbone.Router.extend({
 
    //redirect for successfull login
    getProfile: function(){
-      this.loadView(new FacultyProfileView({
+      if(checkSession()){
+        App.currentFacultyId = $.cookie('sessionCookie');
+        this.loadView(new FacultyProfileView({
          el: '#mainContent'
       }));
+      }else{
+        location.href = "";
+      }
    },
    //redirect to register page
    registerAccount: function(){

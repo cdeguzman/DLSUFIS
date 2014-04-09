@@ -9,7 +9,7 @@ var TermsAndPrivacyView = Backbone.View.extend({
    render: function(){
       var html = '';
        html+='<div id="footer" class="app-footer-region"><div>';
-         html+='<hr>';
+         html+='<br><br><hr>';
             html+='<div class="row">';
                html+='<div class="col-md-12">';
                html+='<div class="col-md-12"></div>';
