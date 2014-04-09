@@ -18,7 +18,7 @@ var FacultyInformationModel = Backbone.Model.extend({
 		this.set('flname',facultyData.flname);
 		this.set('ffname',facultyData.ffname);
 		this.set('fmname',facultyData.fmname);
-		this.set('college',facultyData.college);
+		this.set('college',facultyData.unit_code);
 		this.set('deptName',facultyData.dept_name);
 		this.set('unitTitle',facultyData.unit_title);
 		this.set('classification',facultyData.classification);

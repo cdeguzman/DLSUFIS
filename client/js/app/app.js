@@ -2,6 +2,8 @@ window.App = {
    currentFacultyId: 97063932, //Current Logged in Faculty
 
    /*Api URL's*/
+
+   
    facultyProfileUrl: '../server/php/FacultyPersonalInfo/getFacInfo.php', //Get Faculty Information
    facultyDegreeEarnedUrl: '../server/php/FacultyAcademicBackground/getFacEarnedDegree.php', //Get Degree Earned
    facultyDegreePursueUrl: '../server/php/FacultyAcademicBackground/getFacDegreePursue.php', //Get Degree Pursue
@@ -30,6 +32,17 @@ window.App = {
 
    facProfOrgUrl: '../server/php/FacultyCommunityService/getFacCSProfOrg.php', //Prof Org
    facGovOrgUrl: '../server/php/FacultyCommunityService/getFacCSGovOrg.php', // Gov Org
-   facOtherOrgUrl: '../server/php/FacultyCommunityService/getFacCSGovOrg.php' //Other Orgs
+   facOtherOrgUrl: '../server/php/FacultyCommunityService/getFacCSGovOrg.php', //Other Orgs
+
+
+
+   //Dropdows
+
+   degreeDropDownUrl: '../server/php/Admin/degree.php',
+   institutionDropDownUrl: '../server/php/Admin/institution.php',
+
+   //Add Remove Edit
+   degreeEarnedAddUrl: '../client/json/newdata.json',
+   degreeEarnedRemoveUrl: '../client/json/newdata.json'
 
  };

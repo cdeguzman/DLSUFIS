@@ -4,7 +4,6 @@ var FacultyProfileView = Backbone.View.extend({
    //bind validation to view
    initialize: function(){
       this.subViews = new Array();
-      this.render();
    },
 
    render: function(){
