@@ -9,9 +9,9 @@ window.App = {
    facultyDegreeEarnedUrl: '../server/php/FacultyAcademicBackground/getFacEarnedDegree.php', //Get Degree Earned
    facultyDegreePursueUrl: '../server/php/FacultyAcademicBackground/getFacDegreePursue.php', //Get Degree Pursue
    facultySpecialTrainingUrl: '../server/php/FacultySpecialTraining/getFacSpecTrain1.php', // Faculty Special Training
-   facultyTeachExpUrl: '../server/php/FacultyTeachingExperience/getFacTeachDLSU.php', // Faculty Teaching Exp
+   facultyTeachExpUrl: '../server/php/FacultyTeachingExperience/getFacTeachExp.php', // Faculty Teaching Exp
    licenseUrl: '../server/php/FacultyLicensure/getFacProfExp.php', // Faculty Licensure
-   nonTeachExpUrl: '../server/php/FacultyNon-Teaching%20Exp/getFacProfPrac1.php', // Non Teaching Exp 
+   nonTeachExpUrl: '../server/php/FacultyNon-Teaching/getFacProfPrac1.php', // Non Teaching Exp 
    facLeaderUrl: '../server/php/FacultyMembership/getFacLeadership.php', // Faculty Leader
    facMemberUrl:'../server/php/FacultyMembership/getFacMembership.php', // Faculty Member
    facAwardsUrl:'../server/php/FacultyAwards/getFacAwards.php', // Faculty Awards
@@ -37,13 +37,39 @@ window.App = {
 
 
 
-   //Dropdows
+   //Dropdowns
 
    degreeDropDownUrl: '../server/php/Admin/degree.php',
+   specializationDropDownUrl: '../server/php/Admin/specialization.php',
    institutionDropDownUrl: '../server/php/Admin/institution.php',
-
+   yearDropDownUrl: '../server/php/Admin/year.php',
+   orgDropDownUrl: '../server/php/Admin/organization.php',
+   educLevelDropDownUrl: '../server/php/Admin/educLevel.php',
+   unitDropDownUrl: '../server/php/Admin/unit.php',
+   fagencyDropDownUrl: '../server/php/Admin/fundingAgency.php',
+   
    //Add Remove Edit
-   degreeEarnedAddUrl: '../client/json/newdata.json',
-   degreeEarnedRemoveUrl: '../client/json/newdata.json'
+   degreeEarnedAddUrl: '../server/php/FacultyAcademicBackground/insertEarnedDegree.php',
+   degreeEarnedRemoveUrl: '../server/php/FacultyAcademicBackground/removeEarnedDegree.php',
+   degreePursueAddUrl: '../server/php/FacultyAcademicBackground/insertDegreePursue.php',
+   degreePursueRemoveUrl: '../server/php/FacultyAcademicBackground/removeDegreePursue.php',
+   specTrainingAddUrl: '../client/json/newdata.json',
+   specTrainingRemoveUrl: '../client/json/newdata.json',
+   teachExpAddUrl: '../client/json/newdata.json',
+   teachExpRemoveUrl: '../client/json/newdata.json',
+   licenseAddUrl: '../client/json/newdata.json',
+   licenseRemoveUrl: '../client/json/newdata.json',
+   nonTeachExpAddUrl: '../client/json/newdata.json',
+   nonTeachExpRemoveUrl: '../client/json/newdata.json',
+   leadershipAddUrl: '../client/json/newdata.json',
+   leadershipRemoveUrl: '../client/json/newdata.json',
+   membershipAddUrl: '../client/json/newdata.json',
+   membershipRemoveUrl: '../client/json/newdata.json',
+   awardsAddUrl: '../client/json/newdata.json',
+   awardsRemoveUrl: '../client/json/newdata.json',
+   inResFundedAddUrl: '../client/json/newdata.json',
+   inResFundedRemoveUrl: '../client/json/newdata.json',
+   exResFundedAddUrl: '../client/json/newdata.json',
+   exResFundedRemoveUrl: '../client/json/newdata.json'
 
  };
