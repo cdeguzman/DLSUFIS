@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2014 at 12:17 PM
+-- Generation Time: Apr 13, 2014 at 06:49 AM
 -- Server version: 5.5.34
 -- PHP Version: 5.4.22
 
@@ -19,18 +19,13 @@ SET time_zone = "+00:00";
 --
 -- Database: `ccsfif`
 --
-CREATE DATABASE IF NOT EXISTS `ccsfif` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ccsfif`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `area_spec`
 --
--- Creation: Apr 08, 2014 at 11:54 AM
---
 
-DROP TABLE IF EXISTS `area_spec`;
 CREATE TABLE IF NOT EXISTS `area_spec` (
   `AS_CODE` varchar(5) NOT NULL,
   `AS_TITLE` varchar(50) NOT NULL,
@@ -42,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `area_spec` (
 --
 
 INSERT INTO `area_spec` (`AS_CODE`, `AS_TITLE`) VALUES
+('AS000', 'N/A'),
 ('AS001', 'Signal Processing'),
 ('AS002', 'Artificial Intelligence'),
 ('AS003', 'Digital Forensics'),
@@ -52,10 +48,7 @@ INSERT INTO `area_spec` (`AS_CODE`, `AS_TITLE`) VALUES
 --
 -- Table structure for table `awards`
 --
--- Creation: Jan 21, 2014 at 06:59 AM
---
 
-DROP TABLE IF EXISTS `awards`;
 CREATE TABLE IF NOT EXISTS `awards` (
   `AWARD_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -63,30 +56,22 @@ CREATE TABLE IF NOT EXISTS `awards` (
   `AWARD_BODY` varchar(100) DEFAULT NULL,
   `AWARD_DATE` date DEFAULT NULL,
   PRIMARY KEY (`AWARD_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- RELATIONS FOR TABLE `awards`:
---   `FID`
---       `faculty` -> `FID`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `awards`
 --
 
 INSERT INTO `awards` (`AWARD_ID`, `FID`, `AWARD_TITLE`, `AWARD_BODY`, `AWARD_DATE`) VALUES
-(1, 97063932, 'Valedictorian', 'DES', '2012-12-08');
+(1, 97063932, 'Valedictorian', 'DES', '2012-12-08'),
+(2, 97063932, 'Masinop Award', 'Mabuhay Awards', '2014-04-01');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `community_service`
 --
--- Creation: Jan 21, 2014 at 07:43 AM
---
 
-DROP TABLE IF EXISTS `community_service`;
 CREATE TABLE IF NOT EXISTS `community_service` (
   `CS_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -104,24 +89,6 @@ CREATE TABLE IF NOT EXISTS `community_service` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- RELATIONS FOR TABLE `community_service`:
---   `CS_TYPE`
---       `cs_type` -> `CSTYPE_CODE`
---   `DEPT_CODE`
---       `department` -> `dept_code`
---   `FID`
---       `faculty` -> `FID`
---   `GOV_ID`
---       `gov_agencies` -> `GOV_ID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `ORG_ID`
---       `organization` -> `ORG_ID`
---   `UNIT_CODE`
---       `unit` -> `Unit_Code`
---
-
---
 -- Dumping data for table `community_service`
 --
 
@@ -134,12 +101,21 @@ INSERT INTO `community_service` (`CS_ID`, `FID`, `CS_TYPE`, `DESCRIPTION`, `UNIT
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cs_type`
---
--- Creation: Apr 08, 2014 at 01:41 PM
+-- Table structure for table `country`
 --
 
-DROP TABLE IF EXISTS `cs_type`;
+CREATE TABLE IF NOT EXISTS `country` (
+  `COUNTRY_ID` int(11) NOT NULL,
+  `COUNTRY_NAME` varchar(35) NOT NULL,
+  PRIMARY KEY (`COUNTRY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cs_type`
+--
+
 CREATE TABLE IF NOT EXISTS `cs_type` (
   `CSTYPE_CODE` varchar(5) NOT NULL,
   `CSTYPE_TITLE` varchar(35) NOT NULL,
@@ -161,22 +137,13 @@ INSERT INTO `cs_type` (`CSTYPE_CODE`, `CSTYPE_TITLE`) VALUES
 --
 -- Table structure for table `degree`
 --
--- Creation: Jan 21, 2014 at 07:58 AM
---
 
-DROP TABLE IF EXISTS `degree`;
 CREATE TABLE IF NOT EXISTS `degree` (
   `DEGREE_ID` varchar(5) NOT NULL,
   `DEGREE_TITLE` varchar(100) NOT NULL,
   `DLEVEL_ID` varchar(3) NOT NULL,
   PRIMARY KEY (`DEGREE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `degree`:
---   `DLEVEL_ID`
---       `degree_level` -> `DLEVEL_ID`
---
 
 --
 -- Dumping data for table `degree`
@@ -194,10 +161,7 @@ INSERT INTO `degree` (`DEGREE_ID`, `DEGREE_TITLE`, `DLEVEL_ID`) VALUES
 --
 -- Table structure for table `degree_earned`
 --
--- Creation: Jan 20, 2014 at 09:16 AM
---
 
-DROP TABLE IF EXISTS `degree_earned`;
 CREATE TABLE IF NOT EXISTS `degree_earned` (
   `DE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(8) DEFAULT NULL,
@@ -207,21 +171,7 @@ CREATE TABLE IF NOT EXISTS `degree_earned` (
   `INSTITUTION_ID` varchar(5) DEFAULT NULL,
   `SO_NUM` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`DE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- RELATIONS FOR TABLE `degree_earned`:
---   `DEGREE_ID`
---       `degree` -> `DEGREE_ID`
---   `DLEVEL_ID`
---       `degree_level` -> `DLEVEL_ID`
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `SPECIALIZATION`
---       `specialization` -> `SP_CODE`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `degree_earned`
@@ -229,17 +179,15 @@ CREATE TABLE IF NOT EXISTS `degree_earned` (
 
 INSERT INTO `degree_earned` (`DE_ID`, `FID`, `DEGREE_ID`, `SPECIALIZATION`, `YEAR_OBTAINED`, `INSTITUTION_ID`, `SO_NUM`) VALUES
 (1, 97063932, 'D0002', NULL, 2004, 'A0007', 'ULS-80-464106-019 S.2004'),
-(2, 97063932, 'D0005', NULL, 2000, 'A0005', 'CHED-11111111');
+(2, 97063932, 'D0005', NULL, 2000, 'A0005', 'CHED-11111111'),
+(3, 97000001, 'D0005', NULL, 2003, 'A0007', 'SO 1111-234-9876');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `degree_level`
 --
--- Creation: Apr 08, 2014 at 11:42 AM
---
 
-DROP TABLE IF EXISTS `degree_level`;
 CREATE TABLE IF NOT EXISTS `degree_level` (
   `DLEVEL_ID` varchar(3) NOT NULL,
   `DLEVEL_TITLE` varchar(35) NOT NULL,
@@ -260,10 +208,7 @@ INSERT INTO `degree_level` (`DLEVEL_ID`, `DLEVEL_TITLE`) VALUES
 --
 -- Table structure for table `degree_pursue`
 --
--- Creation: Mar 11, 2014 at 03:55 AM
---
 
-DROP TABLE IF EXISTS `degree_pursue`;
 CREATE TABLE IF NOT EXISTS `degree_pursue` (
   `DP_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(8) DEFAULT NULL,
@@ -274,34 +219,22 @@ CREATE TABLE IF NOT EXISTS `degree_pursue` (
   `START_DATE` date DEFAULT NULL,
   `END_DATE` date DEFAULT NULL,
   PRIMARY KEY (`DP_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- RELATIONS FOR TABLE `degree_pursue`:
---   `DEGREE_ID`
---       `degree` -> `DEGREE_ID`
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `degree_pursue`
 --
 
 INSERT INTO `degree_pursue` (`DP_ID`, `FID`, `DEGREE_ID`, `INSTITUTION_ID`, `DEGREE_STAGES`, `EARNED_UNITS`, `START_DATE`, `END_DATE`) VALUES
-(1, 97063932, 'D0004', 'A0005', 'Academic Courses', 33, '2009-06-01', '2012-10-01');
+(1, 97063932, 'D0004', 'A0005', 'Academic Courses', 33, '2009-06-01', '2012-10-01'),
+(2, 97000001, 'D0004', 'A0008', 'Academic Courses', 9, '2014-02-02', '2014-04-05');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `department`
 --
--- Creation: Jan 23, 2014 at 09:39 AM
---
 
-DROP TABLE IF EXISTS `department`;
 CREATE TABLE IF NOT EXISTS `department` (
   `dept_code` varchar(15) NOT NULL,
   `dept_name` varchar(45) NOT NULL,
@@ -323,10 +256,7 @@ INSERT INTO `department` (`dept_code`, `dept_name`) VALUES
 --
 -- Table structure for table `educ_level`
 --
--- Creation: Apr 08, 2014 at 03:37 PM
---
 
-DROP TABLE IF EXISTS `educ_level`;
 CREATE TABLE IF NOT EXISTS `educ_level` (
   `EL_ID` varchar(5) NOT NULL,
   `EL_TITLE` varchar(35) NOT NULL,
@@ -347,10 +277,7 @@ INSERT INTO `educ_level` (`EL_ID`, `EL_TITLE`) VALUES
 --
 -- Table structure for table `faculty`
 --
--- Creation: Jan 20, 2014 at 09:10 AM
---
 
-DROP TABLE IF EXISTS `faculty`;
 CREATE TABLE IF NOT EXISTS `faculty` (
   `FID` int(8) NOT NULL,
   `password` varchar(15) NOT NULL,
@@ -359,40 +286,26 @@ CREATE TABLE IF NOT EXISTS `faculty` (
   `FMNAME` varchar(25) NOT NULL,
   `UNIT_CODE` varchar(5) DEFAULT NULL,
   `DEPT` varchar(45) NOT NULL,
-  `CLASSIFICATION` varchar(25) NOT NULL,
+  `CLASSIFICATION` varchar(5) NOT NULL,
   `RANK` varchar(45) NOT NULL,
   `POSITION_ID` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`FID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `faculty`:
---   `DEPT`
---       `department` -> `dept_code`
---   `POSITION_ID`
---       `position` -> `POSITION_ID`
---   `RANK`
---       `rank` -> `rank_code`
---   `UNIT_CODE`
---       `unit` -> `Unit_Code`
---
-
---
 -- Dumping data for table `faculty`
 --
 
 INSERT INTO `faculty` (`FID`, `password`, `FFNAME`, `FLNAME`, `FMNAME`, `UNIT_CODE`, `DEPT`, `CLASSIFICATION`, `RANK`, `POSITION_ID`) VALUES
-(97063932, 'geanne', 'Geanne Ross', 'Franco', 'Lunar', 'CCS', 'CT', 'Full Time', 'AP2', 'P0003');
+(97000001, 'password', 'Sample', 'Faculty', 'Only', 'CCS', 'CT', 'P0004', 'L2', 'P0004'),
+(97063932, 'geanne', 'Geanne Ross', 'Franco', 'Lunar', 'CCS', 'CT', 'P0003', 'AP2', 'P0003');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `funding_agency`
 --
--- Creation: Apr 09, 2014 at 06:42 AM
---
 
-DROP TABLE IF EXISTS `funding_agency`;
 CREATE TABLE IF NOT EXISTS `funding_agency` (
   `FAGENCY_ID` varchar(5) NOT NULL,
   `FAGENCY_NAME` varchar(70) NOT NULL,
@@ -413,10 +326,7 @@ INSERT INTO `funding_agency` (`FAGENCY_ID`, `FAGENCY_NAME`) VALUES
 --
 -- Table structure for table `gov_agencies`
 --
--- Creation: Mar 12, 2014 at 01:38 PM
---
 
-DROP TABLE IF EXISTS `gov_agencies`;
 CREATE TABLE IF NOT EXISTS `gov_agencies` (
   `GOV_ID` varchar(5) NOT NULL,
   `AGENCY_NAME` varchar(100) DEFAULT NULL,
@@ -437,13 +347,10 @@ INSERT INTO `gov_agencies` (`GOV_ID`, `AGENCY_NAME`, `AGENCY_LOCATION`) VALUES
 --
 -- Table structure for table `institution`
 --
--- Creation: Jan 20, 2014 at 09:17 AM
---
 
-DROP TABLE IF EXISTS `institution`;
 CREATE TABLE IF NOT EXISTS `institution` (
   `INSTITUTION_ID` varchar(5) NOT NULL,
-  `INSTITUTION_NAME` varchar(45) NOT NULL,
+  `INSTITUTION_NAME` varchar(45) DEFAULT NULL,
   `INSTITUTION_TYPE` varchar(25) DEFAULT NULL,
   `LOCATION` varchar(45) NOT NULL,
   `country` varchar(25) DEFAULT NULL,
@@ -455,6 +362,7 @@ CREATE TABLE IF NOT EXISTS `institution` (
 --
 
 INSERT INTO `institution` (`INSTITUTION_ID`, `INSTITUTION_NAME`, `INSTITUTION_TYPE`, `LOCATION`, `country`) VALUES
+('A0000', NULL, NULL, '', NULL),
 ('A0001', 'De La Salle University', 'Academe', 'Taft Ave., Manila', 'Philippines'),
 ('A0002', 'Ateneo De Manila University', 'Academe', 'Loyola Heights, Quezon City', 'Philippines'),
 ('A0003', 'University of the Philippines, Diliman', 'Academe', 'Diliman Quezon City', 'Philippines'),
@@ -470,10 +378,7 @@ INSERT INTO `institution` (`INSTITUTION_ID`, `INSTITUTION_NAME`, `INSTITUTION_TY
 --
 -- Table structure for table `journals`
 --
--- Creation: Apr 09, 2014 at 06:56 AM
---
 
-DROP TABLE IF EXISTS `journals`;
 CREATE TABLE IF NOT EXISTS `journals` (
   `JOURNAL_ID` varchar(8) NOT NULL,
   `JOURNAL_TITLE` varchar(100) NOT NULL,
@@ -495,12 +400,21 @@ INSERT INTO `journals` (`JOURNAL_ID`, `JOURNAL_TITLE`, `JOURNAL_TYPE`, `JOURNAL_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `organization`
---
--- Creation: Jan 21, 2014 at 06:48 AM
+-- Table structure for table `location`
 --
 
-DROP TABLE IF EXISTS `organization`;
+CREATE TABLE IF NOT EXISTS `location` (
+  `LOCATION_ID` int(11) NOT NULL,
+  `LOCATION_NAME` varchar(45) NOT NULL,
+  PRIMARY KEY (`LOCATION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organization`
+--
+
 CREATE TABLE IF NOT EXISTS `organization` (
   `ORG_ID` varchar(5) NOT NULL,
   `ORG_NAME` varchar(100) NOT NULL,
@@ -514,6 +428,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
 --
 
 INSERT INTO `organization` (`ORG_ID`, `ORG_NAME`, `ORG_ACRONYM`, `ORG_LOCATION`) VALUES
+('O0000', '', NULL, ''),
 ('O0001', 'Philippines Society of Information Technology Educators', 'PSITE', 'Manila'),
 ('O0002', 'Institute of Electronics and Communications Engineers of the Philippines', 'IECEP', 'National Capital Region'),
 ('O0003', 'Philippine Computing Organization Alliance', 'PCOA', 'DLSU Manila'),
@@ -525,10 +440,7 @@ INSERT INTO `organization` (`ORG_ID`, `ORG_NAME`, `ORG_ACRONYM`, `ORG_LOCATION`)
 --
 -- Table structure for table `position`
 --
--- Creation: Apr 08, 2014 at 09:26 AM
---
 
-DROP TABLE IF EXISTS `position`;
 CREATE TABLE IF NOT EXISTS `position` (
   `POSITION_ID` varchar(5) NOT NULL,
   `POSITION_TITLE` varchar(45) NOT NULL,
@@ -551,10 +463,7 @@ INSERT INTO `position` (`POSITION_ID`, `POSITION_TITLE`) VALUES
 --
 -- Table structure for table `professional_acty`
 --
--- Creation: Jan 21, 2014 at 07:02 AM
---
 
-DROP TABLE IF EXISTS `professional_acty`;
 CREATE TABLE IF NOT EXISTS `professional_acty` (
   `PA_ID` int(11) NOT NULL AUTO_INCREMENT,
   `LEADER_TYPE` int(1) NOT NULL,
@@ -565,16 +474,6 @@ CREATE TABLE IF NOT EXISTS `professional_acty` (
   `END_DATE` date DEFAULT NULL,
   PRIMARY KEY (`PA_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- RELATIONS FOR TABLE `professional_acty`:
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `ORG_ID`
---       `organization` -> `ORG_ID`
---
 
 --
 -- Dumping data for table `professional_acty`
@@ -589,10 +488,7 @@ INSERT INTO `professional_acty` (`PA_ID`, `LEADER_TYPE`, `FID`, `DESIGNATION`, `
 --
 -- Table structure for table `professional_exp`
 --
--- Creation: Jan 20, 2014 at 09:46 AM
---
 
-DROP TABLE IF EXISTS `professional_exp`;
 CREATE TABLE IF NOT EXISTS `professional_exp` (
   `PE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -602,12 +498,6 @@ CREATE TABLE IF NOT EXISTS `professional_exp` (
   `DATE_VALIDITY` date DEFAULT NULL,
   PRIMARY KEY (`PE_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- RELATIONS FOR TABLE `professional_exp`:
---   `FID`
---       `faculty` -> `FID`
---
 
 --
 -- Dumping data for table `professional_exp`
@@ -621,10 +511,7 @@ INSERT INTO `professional_exp` (`PE_ID`, `FID`, `LICENSURE_TITLE`, `YEAR_PASSED`
 --
 -- Table structure for table `professional_prac`
 --
--- Creation: Mar 11, 2014 at 05:17 AM
---
 
-DROP TABLE IF EXISTS `professional_prac`;
 CREATE TABLE IF NOT EXISTS `professional_prac` (
   `PP_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(8) DEFAULT NULL,
@@ -636,16 +523,6 @@ CREATE TABLE IF NOT EXISTS `professional_prac` (
   `END_DATE` date DEFAULT NULL,
   PRIMARY KEY (`PP_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- RELATIONS FOR TABLE `professional_prac`:
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `ORG_ID`
---       `organization` -> `ORG_ID`
---
 
 --
 -- Dumping data for table `professional_prac`
@@ -660,10 +537,7 @@ INSERT INTO `professional_prac` (`PP_ID`, `FID`, `WORK_NATURE`, `INSTITUTION_ID`
 --
 -- Table structure for table `publication`
 --
--- Creation: Jan 21, 2014 at 07:10 AM
---
 
-DROP TABLE IF EXISTS `publication`;
 CREATE TABLE IF NOT EXISTS `publication` (
   `PUB_CODE` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -694,16 +568,6 @@ CREATE TABLE IF NOT EXISTS `publication` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- RELATIONS FOR TABLE `publication`:
---   `FID`
---       `faculty` -> `FID`
---   `JOURNAL_ID`
---       `journals` -> `JOURNAL_ID`
---   `PUB_TYPE`
---       `publication_type` -> `PT_ID`
---
-
---
 -- Dumping data for table `publication`
 --
 
@@ -726,10 +590,7 @@ INSERT INTO `publication` (`PUB_CODE`, `FID`, `PUB_TYPE`, `PAPER_TITLE`, `WORK_T
 --
 -- Table structure for table `publication_type`
 --
--- Creation: Apr 08, 2014 at 01:51 PM
---
 
-DROP TABLE IF EXISTS `publication_type`;
 CREATE TABLE IF NOT EXISTS `publication_type` (
   `PT_ID` varchar(5) NOT NULL,
   `PT_TITLE` varchar(45) NOT NULL,
@@ -758,10 +619,7 @@ INSERT INTO `publication_type` (`PT_ID`, `PT_TITLE`) VALUES
 --
 -- Table structure for table `rank`
 --
--- Creation: Jan 23, 2014 at 09:54 AM
---
 
-DROP TABLE IF EXISTS `rank`;
 CREATE TABLE IF NOT EXISTS `rank` (
   `rank_code` varchar(25) NOT NULL,
   `rank_title` varchar(35) NOT NULL,
@@ -783,10 +641,7 @@ INSERT INTO `rank` (`rank_code`, `rank_title`) VALUES
 --
 -- Table structure for table `research_external`
 --
--- Creation: Jan 21, 2014 at 06:52 AM
---
 
-DROP TABLE IF EXISTS `research_external`;
 CREATE TABLE IF NOT EXISTS `research_external` (
   `RESEARCH_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -802,18 +657,6 @@ CREATE TABLE IF NOT EXISTS `research_external` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- RELATIONS FOR TABLE `research_external`:
---   `FAGENCY_ID`
---       `funding_agency` -> `FAGENCY_ID`
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `ORG_ID`
---       `organization` -> `ORG_ID`
---
-
---
 -- Dumping data for table `research_external`
 --
 
@@ -826,10 +669,7 @@ INSERT INTO `research_external` (`RESEARCH_ID`, `FID`, `RESEARCH_TITLE`, `RESEAR
 --
 -- Table structure for table `research_internal`
 --
--- Creation: Apr 09, 2014 at 06:31 AM
---
 
-DROP TABLE IF EXISTS `research_internal`;
 CREATE TABLE IF NOT EXISTS `research_internal` (
   `RESEARCH_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -845,18 +685,6 @@ CREATE TABLE IF NOT EXISTS `research_internal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- RELATIONS FOR TABLE `research_internal`:
---   `FID`
---       `faculty` -> `FID`
---   `FUNDING_UNIT`
---       `unit` -> `Unit_Code`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `ORG_ID`
---       `organization` -> `ORG_ID`
---
-
---
 -- Dumping data for table `research_internal`
 --
 
@@ -869,24 +697,13 @@ INSERT INTO `research_internal` (`RESEARCH_ID`, `FID`, `RESEARCH_TITLE`, `RESEAR
 --
 -- Table structure for table `specialization`
 --
--- Creation: Apr 08, 2014 at 11:58 AM
---
 
-DROP TABLE IF EXISTS `specialization`;
 CREATE TABLE IF NOT EXISTS `specialization` (
   `SP_CODE` int(11) NOT NULL AUTO_INCREMENT,
   `DEGREE_ID` varchar(5) DEFAULT NULL,
   `AS_CODE` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`SP_CODE`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- RELATIONS FOR TABLE `specialization`:
---   `AS_CODE`
---       `area_spec` -> `AS_CODE`
---   `DEGREE_ID`
---       `degree` -> `DEGREE_ID`
---
 
 --
 -- Dumping data for table `specialization`
@@ -903,10 +720,7 @@ INSERT INTO `specialization` (`SP_CODE`, `DEGREE_ID`, `AS_CODE`) VALUES
 --
 -- Table structure for table `special_training`
 --
--- Creation: Jan 20, 2014 at 09:28 AM
---
 
-DROP TABLE IF EXISTS `special_training`;
 CREATE TABLE IF NOT EXISTS `special_training` (
   `ST_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -918,16 +732,6 @@ CREATE TABLE IF NOT EXISTS `special_training` (
   `ORG_ID` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`ST_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- RELATIONS FOR TABLE `special_training`:
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `ORG_ID`
---       `organization` -> `ORG_ID`
---
 
 --
 -- Dumping data for table `special_training`
@@ -942,10 +746,7 @@ INSERT INTO `special_training` (`ST_ID`, `FID`, `TRAINING_TITLE`, `VENUE`, `STAR
 --
 -- Table structure for table `teaching_experience`
 --
--- Creation: Jan 20, 2014 at 09:32 AM
---
 
-DROP TABLE IF EXISTS `teaching_experience`;
 CREATE TABLE IF NOT EXISTS `teaching_experience` (
   `TE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FID` int(5) DEFAULT NULL,
@@ -957,18 +758,6 @@ CREATE TABLE IF NOT EXISTS `teaching_experience` (
   `POSITION_ID` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`TE_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- RELATIONS FOR TABLE `teaching_experience`:
---   `EL_ID`
---       `educ_level` -> `EL_ID`
---   `FID`
---       `faculty` -> `FID`
---   `INSTITUTION_ID`
---       `institution` -> `INSTITUTION_ID`
---   `POSITION_ID`
---       `position` -> `POSITION_ID`
---
 
 --
 -- Dumping data for table `teaching_experience`
@@ -984,10 +773,7 @@ INSERT INTO `teaching_experience` (`TE_ID`, `FID`, `EL_ID`, `INSTITUTION_ID`, `N
 --
 -- Table structure for table `unit`
 --
--- Creation: Jan 23, 2014 at 08:52 AM
---
 
-DROP TABLE IF EXISTS `unit`;
 CREATE TABLE IF NOT EXISTS `unit` (
   `Unit_Code` varchar(20) NOT NULL,
   `Unit_Title` varchar(75) NOT NULL,
