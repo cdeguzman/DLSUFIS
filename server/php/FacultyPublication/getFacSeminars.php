@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_seminars= mysql_query("SELECT p.seminar_title, p.venue_performance, p.start_date, p.end_date 
+      $select_seminars= mysql_query("SELECT p.pub_code AS id, p.seminar_title, p.venue_performance, p.start_date, p.end_date 
                                      FROM faculty f, publication p, publication_type pt
 								     WHERE p.fid = $fid 
 									 AND f.fid = p.fid 

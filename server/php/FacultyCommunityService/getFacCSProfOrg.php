@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
    
-      $select_csproforg= mysql_query("SELECT cs.description, o.org_name, cs.project_site, cs.start_date, cs.end_date 
+      $select_csproforg= mysql_query("SELECT cs.cs_id AS id, cs.description, o.org_name, cs.project_site, cs.start_date, cs.end_date 
                                       FROM community_service cs, organization o, cs_type cst
 								      WHERE cs.fid = $fid 
 									  AND cs.cs_type = cst.cstype_code

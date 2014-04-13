@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_grants = mysql_query("SELECT re.research_title, fa.fagency_name, re.start_date, re.end_date 
+      $select_grants = mysql_query("SELECT re.research_id AS id, re.research_title, fa.fagency_name, re.start_date, re.end_date 
                                     FROM research_external re, funding_agency fa
 								    WHERE fid = $fid 
 									AND research_type = 'Grants'

@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
    
-      $select_csdlsu= mysql_query("SELECT cs.description, u.unit_title, d.dept_name, cs.start_date, cs.end_date
+      $select_csdlsu= mysql_query("SELECT cs.cs_id AS id, cs.description, u.unit_title, d.dept_name, cs.start_date, cs.end_date
 								   FROM community_service cs, unit u, faculty f, cs_type cst, department d
 								   WHERE cs.fid = $fid
 								   AND cs.fid = f.fid

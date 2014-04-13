@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-       $select_profexp = mysql_query("SELECT year_passed, licensure_title, license_no, date_validity
+       $select_profexp = mysql_query("SELECT pe_id AS id, year_passed, licensure_title, license_no, date_validity
                                       FROM professional_exp   
 									  WHERE fid = $fid");
        $list_profexp = array();

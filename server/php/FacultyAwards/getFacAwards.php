@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_awards = mysql_query("SELECT award_title, award_body, award_date
+      $select_awards = mysql_query("SELECT award_id AS id, award_title, award_body, award_date
                                     FROM awards 
 								    WHERE fid = $fid
 									ORDER BY award_date DESC");

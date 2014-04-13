@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_screenplay = mysql_query("SELECT f.flname, p.paper_title, p.venue_performance, p.date_publication 
+      $select_screenplay = mysql_query("SELECT p.pub_code AS id, f.flname, p.paper_title, p.venue_performance, p.date_publication 
                                             FROM faculty f, publication p, publication_type pt
 								            WHERE p.fid = $fid 
 											AND f.fid = p.fid 

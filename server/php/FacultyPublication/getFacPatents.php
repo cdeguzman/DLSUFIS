@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_patents = mysql_query("SELECT f.flname, p.paper_title, p.date_publication, p.issuing_country, p.patent_no 
+      $select_patents = mysql_query("SELECT p.pub_code AS id, f.flname, p.paper_title, p.date_publication, p.issuing_country, p.patent_no 
                                     FROM faculty f, publication p, publication_type pt
 								    WHERE p.fid = $fid 
 									AND f.fid = p.fid 

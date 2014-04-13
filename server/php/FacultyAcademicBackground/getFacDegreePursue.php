@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_degree = mysql_query("SELECT d.degree_title, i.institution_name, dp.degree_stages, dp.earned_units, dp.start_date, dp.end_date
+      $select_degree = mysql_query("SELECT dp.dp_id as id, d.degree_title, i.institution_name, dp.degree_stages, dp.earned_units, dp.start_date, dp.end_date
                                     FROM degree_pursue dp, institution i, degree d  
 									WHERE dp.fid = $fid 
 									AND dp.degree_id = d.degree_id 

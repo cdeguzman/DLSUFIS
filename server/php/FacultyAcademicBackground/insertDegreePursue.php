@@ -1,0 +1,19 @@
+<?php
+  include("../connect.php");
+  $fid = $_POST["fid"];
+  $degree_id = $_POST["degree_id"]; 
+  $institution_id = $_POST["institution_id"];
+  $degree_stages = $_POST["degree_stages"];
+  $earned_units = $_POST["earned_units"];
+  $start_date = $_POST["start_date"];
+  $end_date = $_POST["end_date"];
+  
+  
+  $insertDegreePursue = "INSERT INTO degree_pursue 
+                        (fid, degree_id, institution_id, degree_stages, earned_units, start_date, end_date)
+                         VALUES 
+						('$fid', '$degree_id', '$institution_id', '$degree_stages', '$earned_units', '$start_date', '$end_date')";
+  
+  mysql_query($insertDegreePursue);
+  
+?> 

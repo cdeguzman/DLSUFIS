@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_textbook = mysql_query("SELECT f.flname, p.paper_title, p.publisher, p.place_publication, p.date_publication, p.issue_no 
+      $select_textbook = mysql_query("SELECT p.pub_code AS id, f.flname, p.paper_title, p.publisher, p.place_publication, p.date_publication, p.issue_no 
                                       FROM faculty f, publication p, publication_type pt
 									  WHERE p.fid = $fid 
 									  AND f.fid = p.fid 

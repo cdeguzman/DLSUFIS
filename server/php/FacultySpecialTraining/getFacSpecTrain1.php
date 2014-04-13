@@ -3,11 +3,11 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_sptrain1 = mysql_query("SELECT sp.training_title, i.institution_name, sp.venue, sp.start_date, sp.end_date
+      $select_sptrain1 = mysql_query("SELECT sp.st_id AS id, sp.training_title, i.institution_name, sp.venue, sp.start_date, sp.end_date
                                       FROM special_training sp, institution i   
 									  WHERE sp.fid = $fid AND sp.institution_id = i.institution_id
 									UNION
-									  SELECT sp.training_title, o.org_name, sp.venue, sp.start_date, sp.end_date
+									  SELECT sp.st_id AS id, sp.training_title, o.org_name, sp.venue, sp.start_date, sp.end_date
                                       FROM special_training sp, organization o   
 									  WHERE sp.fid = $fid AND sp.org_id = o.org_id");
       $list_sptrain1 = array();

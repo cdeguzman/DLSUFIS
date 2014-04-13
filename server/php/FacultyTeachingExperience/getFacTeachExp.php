@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_teachexp = mysql_query("SELECT el.el_title, i.institution_name, te.start_date, te.end_date, te.no_years, p.position_title
+      $select_teachexp = mysql_query("SELECT te.te_id AS id, el.el_title, i.institution_name, te.start_date, te.end_date, te.no_years, p.position_title
                                       FROM teaching_experience te, institution i, educ_level el, position p  
 									  WHERE te.fid = $fid 
 									  AND te.institution_id = 'A0001' 
@@ -11,7 +11,7 @@
 									  AND te.institution_id = i.institution_id 
 									  AND te.position_id = p.position_id
 								UNION
-								      SELECT el.el_title, i.institution_name, te.start_date, te.end_date, te.no_years, p.position_title
+								      SELECT te.te_id AS id, el.el_title, i.institution_name, te.start_date, te.end_date, te.no_years, p.position_title
                                       FROM teaching_experience te, institution i, educ_level el, position p  
 									  WHERE te.fid = $fid 
 									  AND te.institution_id != 'A0001' 
