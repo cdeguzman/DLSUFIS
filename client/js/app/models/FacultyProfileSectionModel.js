@@ -5,6 +5,7 @@ var FacultyProfileSectionModel = Backbone.Model.extend({
 
 	getData: function(data){
 		var self = this;
+		showLoad(true);
 		$.ajax({
 			   url: this.get('apiUrl'),
 			   data: {fid: App.currentFacultyId},
@@ -12,6 +13,7 @@ var FacultyProfileSectionModel = Backbone.Model.extend({
 			   type: 'GET',
 			   contentType: "application/json",
 			   success: function(data) {
+			   		showLoad(false);
 			   		var facultyData = data;
 					var valueArr = new Array();
 					_.each(facultyData, function(d){

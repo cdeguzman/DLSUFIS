@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `area_spec`
 --
-
+USE ccsfif;
 CREATE TABLE IF NOT EXISTS `area_spec` (
   `AS_CODE` varchar(5) NOT NULL,
   `AS_TITLE` varchar(50) NOT NULL,

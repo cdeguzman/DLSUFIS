@@ -12,6 +12,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
   var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
   var comService = ['ComSrvDLSU', "profOrg", "govOrg", "otherOrg"];
     var html = '';
+    html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
     html +='<ul class="nav nav-tabs">';
           html +='<li class="active"><a href="#academicProfile" data-toggle="tab">Profile And Experience</a></li>';
           html +='<li><a href="#professionalActivity1" data-toggle="tab">Professional Activities 1</a></li>';
@@ -21,22 +22,22 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         html +='<div class="tab-content">';
           html +='<div class="tab-pane fade in active" id="academicProfile">';
           acadProfileSections.forEach(function(section){
-              html+='<div id="'+section+'"></div>'
+              html+='<div class="sectionMainDiv" id="'+section+'"></div>'
           });
           html +='</div>';
           html +='<div class="tab-pane fade" id="professionalActivity1">';
       profActivity1.forEach(function(section){
-              html+='<div id="'+section+'"></div>'
+              html+='<div class="sectionMainDiv" id="'+section+'"></div>'
           });
           html +='</div>';
           html +='<div class="tab-pane fade" id="professionalActivity2">';
       profActivity2.forEach(function(section){
-              html+='<div id="'+section+'"></div>'
+              html+='<div class="sectionMainDiv" id="'+section+'"></div>'
           });
       html +='</div>';
           html +='<div class="tab-pane fade" id="communityService">';
           comService.forEach(function(section){
-              html+='<div id="'+section+'"></div>'
+              html+='<div class="sectionMainDiv id="'+section+'"></div>'
           });
       html +='</div>';
         $(this.el).html(html);

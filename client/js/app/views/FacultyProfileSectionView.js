@@ -15,13 +15,14 @@ var FacultyProfileSectionView = Backbone.View.extend({
         var noteFoot = this.model.get('noteFoot');
         var menuTop = '<div class="btn-group"><button id="'+this.model.get('sectionId')+'ShowAddBtn" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></div>';
 	 	var html ='';
+        html+='<div id="viewPanel'+this.model.get('sectionId')+'"><h4><button id="view-section'+this.model.get('sectionId')+'" data-section-view="'+this.model.get('sectionId')+'" type="button" class="btn btn-info"><i class="fa fa-arrow-right"></i></button> '+header+'</h4></div>';
         html+='<div style="display:none;" class="tableSection" id="'+sectionId+'AddPanel">';
         html+='<h4>'+header+'<button type="button" class="close" aria-hidden="true" id="'+this.model.get('sectionId')+'HideAddBtn">&times;</button><h4>';
         html+='</div>'
-	 	html+='<div class="tableSection" id="'+sectionId+'">';
-          html+='<h4 class="tableSectionHeader">'+menuTop+' '+header+'</h4>';
+	 	html+='<div style="display:none;" class="tableSection" id="'+sectionId+'">';
+          html+='<h4 class="tableSectionHeader">'+menuTop+' '+header+'<button type="button" class="close" aria-hidden="true" id="'+this.model.get('sectionId')+'HideSectionBtn" data-section-view="'+this.model.get('sectionId')+'">&times;</button></h4>';
             html+='<h5>'+(noteHead!=undefined ? '*'+noteHead: '')+'</h5>'
-            html+='<table class="table table-striped">';
+            html+='<div><table class="table table-striped">';
             	html+='<thead><tr>';
             	_.each(collumnNames, function(collumnName){html+='<th>'+collumnName+'</th>';});
             	html+='<td>&nbsp;</td></tr></thead>';
@@ -38,8 +39,8 @@ var FacultyProfileSectionView = Backbone.View.extend({
             	}
             	html+='</tbody>';
             html+='</table>'
-            html+='<h5>'+(noteFoot!=undefined ? '*'+noteFoot: '')+'</h5>'
-        html+='</div>'
+            html+='<span>'+(noteFoot!=undefined ? '*'+noteFoot: '')+'</span>'
+        html+='</div></div>'
         $(this.el).html(html);
         var self = this;
 
@@ -61,19 +62,37 @@ var FacultyProfileSectionView = Backbone.View.extend({
             var id = $(this).attr('data-value');
             self.removeData(id);
         });
+
+        $('#view-section'+this.model.get('sectionId')).on("click", function(){
+            var sectionId = $(this).attr('data-section-view');
+            $('#viewPanel'+sectionId).slideUp();
+            $("#"+sectionId).slideDown();
+        });
+
+         $("#"+this.model.get('sectionId')+"HideSectionBtn").on("click", function(){
+            var sectionId = $(this).attr('data-section-view');
+            $('#viewPanel'+sectionId).slideDown();
+            $("#"+sectionId).slideUp();
+        })
 	 },
 
      removeData: function(idVal){
       var self = this;
       var confirm = window.confirm("Do you want to remove the selected row");
       if(confirm){
+        showLoad(true);
          $.ajax({
              url: self.model.get('removeUrl'),
              data: {id:idVal},
              type: 'POST',
              success: function(data) {
+               showLoad(false);
                window.alert("Data has been removed");
                self.model.getData();
+             },
+             error: function(data){
+               showLoad(false);
+               window.alert("Request Timeout. Cannot Reach the server. Please check your connection and try again");
              }
         }); 
       }

@@ -26,3 +26,11 @@ function cleanUpView(view){
       view.remove();
    }catch(err){}
 }
+
+function showLoad(load){
+   if(load){
+      $('.loadingStatus').show();
+   }else{
+      $('.loadingStatus').hide();
+   }
+}

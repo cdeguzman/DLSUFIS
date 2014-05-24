@@ -54,14 +54,20 @@ var DataAddPanelView = Backbone.View.extend({
     dataAdded += "fid:"+App.currentFacultyId;
     dataAdded += "}";
     eval('var dataTransfer='+dataAdded);
+    showLoad(true);
     $.ajax({
          url: self.model.get('addUrl'),
          data: dataTransfer,
          type: 'POST',
          success: function(data) {
+           showLoad(false);
            window.alert("Data has been added");
            self.model.getData();
-         }
+         },
+         error: function(data){
+            showLoad(false);
+            window.alert("Request Timeout. Cannot Reach the server. Please check your connection and try again");
+          }
     }); 
   },
 

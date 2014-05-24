@@ -312,9 +312,24 @@ a.active{
 }
 
 .tableSection{
-   height:280px;
 }
 
 .rowMenu{
 	width: 90px;
+}
+
+.sectionMainDiv{
+}
+
+.loadingStatus{
+   position:fixed;
+   right: 67px;
+   top: 10px;
+   font-size: 19px;
+   -moz-box-shadow: 0 0 2px 2px #888;
+   -webkit-box-shadow: 0 0 2px 2px#888;
+   box-shadow: 0 0 2px 2px #888;
+   padding: 5px;
+   display:none;
+   background-color: white;
 }
