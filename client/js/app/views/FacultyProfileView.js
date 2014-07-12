@@ -14,14 +14,16 @@ var FacultyProfileView = Backbone.View.extend({
       html+='<!--Start Footer-->';
       html+='<div id="footerContent"></div>';
       $('#mainPanel').html(html);
+
       this.subViews.push(new HeaderView({ // render the header
         el: "#headerContent",
-        headerName: 'Faculty Profile'
+        headerName: App.currentStaffId.length==4 ? "Staff Mode" : "Faculty Profile"
       }));
-
+      var facultyInformationModel = new FacultyInformationModel();
+      App.facultyInformationModel = facultyInformationModel;
       this.subViews.push(new FacultyInformationView({
         el: "#mainContent",
-        model: new FacultyInformationModel()
+        model: facultyInformationModel
       }));
 
       this.subViews.push(new TermsAndPrivacyView({ //render the footer

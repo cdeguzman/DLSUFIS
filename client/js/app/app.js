@@ -1,5 +1,8 @@
 window.App = {
    currentFacultyId: '', //Current Logged in Faculty
+   currentStaffId: '',
+   facultyInformationModel: '',
+
 
    /*Api URL's*/
 
@@ -53,6 +56,7 @@ window.App = {
    degreeEarnedRemoveUrl: '../server/php/FacultyAcademicBackground/removeEarnedDegree.php',
    degreePursueAddUrl: '../server/php/FacultyAcademicBackground/insertDegreePursue.php',
    degreePursueRemoveUrl: '../server/php/FacultyAcademicBackground/removeDegreePursue.php',
+   facultyListUrl: '../server/php/Admin/faculty.php',
    specTrainingAddUrl: '../client/json/newdata.json',
    specTrainingRemoveUrl: '../client/json/newdata.json',
    teachExpAddUrl: '../client/json/newdata.json',

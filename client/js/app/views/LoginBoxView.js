@@ -91,7 +91,12 @@ var LoginBoxView = Backbone.View.extend({
            type: 'POST',
            success: function(data) {
             if(data!=null&&data!=""){
-              App.currentFacultyId = data;
+              if(data.length==4){
+                //Enable Staff Mode
+                App.currentStaffId = data;
+              }else{
+                App.currentFacultyId = data;
+              }
               var sessionHash = data; // use this to put a unique session has pref from the server
               createSession(sessionHash);// create a sesssion
               Backbone.history.navigate('profile', {trigger:true});//trigger redirect route

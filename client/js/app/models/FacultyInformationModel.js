@@ -13,6 +13,20 @@ var FacultyInformationModel = Backbone.Model.extend({
 		});
 	},
 
+	getUpdatedFacultyInfomation: function(){
+	  var self = this;
+		$.ajax({
+			   url: App.facultyProfileUrl,
+			   data: {fid: App.currentFacultyId},
+			   dataType:"json",
+			   type: 'GET',
+			   contentType: "application/json",
+			   success: function(data) {
+			   		self.setAttributes(data);
+			   }
+		});
+	},
+
 	setAttributes: function(data){
 		var facultyData = data[0];
 		this.set('flname',facultyData.flname);

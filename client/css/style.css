@@ -333,3 +333,6 @@ a.active{
    display:none;
    background-color: white;
 }
+.hidePanel, .hideFacSelect{
+   display:none;
+}

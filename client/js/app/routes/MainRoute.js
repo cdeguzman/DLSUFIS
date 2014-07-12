@@ -21,7 +21,8 @@ var ApplicationRouter = Backbone.Router.extend({
    //redirect for successfull login
    getProfile: function(){
       if(checkSession()){
-        App.currentFacultyId = $.cookie('sessionCookie');
+            App.currentStaffId = $.cookie('sessionCookie');
+            App.currentFacultyId = $.cookie('sessionCookie');
         this.loadView(new FacultyProfileView({
          el: '#mainContent'
       }));
