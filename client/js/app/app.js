@@ -2,6 +2,8 @@ window.App = {
    currentFacultyId: '', //Current Logged in Faculty
    currentStaffId: '',
    facultyInformationModel: '',
+   minYear: 1900,
+   maxYear: 2020,
 
 
    /*Api URL's*/

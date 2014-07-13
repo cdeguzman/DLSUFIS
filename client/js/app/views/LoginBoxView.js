@@ -91,8 +91,9 @@ var LoginBoxView = Backbone.View.extend({
            type: 'POST',
            success: function(data) {
             if(data!=null&&data!=""){
-              if(data.length==4){
-                //Enable Staff Mode
+              //@Code Smell TODO
+              if(data.length==4 || data.length==5){
+                //Enable Staff Mode /Admin Mode
                 App.currentStaffId = data;
               }else{
                 App.currentFacultyId = data;

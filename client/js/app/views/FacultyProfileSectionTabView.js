@@ -7,10 +7,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 
   render: function(){
     //Profile View
+    var hidePanel = App.currentFacultyId.length==4 ? " hidePanel" : ""
     var acadProfileSections = ['degreeEarned','degreePursue', 'specialTraining', 'teachExpr', 'license', 'nonTeachExp'];
-  var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchievements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
-  var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
-  var comService = ['ComSrvDLSU', "profOrg", "govOrg", "otherOrg"];
+    var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchievements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
+    var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
+    var comService = ['ComSrvDLSU', "profOrg", "govOrg", "otherOrg"];
     var html = '';
     html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
     html +='<ul class="nav nav-tabs">';
@@ -37,7 +38,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
       html +='</div>';
           html +='<div class="tab-pane fade" id="communityService">';
           comService.forEach(function(section){
-              html+='<div class="sectionMainDiv id="'+section+'"></div>'
+              html+='<div class="sectionMainDiv" id="'+section+'"></div>'
           });
       html +='</div>';
         $(this.el).html(html);
@@ -55,9 +56,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.set('inputData', new Array(
           {inputLabel: "Degree Earned", inputName:"degree_id", inputType: "select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "degree_id", value: "degree_title",}},
           {inputLabel: "Area of Specialization", inputName:"as_code", inputType: "select", apiUrl:App.specializationDropDownUrl, selectValueDisplay:{id: "as_code", value: "as_title",}},
-		  {inputLabel: "Year Obtained", inputType: "text", inputName:"year_obtained",},
-		  {inputLabel: "Institution", inputName:"institution_id", inputType: "select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "institution_id", value: "institution_name",}},
-		  {inputLabel: "SO Number", inputType: "text", inputName:"so_num",}
+    		  {inputLabel: "Year Obtained", inputType: "year", inputName:"year_obtained",},
+    		  {inputLabel: "Institution", inputName:"institution_id", inputType: "select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "institution_id", value: "institution_name",}},
+    		  {inputLabel: "SO Number", inputType: "text", inputName:"so_num",}
 		  ));
         degreeEarnedModel.set('addUrl', App.degreeEarnedAddUrl);
         degreeEarnedModel.set('removeUrl', App.degreeEarnedRemoveUrl);
@@ -77,12 +78,12 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreePursueModel.set('collumnNames', new Array('Degree being pursued', 'Name of Institution', 'Stage of Graduate Studies', 'No. of Units Completed', 'Start Date', 'End Date'));
         degreePursueModel.set('noteHead', 'IF PURSUING GRADUATE STUDIES, please fill up the following table: ');
           degreePursueModel.set('inputData', new Array(
-		   {inputLabel: "Degree Being Pursued", inputName: "degree_id", inputType:"select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "degree_id", value: "degree_title",}},  
-		   {inputLabel: "Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "institution_id", value: "institution_name",}},
+		       {inputLabel: "Degree Being Pursued", inputName: "degree_id", inputType:"select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "degree_id", value: "degree_title",}},  
+		       {inputLabel: "Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "institution_id", value: "institution_name",}},
            {inputLabel: "Stage of Graduate Studies", inputName: "degree_stages", inputType:"text",},
            {inputLabel: "No. of Units Completed ", inputName: "earned_units", inputType:"text",},
-           {inputLabel: "Start Date", inputName: "start_date", inputType:"text",},
-           {inputLabel: "End Date", inputName: "end_date", inputType:"text",}		   
+           {inputLabel: "Start Date", inputName: "start_date", inputType:"date",},
+           {inputLabel: "End Date", inputName: "end_date", inputType:"date",}		   
 		  ));
 		degreePursueModel.set('addUrl', App.degreePursueAddUrl);
         degreePursueModel.set('removeUrl', App.degreePursueRemoveUrl);
@@ -296,10 +297,6 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           el: '#'+profActivity1[4],
           model: exResFundedModel 
         }));
-		
-		
-	 
-//^^
  
  },
 

@@ -8,11 +8,21 @@ var FacultyInformationView = Backbone.View.extend({
   render: function(){
       var hidePanel = App.currentStaffId.length==4 ? " hidePanel" : ""
       var hideFacSelect = App.currentStaffId.length!=4 ? " hideFacSelect" : ""
-      var html ='';
-          html+='<div class="facSelect '+hideFacSelect+'"><br><select class="form-control" id="facultySelectionDropDown"></select><br>';
-          html+='<button id="selectFaculty" type="button" class="btn btn-info"><i class="fa fa-share"></i> Select Faculty</button><br><br></div>';
-          html +='<div id="facultyInformation" class="jumbotron '+hidePanel+'">';
-                html +='<div class="panel panel-default">';
+      var html ='';    
+            if(App.currentStaffId.length==4){
+              this.getFacultyList();
+            }
+            if(App.currentStaffId.length==5){
+              html +='<div id="profileContent" class="'+hidePanel+'"></div>'
+              $(this.el).append(html);
+              this.subViews.push(new AdminTabView({
+               el: "#profileContent"
+              }));
+            }else{
+               html+='<div class="facSelect '+hideFacSelect+'"><br><select class="form-control" id="facultySelectionDropDown"></select><br>';
+              html+='<button id="selectFaculty" type="button" class="btn btn-info"><i class="fa fa-share"></i> Select Faculty</button><br><br></div>';
+              html +='<div id="facultyInformation" class="jumbotron '+hidePanel+'">';
+              html +='<div class="panel panel-default">';
                   html +='<!-- Default panel contents -->';
                   html +='<div class="panel-heading">'+App.currentFacultyId+" - "+this.model.get('flname')+', ' + this.model.get('ffname')+' '+this.model.get('fmname')+'</div>';
                   html +='<div class="panel-body">';
@@ -22,21 +32,21 @@ var FacultyInformationView = Backbone.View.extend({
                   html +='</div>';
                   html +='<!-- Table -->';
                 html +='</div>';
-            html +='</div>';
-            html +='<div id="profileContent" class="'+hidePanel+'"></div>'
-            if(App.currentStaffId.length==4){
-              this.getFacultyList();
-            }
-            $(this.el).append(html);
+                html +='</div>';
+                html +='<div id="profileContent" class="'+hidePanel+'"></div>'
+                $(this.el).append(html);
               this.subViews.push(new FacultyProfileSectionTabView({
-              el: "#profileContent"
-            }));
+               el: "#profileContent"
+              }));
+            }
             $("#selectFaculty").click(function(){
               App.currentFacultyId = $('#facultySelectionDropDown').val();
               App.facultyInformationModel.getUpdatedFacultyInfomation();
               $(".jumbotron")[0].remove();
               $(".facSelect")[0].remove();
               setTimeout(function(){
+                _.each(this.subViews, function(view){view.remove()});
+                this.subViews = new Array();
                 $("#facultyInformation").slideDown();
                 $("#profileContent").slideDown();
                   this.subViews.push(new FacultyProfileSectionTabView({

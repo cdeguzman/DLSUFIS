@@ -14,10 +14,17 @@ var FacultyProfileView = Backbone.View.extend({
       html+='<!--Start Footer-->';
       html+='<div id="footerContent"></div>';
       $('#mainPanel').html(html);
-
+      App.currentStaffId.length==4 ? "Staff Mode" : "Faculty Profile"
+      var headerName = "Faculty Profile";
+      //CODE SMELL @ Refactor to depend on PID
+      if(App.currentStaffId.length==4){
+        headerName = "Staff Mode";
+      }else if(App.currentStaffId.length==5){
+        headerName = "Administrator Mode";
+      }
       this.subViews.push(new HeaderView({ // render the header
         el: "#headerContent",
-        headerName: App.currentStaffId.length==4 ? "Staff Mode" : "Faculty Profile"
+        headerName: headerName
       }));
       var facultyInformationModel = new FacultyInformationModel();
       App.facultyInformationModel = facultyInformationModel;

@@ -16,13 +16,14 @@ var DataAddPanelView = Backbone.View.extend({
   	html += '<table class="table" id="'+this.model.get('sectionId')+"AddTable"+'"></table>';
   	$(this.el).append(html);
   	this.model.get('inputData').forEach(function(inputData){
-  		if(inputData.inputType=="text"){
-  			self.subViews.push(new TextFieldView({
-  				el: "#"+self.model.get('sectionId')+"AddTable",
-  				elementName: inputData.inputName,
-    			elementLabel: inputData.inputLabel,
-    			sectionId: self.model.get('sectionId')
-  			}));
+  		if(inputData.inputType=="text" || inputData.inputType=="date" || inputData.inputType=="year"){
+          self.subViews.push(new TextFieldView({
+            el: "#"+self.model.get('sectionId')+"AddTable",
+            elementName: inputData.inputName,
+            elementLabel: inputData.inputLabel,
+            sectionId: self.model.get('sectionId'),
+            inputType: inputData.inputType
+          }));
   		}else if(inputData.inputType=="select"){
 			self.subViews.push(new SelectboxView({
   				el: "#"+self.model.get('sectionId')+"AddTable",
@@ -45,30 +46,41 @@ var DataAddPanelView = Backbone.View.extend({
 
   addData: function(){
     var self = this;
-    var dataAdded = "{";
+    var isValidData = true;
     this.model.get('inputData').forEach(function(inputData){
       var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName).val();
-      var key = inputData.inputName;
-      dataAdded+=key+": \""+value+"\",";
+      if(value=="" || value==-1){
+        isValidData = false;
+      }
     })
-    dataAdded += "fid:"+App.currentFacultyId;
-    dataAdded += "}";
-    eval('var dataTransfer='+dataAdded);
-    showLoad(true);
-    $.ajax({
-         url: self.model.get('addUrl'),
-         data: dataTransfer,
-         type: 'POST',
-         success: function(data) {
-           showLoad(false);
-           window.alert("Data has been added");
-           self.model.getData();
-         },
-         error: function(data){
-            showLoad(false);
-            window.alert("Request Timeout. Cannot Reach the server. Please check your connection and try again");
-          }
-    }); 
+    if(isValidData){
+      var dataAdded = "{";
+      this.model.get('inputData').forEach(function(inputData){
+        var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName).val();
+        var key = inputData.inputName;
+        dataAdded+=key+": \""+value+"\",";
+      })
+      dataAdded += "fid:"+App.currentFacultyId;
+      dataAdded += "}";
+      eval('var dataTransfer='+dataAdded);
+      showLoad(true);
+      $.ajax({
+           url: self.model.get('addUrl'),
+           data: dataTransfer,
+           type: 'POST',
+           success: function(data) {
+             showLoad(false);
+             BootstrapDialog.alert("Data has been added");
+             self.model.getData();
+           },
+           error: function(data){
+              showLoad(false);
+              BootstrapDialog.alert("Request Timeout. Cannot Reach the server. Please check your connection and try again");
+            }
+      }); 
+    }else{
+      BootstrapDialog.alert('Please Fill Up All Fields');
+    }
   },
 
   close: function(){

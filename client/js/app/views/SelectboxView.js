@@ -43,10 +43,12 @@ var SelectboxView = Backbone.View.extend({
 
   setAttributes: function(data){
   	var self = this;
+    var rowData = '<option value="-1">Please Select One.</option>';
+    $("#"+self.sectionId+'_'+self.elementName).append(rowData);
   	//console.log(data);
   	data.forEach(function(row){
   		//console.log(row);
-  		var rowData = '<option value="'+eval("row."+self.selectIndex.id)+'">'+eval("row."+self.selectIndex.value)+'</option>';
+  		rowData = '<option value="'+eval("row."+self.selectIndex.id)+'">'+eval("row."+self.selectIndex.value)+'</option>';
   		$("#"+self.sectionId+'_'+self.elementName).append(rowData);
   	});
   },
