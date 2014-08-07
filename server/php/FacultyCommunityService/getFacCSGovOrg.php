@@ -8,7 +8,7 @@
 								     WHERE cs.fid = $fid 
 									 AND cs.cs_type = cst.cstype_code
 									 AND cs.cs_type = 'CS003' 
-									 AND cs.gov_id=g.gov_id");
+									 AND cs.gov_id = g.gov_id");
       $list_csgovorg = array();
       while($fetch_csgovorg = mysql_fetch_assoc($select_csgovorg)){
           $list_csgovorg[] = $fetch_csgovorg;

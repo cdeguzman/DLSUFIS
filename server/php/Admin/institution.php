@@ -1,9 +1,8 @@
 <?php
   include("../connect.php");
   
-  $select_institution = mysql_query("SELECT institution_id, institution_name, institution_type, location, country 
+  $select_institution = mysql_query("SELECT institution_id, institution_name, location, country 
                                      FROM institution 
-									 WHERE institution_type = 'Academe'
 									 ORDER BY institution_name");
   $list_institution = array();
   

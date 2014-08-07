@@ -1,15 +1,14 @@
 <?php
   include("../connect.php");
   
-  $select_industry = mysql_query("SELECT institution_id, institution_name, institution_type, location, country 
-                                     FROM institution 
-									 WHERE institution_type = 'Industry'
-									 ORDER BY institution_name");
+  $select_industry = mysql_query("SELECT industry_id, industry_name, ind_acronym 
+                                  FROM industry 
+								  ORDER BY industry_name");
   $list_industry = array();
   
-  while($fetch_institution = mysql_fetch_assoc($select_institution)){
-    $list_institution[] = $fetch_institution; 
+  while($fetch_industry = mysql_fetch_assoc($select_industry)){
+    $list_industry[] = $fetch_industry; 
   }
   
-  echo json_encode($list_institution);
+  echo json_encode($list_industry);
 ?>

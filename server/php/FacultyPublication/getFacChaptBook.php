@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_chapter = mysql_query("SELECT p.pub_code AS id, f.flname, p.work_title, p.paper_title, p.editors, p.publisher, p.place_publication, p.date_publication, p.pages, p.issue_no 
+      $select_chapter = mysql_query("SELECT p.pub_code AS id, f.flname, p.work_title, p.paper_title, p.editors, p.publisher, p.place_publication, p.date_publication, p.pages, p.isbn 
                                      FROM faculty f, publication p, publication_type pt
 								     WHERE p.fid = $fid 
 									 AND f.fid = p.fid 
