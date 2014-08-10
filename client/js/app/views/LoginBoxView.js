@@ -87,20 +87,36 @@ var LoginBoxView = Backbone.View.extend({
         var self = this;
         $.ajax({
            url: App.loginUrl,
-           data: {fid:self.model.get('userName'), password:self.model.get('passWord')},
+           data: {username:self.model.get('userName'), password:self.model.get('passWord')},
            type: 'POST',
            success: function(data) {
-            if(data!=null&&data!=""){
-              //@Code Smell TODO
-              if(data.length==4 || data.length==5){
+            var response = eval ("["+data+"]");
+            var userData = response[0];
+            if(data!=false){
+              //@Code Smell TODO Move this to app.js
+              var validMode = false;
+              if(userData.position_id=="P0000"){
                 //Enable Staff Mode /Admin Mode
-                App.currentStaffId = data;
-              }else{
+                App.currentStaffId = response;
+                validMode = true;
+                App.currentMode = "Admin";
+              }else if(userData.position_id=="P0003" || userData.position_id=="P0004"){
                 App.currentFacultyId = data;
+                validMode = true;
+                App.currentMode = "Faculty";
+              }else if(userData.position_id=="P0005"){
+                  validMode = true;
+                  App.currentMode = "Staff";
+                }
+
+              if(validMode){
+                 var sessionHash = userData.fid; // use this to put a unique session has pref from the server
+                 createSession(sessionHash);// create a sesssion
+                 Backbone.history.navigate('profile', {trigger:true});//trigger redirect route
+              }else{
+                $('#errorLogin').css('display', 'block');// show login error
               }
-              var sessionHash = data; // use this to put a unique session has pref from the server
-              createSession(sessionHash);// create a sesssion
-              Backbone.history.navigate('profile', {trigger:true});//trigger redirect route
+             
              }else{
                 $('#errorLogin').css('display', 'block');// show login error
              }

@@ -6,13 +6,13 @@ var FacultyInformationView = Backbone.View.extend({
   },
   
   render: function(){
-      var hidePanel = App.currentStaffId.length==4 ? " hidePanel" : ""
-      var hideFacSelect = App.currentStaffId.length!=4 ? " hideFacSelect" : ""
+      var hidePanel = App.currentMode=="Staff" ? " hidePanel" : ""
+      var hideFacSelect = App.currentMode!="Staff" ? " hideFacSelect" : ""
       var html ='';    
-            if(App.currentStaffId.length==4){
+            if(App.currentMode=="Staff"){
               this.getFacultyList();
             }
-            if(App.currentStaffId.length==5){
+            if(App.currentMode=="Admin"){
               html +='<div id="profileContent" class="'+hidePanel+'"></div>'
               $(this.el).append(html);
               this.subViews.push(new AdminTabView({

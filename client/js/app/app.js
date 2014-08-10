@@ -4,6 +4,7 @@ window.App = {
    facultyInformationModel: '',
    minYear: 1900,
    maxYear: 2020,
+   currentMode: '',
 
 
    /*Api URL's*/

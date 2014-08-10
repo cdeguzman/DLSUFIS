@@ -3,7 +3,7 @@
     if($_GET["fid"]!= NULL){ 
  	  $fid = $_GET["fid"];
   
-      $select_info = mysql_query("SELECT f.flname, f.ffname, f.fmname, f.unit_code ,u.unit_title, d.dept_name, p.position_title, r.rank_title
+      $select_info = mysql_query("SELECT f.flname, f.ffname, f.fmname, f.unit_code ,u.unit_title, d.dept_name, p.position_title, r.rank_title, p.position_id 
                                     FROM faculty f, unit u, department d, rank r, position p
 									WHERE f.fid = $fid 
 									AND f.unit_code = u.unit_code 

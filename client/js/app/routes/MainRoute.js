@@ -21,11 +21,43 @@ var ApplicationRouter = Backbone.Router.extend({
    //redirect for successfull login
    getProfile: function(){
       if(checkSession()){
-            App.currentStaffId = $.cookie('sessionCookie');
-            App.currentFacultyId = $.cookie('sessionCookie');
-        this.loadView(new FacultyProfileView({
-         el: '#mainContent'
-      }));
+         App.currentStaffId = $.cookie('sessionCookie');
+         App.currentFacultyId = $.cookie('sessionCookie');
+         var self = this;
+          $.ajax({
+               url: App.facultyProfileUrl,
+               data: {fid: App.currentFacultyId},
+               dataType:"json",
+               type: 'GET',
+               contentType: "application/json",
+               success: function(data) {
+                var userData = data[0];
+                var validMode = false;
+                if(userData.position_id=="P0000"){
+                  //Enable Staff Mode /Admin Mode
+                  validMode = true;
+                  App.currentMode = "Admin";
+                }else if(userData.position_id=="P0003" || userData.position_id=="P0004"){
+                  validMode = true;
+                  App.currentMode = "Faculty";
+                }else if(userData.position_id=="P0005"){
+                  validMode = true;
+                  App.currentMode = "Staff";
+                }
+                if(validMode){
+                  self.loadView(new FacultyProfileView({
+                   el: '#mainContent'
+                  }));
+                 }else{
+                  self.login();
+                }
+
+
+
+
+
+              }
+          });
       }else{
         location.href = "";
       }

@@ -1,12 +1,12 @@
 <?php
  include("connect.php");
-  $fid = $_POST["fid"];
+  $username = $_POST["username"];
   $pass = $_POST["password"];
  
-  $select_account = mysql_query("SELECT fid, password 
+  $select_account = mysql_query("SELECT fid, position_id   
                                  FROM faculty 
-								 WHERE fid = '$fid' 
+								 WHERE username = '$username' 
 								 AND password = '$pass'");
   $disp = mysql_fetch_assoc($select_account);
-  echo $disp["fid"];
+  echo json_encode($disp);
 ?>
