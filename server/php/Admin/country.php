@@ -1,7 +1,7 @@
 <?php
   include("../connect.php");
   
-  $select_country = mysql_query("SELECT country_code, country_name FROM country ORDER BY country_name");
+  $select_country = mysql_query("SELECT country_code as id, country_name FROM country ORDER BY country_name");
   $list_country = array();
   
   while($fetch_country = mysql_fetch_assoc($select_country)){

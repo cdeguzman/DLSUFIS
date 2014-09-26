@@ -1,7 +1,7 @@
 <?php
   include("../connect.php");
   
-  $select_position = mysql_query("SELECT position_id, position_title FROM position ORDER BY position_id");
+  $select_position = mysql_query("SELECT position_id as id, position_title FROM position ORDER BY position_id");
   $list_position = array();
   
   while($fetch_position = mysql_fetch_assoc($select_position)){
