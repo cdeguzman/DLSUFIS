@@ -56,12 +56,16 @@ window.App = {
    locationDropDownUrl: '../server/php/Admin/location.php',
    degreeStagesDropDownUrl: '../server/php/Admin/degree_stages.php',
    positionDropDownUrl: '../server/php/Admin/position.php',
-   journalsDropDown: '../server/php/Admin/journals.php',
-   countryDropDown: '../server/php/Admin/country.php',
+   journalsDropDownUrl: '../server/php/Admin/journals.php',
+   countryDropDownUrl: '../server/php/Admin/country.php',
    deptDropDownUrl: '../server/php/Admin/department.php',
    gov_agencyDropDownUrl: '../server/php/Admin/gov_agency.php',
+   rankDropDownUrl: '../server/php/Admin/rank.php',
+   acctTypeDropDownUrl: '../server/php/Admin/acctType.php',
+   positionDropDownUrl: '../server/php/Admin/position.php',
+   classificationDropDownUrl: '../server/php/Admin/classification.php',
    
-   //Add Remove Edit
+   //Faculty Add Remove Edit
    degreeEarnedAddUrl: '../server/php/FacultyAcademicBackground/insertEarnedDegree.php',
    degreeEarnedRemoveUrl: '../server/php/FacultyAcademicBackground/removeEarnedDegree.php',
    degreePursueAddUrl: '../server/php/FacultyAcademicBackground/insertDegreePursue.php',
@@ -117,5 +121,19 @@ window.App = {
    otherOrgModelRemoveUrl: '../server/php/FacultyCommunityService/removeCSOthers.php',
    
    //Administrator URL
-   facultyRecordsUrl: '../server/php/Admin/faculty.php'
+   userRecordsUrl: '../server/php/Admin/userRecords.php',
+   adminAddNewUserUrl: '../server/php/Admin/AddNewRecord/addNewUser.php',
+   adminRemoveUserUrl: '../server/php/Admin/RemoveRecord/removeUser.php',
+   adminEditFacultyUrl: '../client/app.js',
+   adminAddNewRankUrl: '../server/php/Admin/AddNewRecord/addNewRank.php',
+   adminRemoveRankUrl: '../server/php/Admin/RemoveRecord/removeRank.php',
+   adminAddNewDeptUrl: '../server/php/Admin/AddNewRecord/addNewDept.php',
+   adminRemoveDeptUrl: '../server/php/Admin/RemoveRecord/removeDept.php',
+   adminAddNewUnitUrl: '../server/php/Admin/AddNewRecord/addNewUnit.php',
+   adminRemoveUnitUrl: '../server/php/Admin/RemoveRecord/removeUnit.php', 
+   adminAddNewPositionUrl: '../server/php/Admin/AddNewRecord/addNewPosition.php',
+   adminRemovePositionUrl: '../server/php/Admin/RemoveRecord/removePosition.php',
+   adminAddNewInstitutionUrl: '../server/php/Admin/AddNewRecord/addNewInstitution.php',
+   adminRemoveInstitutionUrl: '../server/php/Admin/RemoveRecord/removeInstitution.php',
+   adminEditInstitutionUrl: '../client/app.js'
  };
