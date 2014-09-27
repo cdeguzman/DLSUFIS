@@ -1,7 +1,7 @@
 <?php
   include("../connect.php");
   
-  $select_rank = mysql_query("SELECT rank_code, rank_title 
+  $select_rank = mysql_query("SELECT rank_code as id , rank_title 
                               FROM rank ORDER BY rank_title");
   $list_rank = array();
   

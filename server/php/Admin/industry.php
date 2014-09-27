@@ -1,7 +1,7 @@
 <?php
   include("../connect.php");
   
-  $select_industry = mysql_query("SELECT industry_id, industry_name, ind_acronym 
+  $select_industry = mysql_query("SELECT industry_id as id, industry_name, ind_acronym 
                                   FROM industry 
 								  ORDER BY industry_name");
   $list_industry = array();

@@ -1,8 +1,8 @@
 <?php
  include("connect.php");
   $username = $_POST["username"];
-  $pass = $_POST["password"];
- 
+  $pass = md5($_POST["password"]);
+   
   $select_account = mysql_query("SELECT fid, position_id   
                                  FROM faculty 
 								 WHERE username = '$username' 

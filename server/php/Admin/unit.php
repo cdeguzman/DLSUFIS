@@ -1,7 +1,7 @@
 <?php
   include("../connect.php");
   
-  $select_unit = mysql_query("SELECT unit_code, unit_title 
+  $select_unit = mysql_query("SELECT unit_code as id, unit_title 
                               FROM unit ORDER BY unit_title");
   $list_unit = array();
   
