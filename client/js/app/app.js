@@ -64,7 +64,10 @@ window.App = {
    acctTypeDropDownUrl: '../server/php/Admin/acctType.php',
    positionDropDownUrl: '../server/php/Admin/position.php',
    classificationDropDownUrl: '../server/php/Admin/classification.php',
+<<<<<<< HEAD
    journalpubDropDownUrl:'../server/php/Admin/journalpublication.php',
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
    
    //Faculty Add Remove Edit
    degreeEarnedAddUrl: '../server/php/FacultyAcademicBackground/insertEarnedDegree.php',
@@ -134,6 +137,7 @@ window.App = {
    adminRemoveUnitUrl: '../server/php/Admin/RemoveRecord/removeUnit.php', 
    adminAddNewPositionUrl: '../server/php/Admin/AddNewRecord/addNewPosition.php',
    adminRemovePositionUrl: '../server/php/Admin/RemoveRecord/removePosition.php',
+<<<<<<< HEAD
    adminAddNewAcctTypeUrl: '../server/php/Admin/AddNewRecord/addNewAcctType.php',
    adminRemoveAcctTypeUrl: '../server/php/Admin/RemoveRecord/removeAcctType.php',
    adminAddNewDegreeUrl: '../server/php/Admin/AddNewRecord/addNewDegree.php', 
@@ -156,4 +160,9 @@ window.App = {
    
    
    
+=======
+   adminAddNewInstitutionUrl: '../server/php/Admin/AddNewRecord/addNewInstitution.php',
+   adminRemoveInstitutionUrl: '../server/php/Admin/RemoveRecord/removeInstitution.php',
+   adminEditInstitutionUrl: '../client/app.js'
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
  };

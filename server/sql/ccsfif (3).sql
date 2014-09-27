@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Sep 27, 2014 at 01:33 PM
+=======
+-- Generation Time: Sep 27, 2014 at 07:39 AM
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 -- Server version: 5.5.34
 -- PHP Version: 5.4.22
 
@@ -134,7 +138,10 @@ INSERT INTO `country` (`COUNTRY_CODE`, `COUNTRY_NAME`) VALUES
 ('AUS', 'Australia'),
 ('AUT', 'Austria'),
 ('BEL', 'Belgium'),
+<<<<<<< HEAD
 ('BHS', 'Bahamas'),
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 ('CHN', 'China'),
 ('DZA', 'Algeria'),
 ('JPN', 'Japan'),
@@ -180,7 +187,11 @@ CREATE TABLE IF NOT EXISTS `degree` (
   `DEGREE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `DEGREE_TITLE` varchar(100) NOT NULL,
   PRIMARY KEY (`DEGREE_ID`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+=======
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 --
 -- Dumping data for table `degree`
@@ -190,8 +201,12 @@ INSERT INTO `degree` (`DEGREE_ID`, `DEGREE_TITLE`) VALUES
 (1, 'Computer Science'),
 (2, 'Information Technology'),
 (3, 'Computer Engineering'),
+<<<<<<< HEAD
 (4, 'Electronics and Communications Engineering'),
 (6, 'Information Systems');
+=======
+(4, 'Electronics and Communications Engineering');
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 -- --------------------------------------------------------
 
@@ -223,7 +238,11 @@ CREATE TABLE IF NOT EXISTS `degree_earned` (
 --
 
 INSERT INTO `degree_earned` (`DE_ID`, `FID`, `DLEVEL_ID`, `DEGREE_ID`, `SPECIALIZATION`, `YEAR_OBTAINED`, `INSTITUTION_ID`, `LOCATION_ID`, `SO_NUM`) VALUES
+<<<<<<< HEAD
 (1, 97011112, 'DL00', 1, '1', 2005, 2, 1, 'SO1212121');
+=======
+(1, 97011112, 'DL00', 1, '1', 2005, 2, 0, 'SO1212121');
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 -- --------------------------------------------------------
 
@@ -376,7 +395,10 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 --
 
 INSERT INTO `faculty` (`FID`, `PASSWORD`, `USERNAME`, `ACCOUNT_ID`, `FFNAME`, `FLNAME`, `FMNAME`, `UNIT_CODE`, `DEPT`, `CLASSIFICATION`, `RANK`, `POSITION_ID`) VALUES
+<<<<<<< HEAD
 (1111, '5f4dcc3b5aa765d61d8327deb882cf99', 'staff.account', 'AC004', 'Account', 'Staff', 'S', 'CCS', 'CT', 'P0006', ' N/A', 'P0005'),
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 (20001, '5f4dcc3b5aa765d61d8327deb882cf99', 'admin.account', 'AC001', 'Administrator', 'System', 'A', 'CCS', '00', 'P0003', 'L1', 'P0000'),
 (97011112, '5f4dcc3b5aa765d61d8327deb882cf99', 'sample2.faculty2', 'AC003', 'Faculty2', 'Sample2', 'G', 'CCS', 'IS', 'P0003', 'AP2', 'P0003');
 
@@ -487,7 +509,11 @@ CREATE TABLE IF NOT EXISTS `journals` (
   `JOURNAL_TYPE` varchar(35) NOT NULL,
   `JOURNAL_PUBLICATION` varchar(35) NOT NULL,
   PRIMARY KEY (`JOURNAL_ID`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+=======
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 --
 -- Dumping data for table `journals`
@@ -502,6 +528,7 @@ INSERT INTO `journals` (`JOURNAL_ID`, `JOURNAL_TITLE`, `JOURNAL_TYPE`, `JOURNAL_
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `journal_publication`
 --
 
@@ -524,25 +551,41 @@ INSERT INTO `journal_publication` (`JOURNALPUB_ID`, `JOURNALPUB_TYPE`) VALUES
 -- --------------------------------------------------------
 
 --
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 -- Table structure for table `location`
 --
 
 CREATE TABLE IF NOT EXISTS `location` (
+<<<<<<< HEAD
   `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT,
   `LOCATION_NAME` varchar(45) NOT NULL,
   `REGION` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`LOCATION_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+=======
+  `LOCATION_ID` int(11) NOT NULL,
+  `LOCATION_NAME` varchar(45) NOT NULL,
+  PRIMARY KEY (`LOCATION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 --
 -- Dumping data for table `location`
 --
 
+<<<<<<< HEAD
 INSERT INTO `location` (`LOCATION_ID`, `LOCATION_NAME`, `REGION`) VALUES
 (1, '  N/A', NULL),
 (2, 'Caloocan', 'National Capital Region (NCR)'),
 (3, 'Abra', 'Cordillera Administrative Region (CAR)'),
 (5, 'Dagupan', 'Ilocos Region (Region I)');
+=======
+INSERT INTO `location` (`LOCATION_ID`, `LOCATION_NAME`) VALUES
+(0, '  N/A'),
+(1, 'Agusan Del Norte'),
+(2, 'Agusan Del Sur');
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 -- --------------------------------------------------------
 
@@ -593,8 +636,12 @@ INSERT INTO `position` (`POSITION_ID`, `POSITION_TITLE`) VALUES
 ('P0003', 'Full Time - Faculty'),
 ('P0004', 'Part Time - Faculty'),
 ('P0005', 'Academic Staff'),
+<<<<<<< HEAD
 ('P0006', 'Academic Service Faculty'),
 ('PPPPP', '  N/A');
+=======
+('P0006', 'Academic Service Faculty');
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 -- --------------------------------------------------------
 
@@ -677,7 +724,11 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `ISBN` varchar(25) DEFAULT NULL,
   `PATENT_NO` varchar(30) DEFAULT NULL,
   `PAGES` varchar(20) DEFAULT NULL,
+<<<<<<< HEAD
   `PUBLICATION_TYPE` int(11) DEFAULT NULL,
+=======
+  `PUBLICATION_TYPE` varchar(45) DEFAULT NULL,
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
   `OUTPUT_TYPE` varchar(45) DEFAULT NULL,
   `PAPER_TYPE` varchar(25) DEFAULT NULL,
   `PLACE_PUBLICATION` varchar(45) DEFAULT NULL,
@@ -693,6 +744,7 @@ CREATE TABLE IF NOT EXISTS `publication` (
   KEY `fk_publication_fid` (`FID`),
   KEY `fk_pub_pubtype` (`PUB_TYPE`),
   KEY `fk_pub_country` (`ISSUING_COUNTRY`),
+<<<<<<< HEAD
   KEY `fk_pub_journals` (`JOURNAL_ID`),
   KEY `fk_journalpub_type` (`PUBLICATION_TYPE`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -704,6 +756,10 @@ CREATE TABLE IF NOT EXISTS `publication` (
 INSERT INTO `publication` (`PUB_CODE`, `FID`, `PUB_TYPE`, `PAPER_TITLE`, `WORK_TITLE`, `CONF_TITLE`, `SEMINAR_TITLE`, `JOURNAL_ID`, `PUBLISHER`, `AUTHOR`, `VOLUME_NO`, `ISSUE_NO`, `ISBN`, `PATENT_NO`, `PAGES`, `PUBLICATION_TYPE`, `OUTPUT_TYPE`, `PAPER_TYPE`, `PLACE_PUBLICATION`, `DATE_PUBLICATION`, `START_DATE`, `END_DATE`, `ISSUING_COUNTRY`, `EDITORS`, `PUBLISHED_IN`, `VENUE_PERFORMANCE`, `REMARKS`) VALUES
 (1, 97011112, 'PT001', 'Development Of Web-Base FIS', NULL, NULL, NULL, 4, NULL, NULL, 1, 'ISN1111', NULL, NULL, '4-7', 5, NULL, NULL, NULL, '2008-09-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 97011112, 'PT001', 'Development Of FIS', NULL, NULL, NULL, 2, NULL, NULL, 1, 'ISN', NULL, NULL, '4', 5, NULL, NULL, NULL, '2006-02-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+=======
+  KEY `fk_pub_journals` (`JOURNAL_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 
 -- --------------------------------------------------------
 
@@ -751,7 +807,10 @@ CREATE TABLE IF NOT EXISTS `rank` (
 --
 
 INSERT INTO `rank` (`rank_code`, `rank_title`) VALUES
+<<<<<<< HEAD
 (' N/A', '  N/A'),
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 ('AP1', 'Assistant Professor 1'),
 ('AP2', 'Assistant Professor 2'),
 ('AP3', 'Assistant Professor 3'),
@@ -873,7 +932,10 @@ INSERT INTO `unit` (`Unit_Code`, `Unit_Title`) VALUES
 ('COL', 'College of Law'),
 ('COS', 'College of Science'),
 ('EVPERI', 'Executive Vice President for External Relations and Internallization'),
+<<<<<<< HEAD
 ('N/A', '  N/A'),
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 ('OPC', 'Office of the President and Chancellor'),
 ('SoE', 'School of Economics'),
 ('STA', 'Student Affairs'),
@@ -958,10 +1020,16 @@ ALTER TABLE `professional_prac`
 -- Constraints for table `publication`
 --
 ALTER TABLE `publication`
+<<<<<<< HEAD
   ADD CONSTRAINT `publication_ibfk_1` FOREIGN KEY (`PUBLICATION_TYPE`) REFERENCES `journal_publication` (`JOURNALPUB_ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_publication_fid` FOREIGN KEY (`FID`) REFERENCES `faculty` (`FID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_pub_country` FOREIGN KEY (`ISSUING_COUNTRY`) REFERENCES `country` (`COUNTRY_CODE`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_pub_journals` FOREIGN KEY (`JOURNAL_ID`) REFERENCES `journals` (`JOURNAL_ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+=======
+  ADD CONSTRAINT `fk_pub_journals` FOREIGN KEY (`JOURNAL_ID`) REFERENCES `journals` (`JOURNAL_ID`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_publication_fid` FOREIGN KEY (`FID`) REFERENCES `faculty` (`FID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_pub_country` FOREIGN KEY (`ISSUING_COUNTRY`) REFERENCES `country` (`COUNTRY_CODE`) ON DELETE SET NULL ON UPDATE CASCADE,
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
   ADD CONSTRAINT `fk_pub_pubtype` FOREIGN KEY (`PUB_TYPE`) REFERENCES `publication_type` (`PT_ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --

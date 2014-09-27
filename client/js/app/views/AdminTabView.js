@@ -8,14 +8,24 @@ var AdminTabView = Backbone.View.extend({
   render: function(){
     //Profile View
     var hidePanel = App.currentFacultyId.length==4 ? " hidePanel" : ""
+<<<<<<< HEAD
     var recordSection = ['userRecord','rank','department','unit','position','acctType'];
     var locationSection = ['degree','degreeLevel','academe','industry','organization','places','country'];
 	var publicationSection = ['journals','journalPublication'];
+=======
+    var recordSection = ['userRecord','rank','department','unit','position'];
+    var locationSection = ['academe','industry','places'];
+	var publicationSection = ['journals'];
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
   var html = '';
     html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
       html +='<ul class="nav nav-tabs">';
           html +='<li class="active"><a href="#records" data-toggle="tab">DLSU Data</a></li>';
+<<<<<<< HEAD
           html +='<li><a href="#location" data-toggle="tab">Degrees, Institution & Location</a></li>';
+=======
+          html +='<li><a href="#location" data-toggle="tab">Institution & Location</a></li>';
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 		  html +='<li><a href="#publications" data-toggle="tab">Publication</a></li>';
       html +='</ul>';
     html +='<div class="tab-content">';
@@ -55,12 +65,21 @@ var AdminTabView = Backbone.View.extend({
       {inputLabel: "Last Name", inputName: "flname", inputType: "text"},
 	  {inputLabel: "First Name", inputName: "ffname", inputType: "text"},
 	  {inputLabel: "Middle Initial", inputName: "fmname", inputType: "text"},
+<<<<<<< HEAD
 	  {inputLabel: "College/School/Unit", inputName: "unit", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "id", value: "unit_title"}},
       {inputLabel: "Department/Office", inputName: "dept", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "id", value: "dept_name"}},
 	  {inputLabel: "Classification", inputName: "class", inputType: "select", apiUrl:App.classificationDropDownUrl, selectValueDisplay:{id: "id", value: "position_title"}},
 	  {inputLabel: "Rank", inputName: "rank", inputType: "select", apiUrl:App.rankDropDownUrl, selectValueDisplay:{id: "id", value: "rank_title"}},
 	  {inputLabel: "Account Type", inputName: "acctType", inputType: "select", apiUrl:App.acctTypeDropDownUrl, selectValueDisplay:{id: "id", value: "account_role"}},
       {inputLabel: "Position", inputName: "position", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay:{id: "id", value: "position_title"}}
+=======
+	  {inputLabel: "College/School/Unit", inputName: "unit", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
+      {inputLabel: "Department/Office", inputName: "dept", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "dept_code", value: "dept_name"}},
+	  {inputLabel: "Classification", inputName: "class", inputType: "select", apiUrl:App.classificationDropDownUrl, selectValueDisplay:{id: "id", value: "position_title"}},
+	  {inputLabel: "Rank", inputName: "rank", inputType: "select", apiUrl:App.rankDropDownUrl, selectValueDisplay:{id: "rank_code", value: "rank_title"}},
+	  {inputLabel: "Account Type", inputName: "acctType", inputType: "select", apiUrl:App.acctTypeDropDownUrl, selectValueDisplay:{id: "account_id", value: "account_role"}},
+      {inputLabel: "Position", inputName: "position", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay:{id: "position_id", value: "position_title"}}
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
 	));
     userRecordModel.set('addUrl', App.adminAddNewUserUrl);
     userRecordModel.set('removeUrl', App.adminRemoveUserUrl);
@@ -70,6 +89,7 @@ var AdminTabView = Backbone.View.extend({
     el: '#'+recordSection[0],
     model: userRecordModel
     }));
+<<<<<<< HEAD
  
     //Rank Record View
     var rankRecordModel = facultyProfileSectionModel.clone();
@@ -352,7 +372,172 @@ var AdminTabView = Backbone.View.extend({
     el: '#'+publicationSection[1],
     model:journalpubRecordModel
     }));
+=======
+>>>>>>> 096f9638e8c7ded8143b7803077027d6582c9cde
  
+    //Rank Record View
+    var rankRecordModel = facultyProfileSectionModel.clone();
+    rankRecordModel.set('header','Faculty Rank');
+    rankRecordModel.set('sectionId', 'rankContent');
+    rankRecordModel.set('apiUrl', App.rankDropDownUrl);
+    rankRecordModel.set('keys', new Array('id', 'rank_title'));
+    rankRecordModel.set('collumnNames', new Array('Rank Code', 'Rank Title'));
+    rankRecordModel.set('inputData', new Array(
+      {inputLabel: "Rank Code", inputName: "rank_code", inputType: "text"},
+	  {inputLabel: "Rank Title", inputName: "rank_title", inputType: "text"}
+	));
+    rankRecordModel.set('addUrl', App.adminAddNewRankUrl);
+    rankRecordModel.set('removeUrl', App.adminRemoveRankUrl);
+    rankRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+recordSection[1],
+    model: rankRecordModel
+    }));
+	
+	//Department Record View
+    var departmentRecordModel = facultyProfileSectionModel.clone();
+    departmentRecordModel.set('header','Departments');
+    departmentRecordModel.set('sectionId', 'departmentContent');
+    departmentRecordModel.set('apiUrl', App.deptDropDownUrl);
+    departmentRecordModel.set('keys', new Array('id', 'dept_name'));
+    departmentRecordModel.set('collumnNames', new Array('Department Code', 'Department Name'));
+    departmentRecordModel.set('inputData', new Array(
+      {inputLabel: "Department Code", inputName: "dept_code", inputType: "text"},
+	  {inputLabel: "Department Name", inputName: "dept_name", inputType: "text"}
+	));
+    departmentRecordModel.set('addUrl', App.adminAddNewDeptUrl);
+    departmentRecordModel.set('removeUrl', App.adminRemoveDeptUrl);
+    departmentRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+recordSection[2],
+    model: departmentRecordModel
+    }));
+	
+	//Unit/College Record View
+    var unitRecordModel = facultyProfileSectionModel.clone();
+    unitRecordModel.set('header','Units/Colleges');
+    unitRecordModel.set('sectionId', 'unitContent');
+    unitRecordModel.set('apiUrl', App.unitDropDownUrl);
+    unitRecordModel.set('keys', new Array('id', 'unit_title'));
+    unitRecordModel.set('collumnNames', new Array('Unit/College Code', 'Unit/College Name'));
+    unitRecordModel.set('inputData', new Array(
+      {inputLabel: "Unit/College Code", inputName: "unit_code", inputType: "text"},
+	  {inputLabel: "Unit/College Name", inputName: "unit_title", inputType: "text"}
+	));
+    unitRecordModel.set('addUrl', App.adminAddNewUnitUrl);
+    unitRecordModel.set('removeUrl', App.adminRemoveUnitUrl);
+    unitRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+recordSection[3],
+    model: unitRecordModel
+    }));
+	
+	//Position Record View
+    var positionRecordModel = facultyProfileSectionModel.clone();
+    positionRecordModel.set('header','Position and Classification');
+    positionRecordModel.set('sectionId', 'positionContent');
+    positionRecordModel.set('apiUrl', App.positionDropDownUrl);
+    positionRecordModel.set('keys', new Array('id', 'position_title'));
+    positionRecordModel.set('collumnNames', new Array('Position/Classification ID', 'Position/Classification'));
+    positionRecordModel.set('inputData', new Array(
+      {inputLabel: "Position ID", inputName: "position_id", inputType: "text"},
+	  {inputLabel: "Position Name", inputName: "position_title", inputType: "text"}
+	));
+    positionRecordModel.set('addUrl', App.adminAddNewPositionUrl);
+    positionRecordModel.set('removeUrl', App.adminRemovePositionUrl);
+    positionRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+recordSection[4],
+    model: positionRecordModel
+    }));
+	
+	//Institution Record View
+    var institutionRecordModel = facultyProfileSectionModel.clone();
+    institutionRecordModel.set('header','Academic Institutions Records');
+    institutionRecordModel.set('sectionId', 'academeContent');
+    institutionRecordModel.set('apiUrl', App.institutionDropDownUrl);
+    institutionRecordModel.set('keys', new Array('id', 'institution_name', 'location_name', 'country_name'));
+    institutionRecordModel.set('collumnNames', new Array('ID', 'Academic Institution', 'Location', 'Country'));
+    institutionRecordModel.set('inputData', new Array(
+      {inputLabel: "Institution ID", inputName: "institution_id", inputType: "text"},
+	  {inputLabel: "Institution Name", inputName: "institution_name", inputType: "text"},
+	  {inputLabel: "Location", inputName: "location", inputType: "select", apiUrl:App.locationDropDownUrl, selectValueDisplay:{id: "id", value: "location_name"}},
+	  {inputLabel: "Country", inputName: "country", inputType: "select", apiUrl:App.countryDropDownUrl, selectValueDisplay:{id: "id", value: "country_name"}}
+	));
+    institutionRecordModel.set('addUrl', App.adminAddNewInstitutionUrl);
+    institutionRecordModel.set('removeUrl', App.adminRemoveInstitutionUrl);
+    institutionRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+locationSection[0],
+    model: institutionRecordModel
+    }));
+	
+   //Industry Records
+    var industryRecordModel = facultyProfileSectionModel.clone();
+    industryRecordModel.set('header','Industry Records');
+    industryRecordModel.set('sectionId', 'industryRecordContent');
+    industryRecordModel.set('apiUrl', App.industryDropDownUrl);
+    industryRecordModel.set('keys', new Array('id', 'industry_name', 'ind_acronym'));
+    industryRecordModel.set('collumnNames', new Array('Industry ID', 'Industry Name', 'Acronym'));
+    industryRecordModel.set('inputData', new Array(
+      {inputLabel: "Industry ID", inputName: "institution_id", inputType: "text"},
+	  {inputLabel: "Industry Name", inputName: "institution_name", inputType: "text"},
+	  {inputLabel: "Acronym", inputName: "acronym", inputType: "text"}
+	));
+    industryRecordModel.set('addUrl', App.adminAddNewIndustryUrl);
+    industryRecordModel.set('removeUrl', App.adminRemoveIndustryUrl);
+    industryRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+locationSection[1],
+    model: industryRecordModel
+    }));
+	 
+ //Location Records
+    var placesRecordModel = facultyProfileSectionModel.clone();
+    placesRecordModel.set('header','Location Records');
+    placesRecordModel.set('sectionId', 'locationRecordContent');
+    placesRecordModel.set('apiUrl', App.locationDropDownUrl);
+    placesRecordModel.set('keys', new Array('id', 'location_name'));
+    placesRecordModel.set('collumnNames', new Array('Location ID', 'Location Name'));
+    placesRecordModel.set('inputData', new Array(
+      {inputLabel: "Location ID", inputName: "location_id", inputType: "text"},
+	  {inputLabel: "Location Name", inputName: "location_name", inputType: "text"}
+	));
+    placesRecordModel.set('addUrl', App.adminAddNewLocationUrl);
+    placesRecordModel.set('removeUrl', App.adminRemoveLocationUrl);
+    placesRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+locationSection[2],
+    model: placesRecordModel
+    }));
+	
+	//Journal Records
+    var journalsRecordModel = facultyProfileSectionModel.clone();
+    journalsRecordModel.set('header','Journal Records Section');
+    journalsRecordModel.set('sectionId', 'journalsContent');
+    journalsRecordModel.set('apiUrl', App.journalsDropDownUrl);
+    journalsRecordModel.set('keys', new Array('journal_id', 'journal_title'));
+    journalsRecordModel.set('collumnNames', new Array('Journal ID', 'Journal Title'));
+    journalsRecordModel.set('inputData', new Array(
+      {inputLabel: "Journal ID", inputName: "journal_id", inputType: "text"},
+	  {inputLabel: "Journal Name", inputName: "journal_name", inputType: "text"}
+	));
+    journalsRecordModel.set('addUrl', App.adminAddNewJournalUrl);
+    journalsRecordModel.set('removeUrl', App.adminRemoveJournalUrl);
+    journalsRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+publicationSection[0],
+    model:journalsRecordModel
+    }));
+	
  //>> Add here     
  
  },
