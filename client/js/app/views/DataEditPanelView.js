@@ -1,4 +1,4 @@
-var DataAddPanelView = Backbone.View.extend({
+var DataEditPanelView = Backbone.View.extend({
   
   subViews: '',
   panelData: '',
@@ -13,66 +13,69 @@ var DataAddPanelView = Backbone.View.extend({
   render: function(){
   	var self = this;
   	var html = '';
-  	html += '<table class="table" id="'+this.model.get('sectionId')+"AddTable"+'"></table>';
+  	html += '<table class="table" id="'+this.model.get('sectionId')+"EditTable"+'"></table>';
   	$(this.el).append(html);
   	this.model.get('inputData').forEach(function(inputData){
   		if(inputData.inputType=="text" || inputData.inputType=="date" || inputData.inputType=="year"){
           self.subViews.push(new TextFieldView({
-            el: "#"+self.model.get('sectionId')+"AddTable",
-            elementName: inputData.inputName,
+            el: "#"+self.model.get('sectionId')+"EditTable",
+            elementName: inputData.inputName+'_Edit',
             elementLabel: inputData.inputLabel,
             sectionId: self.model.get('sectionId'),
             inputType: inputData.inputType,
-            mode: 'add'
+            dataKey: inputData.inputName,
+            mode: 'edit'
           }));
   		}else if(inputData.inputType=="select"){
 			self.subViews.push(new SelectboxView({
-  				el: "#"+self.model.get('sectionId')+"AddTable",
-  				elementName: inputData.inputName,
+  				el: "#"+self.model.get('sectionId')+"EditTable",
+  				elementName: inputData.inputName+'_Edit',
     			elementLabel: inputData.inputLabel,
     			sectionId: self.model.get('sectionId'),
     			apiUrl: inputData.apiUrl,
     			selectIndex: inputData.selectValueDisplay,
-          mode: 'add'
+          dataKey: inputData.inputName,
+          mode: 'edit'
   			}));
   		}
   	});
-    html = '<button type="button" id="'+this.model.get('sectionId')+"_AddDataBtn"+'" class="btn btn-success"><i class="fa fa-plus"></i> Add</button>';
+    html = '<button type="button" id="'+this.model.get('sectionId')+"_EditDataBtn"+'" class="btn btn-info" data-edit-id=""><i class="fa fa-pencil"></i> Edit</button>';
     $(this.el).append(html);
     var self = this;
-    $("#"+this.model.get('sectionId')+"_AddDataBtn").on("click", function(){
-        self.addData();
+    $("#"+this.model.get('sectionId')+"_EditDataBtn").on("click", function(){
+        var id = $(this).attr('data-edit-id');
+        self.editData(id);
     });
-
   },
 
-  addData: function(){
+  editData: function(id){
     var self = this;
     var isValidData = true;
     this.model.get('inputData').forEach(function(inputData){
-      var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName).val();
+      var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName+'_Edit').val();
       if(value=="" || value==-1){
         isValidData = false;
       }
     })
     if(isValidData){
-      var dataAdded = "{";
+      var dataEdited = "{";
       this.model.get('inputData').forEach(function(inputData){
-        var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName).val();
+        var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName+'_Edit').val();
         var key = inputData.inputName;
-        dataAdded+=key+": \""+value+"\",";
+        dataEdited+=key+": \""+value+"\",";
       })
-      dataAdded += "fid:"+App.currentFacultyId;
-      dataAdded += "}";
-      eval('var dataTransfer='+dataAdded);
+      dataEdited += "fid:"+App.currentFacultyId;
+      dataEdited += "id:"+id;
+      dataEdited += "}";
+      eval('var dataTransfer='+dataEdited);
       showLoad(true);
       $.ajax({
-           url: self.model.get('addUrl'),
+           url: self.model.get('editUrl'),
            data: dataTransfer,
            type: 'POST',
            success: function(data) {
              showLoad(false);
-             BootstrapDialog.alert("Data has been added");
+             BootstrapDialog.alert("Data has been edited");
              self.model.getData();
            },
            error: function(data){

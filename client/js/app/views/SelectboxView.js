@@ -6,6 +6,8 @@ var SelectboxView = Backbone.View.extend({
    sectionId: '',
    apiUrl: '',
    selectIndex: '',
+   dataKey: '',
+   mode: '',
 
    initialize: function(options){
   	this.elementName = options.elementName;
@@ -13,6 +15,8 @@ var SelectboxView = Backbone.View.extend({
     this.sectionId = options.sectionId;
     this.apiUrl = options.apiUrl;
     this.selectIndex = options.selectIndex;
+    this.dataKey = options.dataKey;
+    this.mode = options.mode;
     this.subViews = new Array();
     this.render();
 
@@ -22,7 +26,7 @@ var SelectboxView = Backbone.View.extend({
   	var html = '';
   	html += '<tr>';
   		html += '<td><label for="'+this.elementName+'">'+this.elementLabel+'</label></td>';
-  		html += '<td><select id="'+this.sectionId+'_'+this.elementName+'" name="'+this.sectionId+'_'+this.elementName+'" class="form-control"/></select</td>';
+  		html += '<td><select id="'+this.sectionId+'_'+this.elementName+'" name="'+this.sectionId+'_'+this.elementName+'" class="form-control" data-sid="'+this.sectionId+'" data-key="'+this.dataKey+'" data-mode="'+this.mode+'"/></select</td>';
   	html += '</tr>';
   	$(this.el).append(html);
   	this.getData();
