@@ -127,7 +127,7 @@ var FacultyProfileSectionView = Backbone.View.extend({
          $.ajax({
              url: self.model.get('fetchRowDataUrl'),
              data: {id:idVal},
-             type: 'POST',
+             type: 'GET',
              success: function(data) {
                showLoad(false);
                $('[data-sid="'+sid+'"][data-mode="edit"]').each(function(itt){
