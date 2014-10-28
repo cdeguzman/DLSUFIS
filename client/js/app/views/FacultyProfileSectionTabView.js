@@ -64,6 +64,8 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		));
         degreeEarnedModel.set('addUrl', App.degreeEarnedAddUrl);
         degreeEarnedModel.set('removeUrl', App.degreeEarnedRemoveUrl);
+		degreeEarnedModel.set('fetchRowUrl', App.degreeEarnedFetchUrl);
+		//degreeEarnedModel.set('editDataUrl', App.degreeEarnedEditUrl);
         degreeEarnedModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -160,7 +162,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	  {inputLabel: "Valid Until", inputName: "date_validity", inputType: "date"}
 	));
 	licenseModel.set('addUrl', App.licenseAddUrl);
-        licenseModel.set('removeUrl', App.licenseRemoveUrl);
+    licenseModel.set('removeUrl', App.licenseRemoveUrl);
 	licenseModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
