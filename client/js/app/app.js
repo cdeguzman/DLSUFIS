@@ -70,7 +70,7 @@ window.App = {
    //Faculty Add Remove Edit
    degreeEarnedAddUrl: '../server/php/FacultyAcademicBackground/insertEarnedDegree.php',
    degreeEarnedRemoveUrl: '../server/php/FacultyAcademicBackground/removeEarnedDegree.php',
-   degreeEarnedFetchUrl: '../server/php/FacultyAcademicBackground/fetchDegreeEarned.php',
+   degreeEarnedFetchUrl: '../server/php/FacultyAcademicBackground/fetchEarnedDegree.php',
    degreePursueAddUrl: '../server/php/FacultyAcademicBackground/insertDegreePursue.php',
    degreePursueRemoveUrl: '../server/php/FacultyAcademicBackground/removeDegreePursue.php',
    facultyListUrl: '../server/php/Admin/faculty.php',

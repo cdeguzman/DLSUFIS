@@ -12,6 +12,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
     var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchievements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
     var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
     var comService = ['ComSrvDLSU', 'profOrg', 'govOrg', 'otherOrg'];
+    var facInfo = ['facInfo'];
     var html = '';
     html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
         html +='<ul class="nav nav-tabs">';
@@ -19,6 +20,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           html +='<li><a href="#professionalActivity1" data-toggle="tab">Professional Activities 1</a></li>';
           html +='<li><a href="#professionalActivity2" data-toggle="tab">Professional Activities 2</a></li>';
           html +='<li><a href="#communityService" data-toggle="tab">Community Service</a></li>';
+          html +='<li><a href="#facInfo" data-toggle="tab">Profile</a></li>';
         html +='</ul>';
         html +='<div class="tab-content">';
           html +='<div class="tab-pane fade in active" id="academicProfile">';
@@ -41,6 +43,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
               html+='<div class="sectionMainDiv" id="'+section+'"></div>'
           });
       html +='</div>';
+      html +='<div class="tab-pane fade" id="facInfo">';
+          facInfo.forEach(function(section){
+              html+='<div class="sectionMainDiv" id="'+section+'"></div>'
+          });
+      html +='</div>';
         $(this.el).html(html);
 
         var facultyProfileSectionModel = new FacultyProfileSectionModel();
@@ -55,17 +62,17 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.set('noteFoot', 'Note: Foreign universities are exempt from S.O. Number.');
         degreeEarnedModel.set('inputData', new Array(
           {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"id", value:"dlevel_title"}},
-		  {inputLabel: "Degree Earned", inputName: "degree_id", inputType: "select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},
+  		    {inputLabel: "Degree Earned", inputName: "degree_id", inputType: "select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},
           {inputLabel: "Area of Specialization", inputName: "as_code", inputType: "select", apiUrl:App.specializationDropDownUrl, selectValueDisplay:{id: "as_code", value: "as_title"}},
-    	  {inputLabel: "Year Obtained", inputName: "year_obtained", inputType: "year"},
-    	  {inputLabel: "Institution", inputName: "institution_id", inputType: "select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
-    	  {inputLabel: "Location", inputName: "location_id", inputType: "select", apiUrl:App.locationDropDownUrl, selectValueDisplay:{id: "id", value: "location_name"}},
-    	  {inputLabel: "SO Number", inputName: "so_num", inputType: "text"}
-		));
+      	  {inputLabel: "Year Obtained", inputName: "year_obtained", inputType: "year"},
+      	  {inputLabel: "Institution", inputName: "institution_id", inputType: "select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
+      	  {inputLabel: "Location", inputName: "location_id", inputType: "select", apiUrl:App.locationDropDownUrl, selectValueDisplay:{id: "id", value: "location_name"}},
+      	  {inputLabel: "SO Number", inputName: "so_num", inputType: "text"}
+		    ));
         degreeEarnedModel.set('addUrl', App.degreeEarnedAddUrl);
         degreeEarnedModel.set('removeUrl', App.degreeEarnedRemoveUrl);
-		degreeEarnedModel.set('fetchRowUrl', App.degreeEarnedFetchUrl);
-		//degreeEarnedModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		    degreeEarnedModel.set('fetchRowUrl', App.degreeEarnedFetchUrl);
+		    degreeEarnedModel.set('editDataUrl', App.degreeEarnedEditUrl);
         degreeEarnedModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({

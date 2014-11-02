@@ -15,6 +15,10 @@ var FacultyProfileSectionView = Backbone.View.extend({
         var noteFoot = this.model.get('noteFoot');
         var menuTop = '<div class="btn-group"><button id="'+this.model.get('sectionId')+'ShowAddBtn" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></div>';
 	 	var html ='';
+        if(this.model.get('sectionId')=="changePassword" || this.model.get('sectionId')=="updateProfile"){
+            //There is no Add in changePassword and updatePassword
+            menuTop ="";
+        }
         html+='<div id="viewPanel'+this.model.get('sectionId')+'"><h4><button id="view-section'+this.model.get('sectionId')+'" data-section-view="'+this.model.get('sectionId')+'" type="button" class="btn btn-info"><i class="fa fa-arrow-right"></i></button> '+header+'</h4></div>';
         html+='<div style="display:none;" class="tableSection" id="'+sectionId+'AddPanel">';
         html+='<h4>'+header+'<button type="button" class="close" aria-hidden="true" id="'+this.model.get('sectionId')+'HideAddBtn">&times;</button><h4>';
@@ -37,7 +41,12 @@ var FacultyProfileSectionView = Backbone.View.extend({
             				html+='<td>'+val+'</td>';
             			})
                     var menu = '<div class="btn-group"><button type="button" class="btn btn-info ' +this.model.get('sectionId')+"ShowEditBtn"+'" data-value="'+values[i].id+'" data-section-view="'+this.model.get('sectionId')+'"><i class="fa fa-pencil"></i></button><button type="button" class="btn btn-danger '+this.model.get('sectionId')+"RemoveBtn"+'" data-value="'+values[i].id+'"><i class="fa fa-trash-o"></i></button></div>';
-					html+='<td class="rowMenu">'+menu+'</td>'
+					if(this.model.get('sectionId')=="changePassword" || this.model.get('sectionId')=="updateProfile"){
+                         //There is no Remove in changePassword and updateProfile
+                         menu = '<div class="btn-group"><button type="button" class="btn btn-info ' +this.model.get('sectionId')+"ShowEditBtn"+'" data-value="'+values[i].id+'" data-section-view="'+this.model.get('sectionId')+'"><i class="fa fa-pencil"></i></button></div>';
+                    }
+
+                    html+='<td class="rowMenu">'+menu+'</td>'
             		html+='</tr>';
             	}
             	html+='</tbody>';
@@ -125,14 +134,18 @@ var FacultyProfileSectionView = Backbone.View.extend({
        var self = this;
        showLoad(true);
          $.ajax({
-             url: self.model.get('fetchRowDataUrl'),
+             url: self.model.get('fetchRowUrl'),
              data: {id:idVal},
              type: 'GET',
              success: function(data) {
                showLoad(false);
+               data = eval(data);
+               data = data[0];
+               console.log(data.so_num);
                $('[data-sid="'+sid+'"][data-mode="edit"]').each(function(itt){
                     var key = $(this).attr('data-key');
                     var value = eval("data."+key);
+                    console.log("data."+key);
                     $(this).val(value);
                });
              },

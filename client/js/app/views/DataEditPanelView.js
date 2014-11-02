@@ -16,7 +16,7 @@ var DataEditPanelView = Backbone.View.extend({
   	html += '<table class="table" id="'+this.model.get('sectionId')+"EditTable"+'"></table>';
   	$(this.el).append(html);
   	this.model.get('inputData').forEach(function(inputData){
-  		if(inputData.inputType=="text" || inputData.inputType=="date" || inputData.inputType=="year"){
+  		if(inputData.inputType=="text" || inputData.inputType=="date" || inputData.inputType=="year" || inputData.inputType=="password"){
           self.subViews.push(new TextFieldView({
             el: "#"+self.model.get('sectionId')+"EditTable",
             elementName: inputData.inputName+'_Edit',
@@ -51,10 +51,24 @@ var DataEditPanelView = Backbone.View.extend({
   editData: function(id){
     var self = this;
     var isValidData = true;
+    var isCorrectPassword = false;
     this.model.get('inputData').forEach(function(inputData){
       var value = $("#"+self.model.get('sectionId')+'_'+inputData.inputName+'_Edit').val();
-      if(value=="" || value==-1){
-        isValidData = false;
+      if(self.model.get('sectionId')=="changePassword"){
+          var password = $("#"+self.model.get('sectionId')+'_password_Edit').val();
+          var confirmPassword = $("#"+self.model.get('sectionId')+'_confirmPassword_Edit').val();
+          //check if both passwords have input
+          if(password=="" || password==-1 || confirmPassword=="" || confirmPassword ==-1){
+            isValidData = false;
+          }
+          //check if they match
+          if(password!==confirmPassword){
+            isValidData = false;
+          }
+      }else{
+        if(value=="" || value==-1){
+          isValidData = false;
+        }
       }
     })
     if(isValidData){
@@ -75,7 +89,16 @@ var DataEditPanelView = Backbone.View.extend({
            type: 'POST',
            success: function(data) {
              showLoad(false);
-             BootstrapDialog.alert("Data has been edited");
+             if(self.model.get('sectionId')=="changePassword"){
+              if(eval(data)){
+                BootstrapDialog.alert("Password successfully changed");
+              }else{
+                BootstrapDialog.alert("Password change failed");
+              }
+             }else{
+                BootstrapDialog.alert("Data has been edited");
+             }
+             
              self.model.getData();
            },
            error: function(data){
