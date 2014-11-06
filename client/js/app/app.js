@@ -158,6 +158,7 @@ window.App = {
    adminAddNewRankUrl: '../server/php/Admin/AddNewRecord/addNewRank.php',
    adminRemoveRankUrl: '../server/php/Admin/RemoveRecord/removeRank.php',
    adminFetchRankUrl: '../server/php/Admin/FetchRecord/fetchRank.php',
+   adminUpdateRankUrl: '../server/php/Admin/FetchRecord/updateRank.php',
    adminAddNewDeptUrl: '../server/php/Admin/AddNewRecord/addNewDept.php',
    adminRemoveDeptUrl: '../server/php/Admin/RemoveRecord/removeDept.php',
    adminFetchDeptUrl: '../server/php/Admin/FetchRecord/fetchDept.php',
