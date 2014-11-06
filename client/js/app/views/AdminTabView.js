@@ -88,7 +88,7 @@ var AdminTabView = Backbone.View.extend({
     rankRecordModel.set('addUrl', App.adminAddNewRankUrl);
     rankRecordModel.set('removeUrl', App.adminRemoveRankUrl);
     rankRecordModel.set('fetchRowUrl', App.adminFetchRankUrl);
-	//rankRecordModel.set('editDataUrl', App.EditUrl);
+	rankRecordModel.set('editDataUrl', App.adminUpdateRankUrl);
 	rankRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
