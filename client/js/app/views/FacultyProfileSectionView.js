@@ -141,7 +141,6 @@ var FacultyProfileSectionView = Backbone.View.extend({
                showLoad(false);
                data = eval(data);
                data = data[0];
-               console.log(data.so_num);
                $('[data-sid="'+sid+'"][data-mode="edit"]').each(function(itt){
                     var key = $(this).attr('data-key');
                     var value = eval("data."+key);

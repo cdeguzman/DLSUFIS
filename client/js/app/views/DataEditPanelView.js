@@ -79,7 +79,7 @@ var DataEditPanelView = Backbone.View.extend({
         dataEdited+=key+": \""+value+"\",";
       })
       dataEdited += "fid:"+App.currentFacultyId;
-      dataEdited += "id:"+id;
+      dataEdited += ",id:"+id;
       dataEdited += "}";
       eval('var dataTransfer='+dataEdited);
       showLoad(true);
