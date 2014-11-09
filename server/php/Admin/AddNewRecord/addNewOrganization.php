@@ -1,13 +1,13 @@
 <?php
   include("../../connect.php");
-  $journal_title = ucwords($_POST["journal_title"]);
-  $journal_type = ucwords($_POST["journal_type"]); 
-  $journal_publication = ucwords($_POST["journal_publication"]); 
+  $org_name = ucwords($_POST["org_name"]);
+  $org_acrnoym = strtoupper($_POST["org_acronym"]); 
+  $org_location = ucwords($_POST["org_locationa'"]); 
   
-  $insertNewJournal = "INSERT INTO journals
-                     (journal_title, journal_type, journal_publication) VALUES 
-					 ('$journal_title', '$journal_type', '$journal_publication')";
+  $insertNewOrg = "INSERT INTO journals
+                   (org_name, org_acronym, org_location) VALUES 
+		 		   ('$org_name', '$org_acronym', '$org_location')";
 
-   mysql_query($insertNewJournal);
+   mysql_query($insertNewOrg);
   
 ?> 
