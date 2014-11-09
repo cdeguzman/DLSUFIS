@@ -561,7 +561,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		
 		screenPlayWorksModel.set('addUrl', App.screenPlayWorksModelAddUrl);
 		screenPlayWorksModel.set('removeUrl', App.screenPlayWorksModelRemoveUrl);
-		screenPlayWorkModel.set('fetchRowUrl', App.screenPlayWorksModelFetchUrl);
+		screenPlayWorksModel.set('fetchRowUrl', App.screenPlayWorksModelFetchUrl);
 		//screenPlayWorkModel.set('editDataUrl', App.degreeEarnedEditUrl);
 		screenPlayWorksModel.getData();
 

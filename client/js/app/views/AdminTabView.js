@@ -66,7 +66,7 @@ var AdminTabView = Backbone.View.extend({
     userRecordModel.set('addUrl', App.adminAddNewUserUrl);
     userRecordModel.set('removeUrl', App.adminRemoveUserUrl);
     userRecordModel.set('fetchRowUrl', App.adminFetchUserUrl);
-	//userRecordModel.set('editDataUrl', App.EditUrl);
+	userRecordModel.set('editUrl', App.adminUpdateUserUrl);
 	userRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -88,7 +88,7 @@ var AdminTabView = Backbone.View.extend({
     rankRecordModel.set('addUrl', App.adminAddNewRankUrl);
     rankRecordModel.set('removeUrl', App.adminRemoveRankUrl);
     rankRecordModel.set('fetchRowUrl', App.adminFetchRankUrl);
-	rankRecordModel.set('editDataUrl', App.adminUpdateRankUrl);
+	rankRecordModel.set('editUrl', App.adminUpdateRankUrl);
 	rankRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -110,7 +110,7 @@ var AdminTabView = Backbone.View.extend({
     departmentRecordModel.set('addUrl', App.adminAddNewDeptUrl);
     departmentRecordModel.set('removeUrl', App.adminRemoveDeptUrl);
     departmentRecordModel.set('fetchRowUrl', App.adminFetchDeptUrl);
-	//departmentRecordModel.set('editDataUrl', App.EditUrl);
+	departmentRecordModel.set('editUrl', App.adminUpdateDeptUrl);
 	departmentRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -132,7 +132,7 @@ var AdminTabView = Backbone.View.extend({
     unitRecordModel.set('addUrl', App.adminAddNewUnitUrl);
     unitRecordModel.set('removeUrl', App.adminRemoveUnitUrl);
     unitRecordModel.set('fetchRowUrl', App.adminFetchUnitUrl);
-	//unitRecordModel.set('editDataUrl', App.EditUrl);
+	unitRecordModel.set('editUrl', App.adminUpdateUnitUrl);
 	unitRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -154,7 +154,7 @@ var AdminTabView = Backbone.View.extend({
     positionRecordModel.set('addUrl', App.adminAddNewPositionUrl);
     positionRecordModel.set('removeUrl', App.adminRemovePositionUrl);
     positionRecordModel.set('fetchRowUrl', App.adminFetchPositionUrl);
-	//positionRecordModel.set('editDataUrl', App.EditUrl);
+	positionRecordModel.set('editUrl', App.adminUpdatePositionUrl);
 	positionRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -176,7 +176,7 @@ var AdminTabView = Backbone.View.extend({
     accountTypeRecordModel.set('addUrl', App.adminAddNewAcctTypeUrl);
     accountTypeRecordModel.set('removeUrl', App.adminRemoveAcctTypeUrl);
     accountTypeRecordModel.set('fetchRowUrl', App.adminFetchAcctTypeUrl);
-	//accountTypeRecordModel.set('editDataUrl', App.EditUrl);
+	accountTypeRecordModel.set('editUrl', App.adminUpdateAcctTypeUrl);
 	accountTypeRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -197,7 +197,7 @@ var AdminTabView = Backbone.View.extend({
     degreeRecordModel.set('addUrl', App.adminAddNewDegreeUrl);
     degreeRecordModel.set('removeUrl', App.adminRemoveDegreeUrl);
     degreeRecordModel.set('fetchRowUrl', App.adminFetchDegreeUrl);
-	//degreeRecordModel.set('editDataUrl', App.EditUrl);
+	degreeRecordModel.set('editUrl', App.adminUpdateDegreeUrl);
 	degreeRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -220,7 +220,7 @@ var AdminTabView = Backbone.View.extend({
     degreeLevelRecordModel.set('addUrl', App.adminAddNewDegreeLevelUrl);
     degreeLevelRecordModel.set('removeUrl', App.adminRemoveDegreeLevelUrl);
     degreeLevelRecordModel.set('fetchRowUrl', App.adminFetchDegreeLevelUrl);
-	//degreeLevelRecordModel.set('editDataUrl', App.EditUrl);
+	degreeLevelRecordModel.set('editUrl', App.adminUpdateDegreeLevelUrl);
 	degreeLevelRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -243,7 +243,7 @@ var AdminTabView = Backbone.View.extend({
     institutionRecordModel.set('addUrl', App.adminAddNewInstitutionUrl);
     institutionRecordModel.set('removeUrl', App.adminRemoveInstitutionUrl);
     institutionRecordModel.set('fetchRowUrl', App.adminFetchInstitutionUrl);
-	//institutionRecordModel.set('editDataUrl', App.EditUrl);
+	institutionRecordModel.set('editUrl', App.adminUpdateInstitutionUrl);
 	institutionRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -265,7 +265,7 @@ var AdminTabView = Backbone.View.extend({
     industryRecordModel.set('addUrl', App.adminAddNewIndustryUrl);
     industryRecordModel.set('removeUrl', App.adminRemoveIndustryUrl);
     industryRecordModel.set('fetchRowUrl', App.adminFetchIndustryUrl);
-	//industryRecordModel.set('editDataUrl', App.EditUrl);
+	industryRecordModel.set('editUrl', App.adminUpdateIndustryUrl);
 	industryRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -288,7 +288,7 @@ var AdminTabView = Backbone.View.extend({
     orgRecordModel.set('addUrl', App.adminAddNewOrganizationUrl);
     orgRecordModel.set('removeUrl', App.adminRemoveOrganizationUrl);
     orgRecordModel.set('fetchRowUrl', App.adminFetchOrganizationUrl);
-	//orgRecordModel.set('editDataUrl', App.EditUrl);
+	orgRecordModel.set('editUrl', App.adminUpdateOrganizationUrl);
 	orgRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -310,7 +310,7 @@ var AdminTabView = Backbone.View.extend({
     placesRecordModel.set('addUrl', App.adminAddNewLocationUrl);
     placesRecordModel.set('removeUrl', App.adminRemoveLocationUrl);
     placesRecordModel.set('fetchRowUrl', App.adminFetchLocationUrl);
-	//placesRecordModel.set('editDataUrl', App.EditUrl);
+	placesRecordModel.set('editUrl', App.adminUpdateLocationUrl);
 	placesRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -332,7 +332,7 @@ var AdminTabView = Backbone.View.extend({
     countryRecordModel.set('addUrl', App.adminAddNewCountryUrl);
     countryRecordModel.set('removeUrl', App.adminRemoveCountryUrl);
     countryRecordModel.set('fetchRowUrl', App.adminFetchCountryUrl);
-	//countryRecordModel.set('editDataUrl', App.EditUrl);
+	countryRecordModel.set('editUrl', App.adminUpdateCountryUrl);
 	countryRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -355,7 +355,7 @@ var AdminTabView = Backbone.View.extend({
     journalsRecordModel.set('addUrl', App.adminAddNewJournalUrl);
     journalsRecordModel.set('removeUrl', App.adminRemoveJournalUrl);
     journalsRecordModel.set('fetchRowUrl', App.adminFetchJournalUrl);
-	//journalsRecordModel.set('editDataUrl', App.EditUrl);
+	journalsRecordModel.set('editUrl', App.adminUpdateJournalUrl);
 	journalsRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
@@ -376,7 +376,7 @@ var AdminTabView = Backbone.View.extend({
     journalpubRecordModel.set('addUrl', App.adminAddNewJournalPubUrl);
     journalpubRecordModel.set('removeUrl', App.adminRemoveJournalPubUrl);
     journalpubRecordModel.set('fetchRowUrl', App.adminFetchJournalPubUrl);
-	//journalpubRecordModel.set('editDataUrl', App.EditUrl);
+	journalpubRecordModel.set('editUrl', App.adminUpdateJournalPubUrl);
 	journalpubRecordModel.getData();
 
     this.subViews.push(new FacultyProfileSectionView({
