@@ -1,0 +1,15 @@
+getFacInfo.php - $_GET : get/display faculty personal information such as ID number, Complete Name, Rank, Department, College/Unit, 
+                 Faculty Classification
+
+getFacEarnedDegree - $_GET : get/display the earned degrees of a faculty, starting from the highest degree earned. It includes degree earned (Doctoral,
+                     Masters, Bachelor's), Degree Title, Area of Specialization, Year Obtained, School, Location and S.O. Number.
+
+getFacDegreePursue - $_GET : get/display the current degree taking by the faculty. 
+
+getFacSpecTrain1 - $_GET : get/display faculty special training given by an institution
+
+getFacSpecTrain2 - $_GET : get/display faculty special training given by an organization
+
+				 
+				 
+
