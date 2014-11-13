@@ -12,7 +12,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
     var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchievements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
     var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
     var comService = ['ComSrvDLSU', 'profOrg', 'govOrg', 'otherOrg'];
-    var facInfo = ['facInfo', 'facDept'];
+    var facInfo = ['facInfo', 'facPassword'];
     var html = '';
     html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
         html +='<ul class="nav nav-tabs">';
@@ -57,11 +57,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.set('header','Degrees Earned');
         degreeEarnedModel.set('sectionId', 'degEarnedContent');
         degreeEarnedModel.set('apiUrl', App.facultyDegreeEarnedUrl);
-        degreeEarnedModel.set('keys', new Array('dlevel_title', 'degree_title', 'area_spec', 'year_obtained', 'institution_name', 'location', 'so_num'));
+        degreeEarnedModel.set('keys', new Array('dlevel_title', 'degree_title', 'as_title', 'year_obtained', 'institution_name', 'location_name', 'so_num'));
         degreeEarnedModel.set('collumnNames', new Array('Degree(s) Earned', 'Title of Degree', 'Area of Specialization', 'Year Obtained', 'Educational Institution', 'Location', 'S.O. Number'));
         degreeEarnedModel.set('noteFoot', 'Note: Foreign universities are exempt from S.O. Number.');
         degreeEarnedModel.set('inputData', new Array(
-          {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"id", value:"dlevel_title"}},
+          {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"dlevel_id", value:"dlevel_title"}},
   		  {inputLabel: "Degree Earned", inputName: "degree_id", inputType: "select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},
           {inputLabel: "Area of Specialization", inputName: "as_code", inputType: "select", apiUrl:App.specializationDropDownUrl, selectValueDisplay:{id: "as_code", value: "as_title"}},
       	  {inputLabel: "Year Obtained", inputName: "year_obtained", inputType: "year"},
@@ -72,7 +72,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.set('addUrl', App.degreeEarnedAddUrl);
         degreeEarnedModel.set('removeUrl', App.degreeEarnedRemoveUrl);
 		degreeEarnedModel.set('fetchRowUrl', App.degreeEarnedFetchUrl);
-		degreeEarnedModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		degreeEarnedModel.set('editUrl', App.degreeEarnedEditUrl);
         degreeEarnedModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -89,18 +89,18 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreePursueModel.set('collumnNames', new Array('Degree being pursued', 'Name of Institution', 'Stage of Graduate Studies', 'No. of Units Completed', 'Start Date', 'End Date'));
         degreePursueModel.set('noteHead', 'IF PURSUING GRADUATE STUDIES, please fill up the following table: ');
         degreePursueModel.set('inputData', new Array(
-          {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"id", value:"dlevel_title"}},
+          {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"dlevel_id", value:"dlevel_title"}},
     	  {inputLabel: "Degree Being Pursued", inputName: "degree_id", inputType:"select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},  
-          {inputLabel: "Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name",}},
+          {inputLabel: "Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
 	      {inputLabel: "Stage of Graduate Studies", inputName: "degree_stages", inputType:"select",apiUrl:App.degreeStagesDropDownUrl, selectValueDisplay:{id: "ds_code", value: "ds_name"}},
-	      {inputLabel: "No. of Units Completed ", inputName: "earned_units", inputType:"text",},
-	      {inputLabel: "Start Date", inputName: "start_date", inputType:"date",},
-	      {inputLabel: "End Date", inputName: "end_date", inputType:"date",}		   
+	      {inputLabel: "No. of Units Completed ", inputName: "earned_units", inputType: "text"},
+	      {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
+	      {inputLabel: "End Date", inputName: "end_date", inputType: "date"}		   
 	    ));
 	   degreePursueModel.set('addUrl', App.degreePursueAddUrl);
        degreePursueModel.set('removeUrl', App.degreePursueRemoveUrl);
 	   degreePursueModel.set('fetchRowUrl', App.degreePursueFetchUrl);
-	   //degreePursueModel.set('editDataUrl', App.degreeEarnedEditUrl);
+	   degreePursueModel.set('editUrl', App.degreePursueEditUrl);
 	   degreePursueModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -127,7 +127,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	    specialTrainingModel.set('addUrl', App.specTrainingAddUrl);
         specialTrainingModel.set('removeUrl', App.specTrainingRemoveUrl);
 		specialTrainingModel.set('fetchRowUrl', App.specTrainingFetchUrl);
-	    //specialTrainingModel.set('editDataUrl', App.degreeEarnedEditUrl);
+	    specialTrainingModel.set('editUrl', App.specTrainingEditUrl);
 		specialTrainingModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -148,12 +148,12 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	       {inputLabel: "No. of Years", inputName: "no_years", inputType: "text"},
 	       {inputLabel: "Start Date", inputName: "start_date", inputType:"date"},
            {inputLabel: "End Date", inputName: "end_date", inputType: "date"},
-	       {inputLabel: "Position", inputName: "position_id", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay: {id: "id", value: "position_title"}}
+	       {inputLabel: "Position", inputName: "position_id", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay: {id: "position_id", value: "position_title"}}
 	    ));
 	    teachExpModel.set('addUrl', App.teachExpAddUrl);
         teachExpModel.set('removeUrl', App.teachExpRemoveUrl);
-		teachExpModel.set('fecthRowUrl', App.teachExpFetchUrl);
-	    //teachExpModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		teachExpModel.set('fetchRowUrl', App.teachExpFetchUrl);
+	    teachExpModel.set('editUrl', App.teachExpEditUrl);
 		teachExpModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -177,7 +177,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	    licenseModel.set('addUrl', App.licenseAddUrl);
         licenseModel.set('removeUrl', App.licenseRemoveUrl);
 		licenseModel.set('fetchRowUrl', App.licenseFetchUrl);
-	    //licenseModel.set('editDataUrl', App.degreeEarnedEditUrl);
+	    licenseModel.set('editUrl', App.licenseEditUrl);
 		licenseModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -191,7 +191,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         nonTeachExpModel.set('sectionId', 'nonTeachExpContent');
         nonTeachExpModel.set('apiUrl', App.nonTeachExpUrl);
         nonTeachExpModel.set('keys', new Array('work_nature', 'institution_name', 'no_years', 'start_date','end_date'));
-        nonTeachExpModel.set('collumnNames', new Array('Nature of Practice/Project', 'Institution', 'Industry', 'Organization', 'Number of Years ', 'Start Date', 'End Date'));
+        nonTeachExpModel.set('collumnNames', new Array('Nature of Practice/Project', 'Institution', 'Number of Years ', 'Start Date', 'End Date'));
         nonTeachExpModel.set('inputData', new Array(
 	       {inputLabel: "Nature of Project/Project", inputName: "work_nature", inputType: "text"},
 	       {inputLabel: "Academic Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
@@ -204,7 +204,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	    nonTeachExpModel.set('addUrl', App.nonTeachExpAddUrl);
         nonTeachExpModel.set('removeUrl', App.nonTeachExpRemoveUrl);
 	    nonTeachExpModel.set('fetchRowUrl', App.nonTeachExpFetchUrl);
-		//nonTeachModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		nonTeachExpModel.set('editUrl', App.nonTeachExpEditUrl);
 		nonTeachExpModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -228,7 +228,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	    leadershipInOrgProfModel.set('addUrl', App.leadershipAddUrl);
         leadershipInOrgProfModel.set('removeUrl', App.leadershipRemoveUrl);
 		leadershipInOrgProfModel.set('fetchRowUrl', App.leadershipFetchUrl);
-	    //leadershipInOrgModel.set('editDataUrl', App.degreeEarnedEditUrl);
+	    leadershipInOrgProfModel.set('editUrl', App.leadershipEditUrl);
 		leadershipInOrgProfModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -252,7 +252,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		membershipInOrgProfModel.set('addUrl', App.membershipAddUrl);
 		membershipInOrgProfModel.set('removeUrl', App.membershipRemoveUrl);
 		membershipInOrgProfModel.set('fetchRowUrl', App.membershipFetchUrl);
-		//membershipInOrgProf.set('editDataUrl', App.degreeEarnedEditUrl);
+		membershipInOrgProfModel.set('editUrl', App.membershipEditUrl);
 		membershipInOrgProfModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -276,7 +276,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		awardsModel.set('addUrl', App.awardsAddUrl);
 		awardsModel.set('removeUrl', App.awardsRemoveUrl);
 		awardsModel.set('fetchRowUrl', App.awardsFetchUrl);
-		//awardsModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		awardsModel.set('editUrl', App.awardsEditUrl);
 		awardsModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -293,7 +293,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         inResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Amount of Research Grant', 'Start Date', 'End Date'));
         inResFundedModel.set('inputData', new Array(
 		  {inputLabel: "Research Projects/Activities", inputName: "research_title", inputType: "text"},
-		  {inputLabel: "Funding Agency/Unit", inputName: "unit_title", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "id", value: "unit_title"}},
+		  {inputLabel: "Funding Agency/Unit", inputName: "unit_title", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
 		  {inputLabel: "Amount of Research Grant", inputName: "amount", inputType: "text"},
 		  {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 		  {inputLabel: "End Date", inputName: "end_date", inputType: "date"}
@@ -301,7 +301,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		inResFundedModel.set('addUrl', App.inResFundedAddUrl);
 		inResFundedModel.set('removeUrl', App.inResFundedRemoveUrl);
 		inResFundedModel.set('fetchRowUrl', App.inResFundedFetchUrl);
-		//inResFundedModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		inResFundedModel.set('editUrl', App.inResFundedEditUrl);
 		inResFundedModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -324,11 +324,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
 		));
-		
 		exResFundedModel.set('addUrl', App.exResFundedAddUrl);
 		exResFundedModel.set('removeUrl', App.exResFundedRemoveUrl);
 		exResFundedModel.set('fetchRowUrl', App.exResFundedFetchUrl);
-		//exResFundedModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		exResFundedModel.set('editUrl', App.exResFundedEditUrl);
 		exResFundedModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -352,7 +351,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		resGrantsModel.set('addUrl', App.resGrantModelAddUrl);
 		resGrantsModel.set('removeUrl', App.resGrantModelRemoveUrl);
 		resGrantsModel.set('fetchRowUrl', App.resGrantModelFetchUrl);
-		//resGrantsModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		resGrantsModel.set('editUrl', App.resGrantModelEditUrl);
 		resGrantsModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -379,7 +378,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		journalPubModel.set('addUrl', App.journalPubModelAddUrl);
 		journalPubModel.set('removeUrl', App.journalPubModelRemoveUrl);
 		journalPubModel.set('fetchRowUrl', App.journalPubModelFetchUrl);
-		//journalPubModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		journalPubModel.set('editUrl', App.journalPubModelEditUrl);
 		journalPubModel.getData();
 		
 	this.subViews.push(new FacultyProfileSectionView({
@@ -389,7 +388,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	
      // Published Prototype
      var pubPrototypeModel = facultyProfileSectionModel.clone();
-        pubPrototypeModel.set('header','Protoype (since 2005)');
+        pubPrototypeModel.set('header','Prototype (since 2005)');
         pubPrototypeModel.set('sectionId', 'pubPrototypeContent');
         pubPrototypeModel.set('apiUrl', App.facPrototypeUrl);
         pubPrototypeModel.set('keys', new Array('flname','paper_title', 'journal_title', 'date_publication', 'volume_no', 'issue_no', 'pages', 'isbn'));
@@ -406,7 +405,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		pubPrototypeModel.set('addUrl', App.pubPrototypeModelAddUrl);
 		pubPrototypeModel.set('removeURL', App.pubProtoypeModelRemoveUrl);
 		pubPrototypeModel.set('fetchRowUrl', App.pubPrototypeModelFetchUrl);
-		//pubPrototypeModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		pubPrototypeModel.set('editUrl', App.pubPrototypeModelEditUrl);
 		pubPrototypeModel.getData();
         
         this.subViews.push(new FacultyProfileSectionView({
@@ -424,13 +423,13 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         patentModel.set('inputData', new Array(
 			{inputLabel: "Title", inputName: "paper_title", inputType: "text"},
 			{inputLabel: "Publication Date", inputName: "date_publication", inputType: "date"},
-			{inputLabel: "Issuing Country", inputName: "country_code", inputType: "select", apiUrl:App.countryDropDownUrl, selectValueDisplay:{id: "id", value: "country_name"}},
+			{inputLabel: "Issuing Country", inputName: "country_code", inputType: "select", apiUrl:App.countryDropDownUrl, selectValueDisplay:{id: "country_code", value: "country_name"}},
 			{inputLabel: "Patent Number", inputName: "patent_no", inputType: "text"}
 		));
 		patentModel.set('addUrl', App.patentModelAddUrl);
 		patentModel.set('removeUrl', App.patentModelRemoveUrl);
 		patentModel.set('fetchRowUrl', App.patentModelFetchUrl);
-		//patentModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		patentModel.set('editUrl', App.patentModelEditUrl);
 		patentModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -452,11 +451,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		   {inputLabel: "Publication Date", inputName: "date_publication", inputType: "date"},
 		   {inputLabel: "ISBN", inputName: "isbn", inputType: "text"}
 		));
-		
 		textbookModel.set('addUrl', App.textBookModelAddUrl);
 		textbookModel.set('removeUrl', App.textBookModelRemoveUrl);
 		textbookModel.set('fetchRowUrl', App.textBookModelFetchUrl);
-		//textbookModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		textbookModel.set('editUrl', App.textBookModelEditUrl);
 		textbookModel.getData();
         
 		this.subViews.push(new FacultyProfileSectionView({
@@ -484,7 +482,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		chapTextbookModel.set('addUrl', App.chapTextbookModelAddUrl);
 		chapTextbookModel.set('removeUrl', App.chapTextbookModelRemoveUrl);
 		chapTextbookModel.set('fetchRowUrl', App.chapTextbookModelFetchUrl);
-		//chapTextbookModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		chapTextbookModel.set('editUrl', App.chapTextbookModelEditUrl);
 		chapTextbookModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -511,7 +509,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		confPaperModel.set('addUrl', App.confPaperModelAddUrl);
 		confPaperModel.set('removeUrl', App.confPaperModelRemoveUrl);
 		confPaperModel.set('fetchRowUrl', App.confPaperModelFetchUrl);
-		//confPaperModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		confPaperModel.set('editUrl', App.confPaperModelEditUrl);
 		confPaperModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -538,7 +536,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		creativeWorksModel.set('addUrl', App.creativeWorksModelAppUrl);
 		creativeWorksModel.set('removeUrl', App.creativeWorksModelRemoveUrl);
 		creativeWorksModel.set('fetchRowUrl', App.creativeWorksModelFetchUrl);
-		//creativeWorksModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		creativeWorksModel.set('editUrl', App.creativeWorksModelEditUrl);
 		creativeWorksModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -562,7 +560,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		screenPlayWorksModel.set('addUrl', App.screenPlayWorksModelAddUrl);
 		screenPlayWorksModel.set('removeUrl', App.screenPlayWorksModelRemoveUrl);
 		screenPlayWorksModel.set('fetchRowUrl', App.screenPlayWorksModelFetchUrl);
-		//screenPlayWorkModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		screenPlayWorksModel.set('editUrl', App.screenPlayWorksModelEditUrl);
 		screenPlayWorksModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -587,7 +585,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		otherResearchModel.set('addUrl', App.otherResearchModelAddUrl);
 		otherResearchModel.set('removeUrl', App.otherResearchModelRemoveUrl);
 		otherResearchModel.set('fetchRowUrl', App.otherResearchModelFetchUrl);
-		//otherResearchModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		otherResearchModel.set('editUrl', App.otherResearchModelEditUrl);
 		otherResearchModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -612,7 +610,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		conferenceModel.set('addUrl', App.conferenceModelAddUrl);
 		conferenceModel.set('removeUrl', App.conferenceModelRemoveUrl);
 		conferenceModel.set('fetchRowUrl', App.conferenceModelFetchUrl);
-		//conferenceModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		conferenceModel.set('editUrl', App.conferenceModelEditUrl);
 		conferenceModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -629,16 +627,16 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         comServeDLSUModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Unit', 'Department', 'Committee', 'Start Date','End Date'));
         comServeDLSUModel.set('inputData', new Array(
 		     {inputLabel: "Description", inputName: "description", inputType: "text"},
-			 {inputLabel: "Unit", inputName: "unit_code", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "id", value: "unit_title"}},
-			 {inputLabel: "Department", inputName: "dept_code", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "id", value: "dept_name"}},
+			 {inputLabel: "Unit", inputName: "unit_code", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
+			 {inputLabel: "Department", inputName: "dept_code", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "dept_code", value: "dept_name"}},
 			 {inputLabel: "Committee", inputName: "committee", inputType: "text"},
 			 {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 			 {inputLabel: "End Date", inputName: "end_date", inputType: "date"}
 		));
 		comServeDLSUModel.set('addUrl', App.comSrvDLSUAddUrl);
 		comServeDLSUModel.set('removeUrl', App.comSrvDLSURemoveUrl);
-		comServeDLSUModel.set('fetchRowUrl', App.comSrvDLSURemoveFetchUrl);
-		//comServeDLSUModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		comServeDLSUModel.set('fetchRowUrl', App.comSrvDLSUFetchUrl);
+		comServeDLSUModel.set('editUrl', App.comSrvDLSUEditUrl);
 		comServeDLSUModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -663,7 +661,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		profOrgModel.set('addUrl', App.profOrgModelAddUrl);
 		profOrgModel.set('removeUrl', App.profOrgModelRemoveUrl);
 		profOrgModel.set('fetchRowUrl', App.profOrgModelFetchUrl);
-		//profOrgModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		profOrgModel.set('editUrl', App.profOrgModelEditUrl);
 		profOrgModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -688,7 +686,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		govOrgModel.set('addUrl', App.govOrgModelAddUrl);
 		govOrgModel.set('removeUrl', App.govOrgModelRemoveUrl);
 		govOrgModel.set('fetchRowUrl', App.govOrgModelFetchUrl);
-		//govOrgModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		govOrgModel.set('editUrl', App.govOrgModelEditUrl);
 		govOrgModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -711,9 +709,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
 		));
 		otherOrgModel.set('addUrl', App.otherOrgModelAddUrl);
-		otherOrgModel.set('removeUrl', App.otherOrgRemoveUrl);
-		otherOrgModel.set('fetchRowUrl', App.otherOrgFetchUrl);
-		//otherOrgModel.set('editDataUrl', App.degreeEarnedEditUrl);
+		otherOrgModel.set('removeUrl', App.otherOrgModelRemoveUrl);
+		otherOrgModel.set('fetchRowUrl', App.otherOrgModelFetchUrl);
+		otherOrgModel.set('editUrl', App.otherOrgModelEditUrl);
 		otherOrgModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -723,19 +721,24 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		
 	// Faculty Profile
 		var facProfileModel = facultyProfileSectionModel.clone();
-        facProfileModel.set('header','My Profile');
-        facProfileModel.set('sectionId', 'myProfileContent');
+        facProfileModel.set('header','View/Update My Profile');
+        facProfileModel.set('sectionId', 'updateProfile');
         facProfileModel.set('apiUrl', App.facultyProfileUrl);
-        facProfileModel.set('keys', new Array('flname','ffname', 'fmname', 'rank_title', 'unit_code','dept_name', 'position_title'));
-        facProfileModel.set('collumnNames', new Array('Last Name', 'First Name', 'Middle Name', 'Rank', 'Unit', 'Department', 'Position'));
+        facProfileModel.set('keys', new Array('flname','ffname', 'fmname', 'unit_code','dept_name', 'rank_title', 'position_title'));
+        facProfileModel.set('collumnNames', new Array('Last Name', 'First Name', 'Middle Name', 'Unit', 'Dept', 'Rank', 'Position'));
 		facProfileModel.set('inputData', new Array(
-			{inputLabel: "Description", inputName: "description", inputType: "text"}
-		));	
-        facProfileModel.set('fetchRowUrl', App.facProfileFetchUrl);
+			{inputLabel: "Last Name", inputName: "flname", inputType: "text"},
+			{inputLabel: "First Name", inputName: "ffname", inputType: "text"},
+			{inputLabel: "Middle Name", inputName: "fmname", inputType: "text"},
+			{inputLabel: "Rank", inputName: "rank", inputType: "select", apiUrl:App.rankDropDownUrl, selectValueDisplay:{id: "rank_code", value: "rank_title"}},
+			{inputLabel: "Unit/College", inputName: "unit_code", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
+            {inputLabel: "Department", inputName: "dept_code", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "dept_code", value: "dept_name"}},
+			{inputLabel: "Classification", inputName: "class", inputType: "select", apiUrl:App.classificationDropDownUrl, selectValueDisplay:{id: "position_id", value: "position_title"}} 
+			));	
+        facProfileModel.set('', App.client);
+		facProfileModel.set('', App.client);
+		facProfileModel.set('fetchRowUrl', App.facProfileFetchUrl);
 		facProfileModel.set('editUrl', App.facProfileEditcUrl);
-		//facProfileModel.set('fetchRowUrl', App.degreeEarnedFetchUrl);
-		//facProfileModel.set('editDataUrl', App.degreeEarnedEditUrl);
-		
 		facProfileModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
@@ -743,6 +746,28 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
           model: facProfileModel
         }));
 
+		// Change Password
+		var facPasswordModel = facultyProfileSectionModel.clone();
+        facPasswordModel.set('header','Change/Update Password');
+        facPasswordModel.set('sectionId', 'changePassword');
+        facPasswordModel.set('apiUrl', App.facultyPasswordUrl);
+        facPasswordModel.set('keys', new Array('password'));
+        facPasswordModel.set('collumnNames', new Array('Password'));
+		facPasswordModel.set('inputData', new Array(
+			{inputLabel: "New Password", inputName: "password", inputType: "password"},
+			{inputLabel: "Confirm Password", inputName: "confirmPassword", inputType: "password"}
+		));	
+        facPasswordModel.set('', App.client);
+		facPasswordModel.set('', App.client);
+		facPasswordModel.set('fetchRowUrl', App.facPasswordFetchUrl);
+		facPasswordModel.set('editUrl', App.facPasswordEditUrl);
+		facPasswordModel.getData();
+
+        this.subViews.push(new FacultyProfileSectionView({
+          el: '#'+facInfo[1],
+          model: facPasswordModel
+        }));
+	
 //Array Tab End Here 
  },
 

@@ -52,7 +52,7 @@ var AdminTabView = Backbone.View.extend({
     userRecordModel.set('inputData', new Array(
       {inputLabel: "Employee ID", inputName: "ffid", inputType: "text"},
       {inputLabel: "Username", inputName: "username", inputType: "text"},
-      {inputLabel: "Password", inputName: "passwd", inputType: "text"},
+      {inputLabel: "Password", inputName: "passwd", inputType: "password"},
       {inputLabel: "Last Name", inputName: "flname", inputType: "text"},
       {inputLabel: "First Name", inputName: "ffname", inputType: "text"},
       {inputLabel: "Middle Initial", inputName: "fmname", inputType: "text"},
@@ -79,7 +79,7 @@ var AdminTabView = Backbone.View.extend({
     rankRecordModel.set('header','Faculty Rank');
     rankRecordModel.set('sectionId', 'rankContent');
     rankRecordModel.set('apiUrl', App.rankDropDownUrl);
-    rankRecordModel.set('keys', new Array('id', 'rank_title'));
+    rankRecordModel.set('keys', new Array('rank_code', 'rank_title'));
     rankRecordModel.set('collumnNames', new Array('Rank Code', 'Rank Title'));
     rankRecordModel.set('inputData', new Array(
       {inputLabel: "Rank Code", inputName: "rank_code", inputType: "text"},
@@ -101,7 +101,7 @@ var AdminTabView = Backbone.View.extend({
     departmentRecordModel.set('header','Departments');
     departmentRecordModel.set('sectionId', 'departmentContent');
     departmentRecordModel.set('apiUrl', App.deptDropDownUrl);
-    departmentRecordModel.set('keys', new Array('id', 'dept_name'));
+    departmentRecordModel.set('keys', new Array('dept_code', 'dept_name'));
     departmentRecordModel.set('collumnNames', new Array('Department Code', 'Department Name'));
     departmentRecordModel.set('inputData', new Array(
       {inputLabel: "Department Code", inputName: "dept_code", inputType: "text"},
@@ -123,7 +123,7 @@ var AdminTabView = Backbone.View.extend({
     unitRecordModel.set('header','Units/Colleges');
     unitRecordModel.set('sectionId', 'unitContent');
     unitRecordModel.set('apiUrl', App.unitDropDownUrl);
-    unitRecordModel.set('keys', new Array('id', 'unit_title'));
+    unitRecordModel.set('keys', new Array('unit_code', 'unit_title'));
     unitRecordModel.set('collumnNames', new Array('Unit/College Code', 'Unit/College Name'));
     unitRecordModel.set('inputData', new Array(
       {inputLabel: "Unit/College Code", inputName: "unit_code", inputType: "text"},
@@ -145,7 +145,7 @@ var AdminTabView = Backbone.View.extend({
     positionRecordModel.set('header','Position and Classification');
     positionRecordModel.set('sectionId', 'positionContent');
     positionRecordModel.set('apiUrl', App.positionDropDownUrl);
-    positionRecordModel.set('keys', new Array('id', 'position_title'));
+    positionRecordModel.set('keys', new Array('position_id', 'position_title'));
     positionRecordModel.set('collumnNames', new Array('Position/Classification ID', 'Position/Classification'));
     positionRecordModel.set('inputData', new Array(
       {inputLabel: "Position ID", inputName: "position_id", inputType: "text"},
@@ -167,7 +167,7 @@ var AdminTabView = Backbone.View.extend({
     accountTypeRecordModel.set('header','System Account Type');
     accountTypeRecordModel.set('sectionId', 'accountTypeContent');
     accountTypeRecordModel.set('apiUrl', App.acctTypeDropDownUrl);
-    accountTypeRecordModel.set('keys', new Array('id', 'account_role'));
+    accountTypeRecordModel.set('keys', new Array('account_id', 'account_role'));
     accountTypeRecordModel.set('collumnNames', new Array('Account ID', 'Account Role'));
     accountTypeRecordModel.set('inputData', new Array(
       {inputLabel: "Account ID", inputName: "account_id", inputType: "text"},
@@ -210,7 +210,7 @@ var AdminTabView = Backbone.View.extend({
     degreeLevelRecordModel.set('header','Degree Level Information');
     degreeLevelRecordModel.set('sectionId', 'degreeLevelContent');
     degreeLevelRecordModel.set('apiUrl', App.degreeLevelDropDownUrl);
-    degreeLevelRecordModel.set('keys', new Array('id', 'dlevel_title', 'dlevel_desc'));
+    degreeLevelRecordModel.set('keys', new Array('dlevel_id', 'dlevel_title', 'dlevel_desc'));
     degreeLevelRecordModel.set('collumnNames', new Array('Degree Level ID', 'Degree Title', 'Description'));
     degreeLevelRecordModel.set('inputData', new Array(
       {inputLabel: "Degree Level ID", inputName: "dlevel_id", inputType: "text"},
@@ -238,7 +238,7 @@ var AdminTabView = Backbone.View.extend({
     institutionRecordModel.set('inputData', new Array(
       {inputLabel: "Institution Name", inputName: "institution_name", inputType: "text"},
 	  {inputLabel: "Location", inputName: "location", inputType: "select", apiUrl:App.locationDropDownUrl, selectValueDisplay:{id: "id", value: "location_name"}},
-	  {inputLabel: "Country", inputName: "country", inputType: "select", apiUrl:App.countryDropDownUrl, selectValueDisplay:{id: "id", value: "country_name"}}
+	  {inputLabel: "Country", inputName: "country", inputType: "select", apiUrl:App.countryDropDownUrl, selectValueDisplay:{id: "country_code", value: "country_name"}}
 	));
     institutionRecordModel.set('addUrl', App.adminAddNewInstitutionUrl);
     institutionRecordModel.set('removeUrl', App.adminRemoveInstitutionUrl);
@@ -323,7 +323,7 @@ var AdminTabView = Backbone.View.extend({
     countryRecordModel.set('header','Country Records');
     countryRecordModel.set('sectionId', 'countryRecordContent');
     countryRecordModel.set('apiUrl', App.countryDropDownUrl);
-    countryRecordModel.set('keys', new Array('id', 'country_name'));
+    countryRecordModel.set('keys', new Array('country_code', 'country_name'));
     countryRecordModel.set('collumnNames', new Array('Country Code', 'Country Name'));
     countryRecordModel.set('inputData', new Array(
       {inputLabel: "Country Code", inputName: "country_code", inputType: "text"},
