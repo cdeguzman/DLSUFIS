@@ -1,10 +1,10 @@
 <?php
   include("../../connect.php");
   $org_name = ucwords($_POST["org_name"]);
-  $org_acrnoym = strtoupper($_POST["org_acronym"]); 
-  $org_location = ucwords($_POST["org_locationa'"]); 
+  $org_acronym = strtoupper($_POST["org_acronym"]); 
+  $org_location = ucwords($_POST["org_location"]); 
   
-  $insertNewOrg = "INSERT INTO journals
+  $insertNewOrg = "INSERT INTO organization
                    (org_name, org_acronym, org_location) VALUES 
 		 		   ('$org_name', '$org_acronym', '$org_location')";
 

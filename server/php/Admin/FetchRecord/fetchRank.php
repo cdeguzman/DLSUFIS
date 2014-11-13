@@ -4,7 +4,7 @@
   $id = $_GET["id"];
    
   $select_rank = mysql_query("SELECT rank_code, rank_title FROM rank
-							  WHERE rank_code = '$id'"); 
+							  WHERE id = '$id'"); 
   
    $list_rank = array();
       while($fetch_rank = mysql_fetch_assoc($select_rank)){

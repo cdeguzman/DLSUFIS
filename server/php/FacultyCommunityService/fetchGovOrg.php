@@ -1,6 +1,6 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_govOrg = mysql_query("SELECT description, gov_id, project_site, start_date, end_date        

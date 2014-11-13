@@ -1,9 +1,9 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_patents = mysql_query("SELECT paper_title, date_publication, patent_no, issuing_country     
+  $select_patents = mysql_query("SELECT paper_title, date_publication, patent_no, issuing_country as country_code    
                                  FROM publication
 					   	         WHERE pub_code = $id
 								 AND pub_type = 'PT003'"); 

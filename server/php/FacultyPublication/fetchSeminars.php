@@ -1,11 +1,11 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+ // $fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_seminars = mysql_query("SELECT seminar_title, venue_performance, start_date, end_date      
                                    FROM publication
-					   	           WHERE pub_code = $id
+					   	           WHERE pub_code = '$id'
 								   AND pub_type = 'PT011'"); 
   
   $list_seminars = array();

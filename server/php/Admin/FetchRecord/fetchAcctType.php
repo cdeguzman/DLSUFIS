@@ -4,7 +4,7 @@
   $id = $_GET["id"];
    
   $select_acctType = mysql_query("SELECT account_id, account_role FROM account
-							  WHERE account_id = '$id'"); 
+							      WHERE id = '$id'"); 
   
    $list_acctType = array();
       while($fetch_acctType = mysql_fetch_assoc($select_acctType)){

@@ -4,7 +4,7 @@
   $institution_name = ucwords($_POST["institution_name"]);
   $location = ucwords($_POST["location"]);
   $country = $_POST["country"]; 
-  $id = $_GET["id"];
+  $id = $_POST["id"];
    
   $update_institution = mysql_query("UPDATE institution SET institution_name = '$institution_name', 
                                      location = '$location', country = '$country'

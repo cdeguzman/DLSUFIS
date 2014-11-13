@@ -3,7 +3,7 @@
   $fid = $_POST["fid"];
   $id = $_POST["id"];
   
-  $removeUnit = "DELETE FROM unit WHERE unit_code = '$id'";
+  $removeUnit = "DELETE FROM unit WHERE id = '$id'";
   mysql_query($removeUnit);
   
 ?> 

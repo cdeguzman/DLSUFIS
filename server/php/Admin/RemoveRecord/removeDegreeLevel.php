@@ -3,7 +3,7 @@
   $fid = $_POST["fid"];
   $id = $_POST["id"];
   
-  $removeDegreeLevel = "DELETE FROM degree_level WHERE dlevel_id = '$id'";
+  $removeDegreeLevel = "DELETE FROM degree_level WHERE id = '$id'";
   mysql_query($removeDegreeLevel);
   
 ?> 

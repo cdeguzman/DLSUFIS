@@ -1,11 +1,11 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_otherResearch = mysql_query("SELECT paper_title, paper_type, date_publication, remarks     
                                    FROM publication
-					   	           WHERE pub_code = $id
+					   	           WHERE pub_code = '$id'
 								   AND pub_type = 'PT010'"); 
   
   $list_otherResearch = array();

@@ -3,7 +3,7 @@
   $fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_nonTeachExp = mysql_query("SELECT work_nature, institution_id, org_id, no_years, start_date, end_date   
+  $select_nonTeachExp = mysql_query("SELECT work_nature, institution_id, industry_id, org_id, no_years, start_date, end_date   
                                      FROM professional_prac
 					   	             WHERE pp_id = $id"); 
   

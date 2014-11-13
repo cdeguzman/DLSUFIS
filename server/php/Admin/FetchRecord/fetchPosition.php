@@ -3,8 +3,8 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_position = mysql_query("SELECT position_id, position_title FROM position
-							  WHERE position_id = '$id'"); 
+  $select_position = mysql_query("SELECT id, position_id, position_title FROM position
+							      WHERE id = '$id'"); 
   
    $list_position = array();
       while($fetch_position = mysql_fetch_assoc($select_position)){

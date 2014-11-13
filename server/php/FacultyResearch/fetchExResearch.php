@@ -5,7 +5,7 @@
    
   $select_exResearch = mysql_query("SELECT research_title, fagency_id, currency, amount, start_date, end_date    
                                     FROM research_external
-					   	            WHERE research_id = $id
+					   	            WHERE research_id = '$id'
 									AND funding_type = 'External'"); 
   
   $list_exResearch = array();

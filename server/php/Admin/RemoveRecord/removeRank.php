@@ -3,7 +3,7 @@
   $fid = $_POST["fid"];
   $id = $_POST["id"];
   
-  $removeRank = "DELETE FROM rank WHERE rank_code = '$id'";
+  $removeRank = "DELETE FROM rank WHERE id = '$id'";
   mysql_query($removeRank);
   
 ?> 

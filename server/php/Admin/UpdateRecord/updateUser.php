@@ -12,7 +12,7 @@
   $rank = $_POST["rank"];  
   $acctType = $_POST["acctType"];
   $position = $_POST["position"];
-  $id = $_GET["id"];
+  $id = $_POST["id"];
    
   $update_user = mysql_query("UPDATE faculty SET fid = '$ffid', username = '$username', password = '$passwd', 
                              flname = '$flname', ffname = '$ffname', fmname = '$fmname', unit_code = '$unit', 

@@ -1,7 +1,7 @@
 <?php
   include("../connect.php");
   
-  $select_acct = mysql_query("SELECT account_id as id, account_role 
+  $select_acct = mysql_query("SELECT id, account_id, account_role 
                               FROM account ORDER BY account_role");
   $list_acct = array();
   

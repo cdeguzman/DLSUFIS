@@ -1,11 +1,11 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_profOrg = mysql_query("SELECT description, org_id, project_site, start_date, end_date        
                                    FROM community_service
-					   	           WHERE cs_id = $id
+					   	           WHERE cs_id = '$id'
 								   AND cs_type = 'CS002'"); 
   
   $list_profOrg = array();

@@ -3,7 +3,7 @@
   $fid = $_POST["fid"];
   $id = $_POST["id"];
   
-  $removeJournal = "DELETE FROM journals WHERE journal_id = '$id'";
-  mysql_query($removeJournal);
+  $removeOrg = "DELETE FROM organization WHERE org_id = '$id'";
+  mysql_query($removeOrg);
   
 ?> 

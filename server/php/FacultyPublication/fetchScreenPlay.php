@@ -1,11 +1,11 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_screenPlay = mysql_query("SELECT paper_title, venue_performance, date_publication     
                                    FROM publication
-					   	           WHERE pub_code = $id
+					   	           WHERE pub_code = '$id'
 								   AND pub_type = 'PT009'"); 
   
   $list_screenPlay = array();

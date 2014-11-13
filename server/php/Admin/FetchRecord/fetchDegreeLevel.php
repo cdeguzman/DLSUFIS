@@ -4,7 +4,7 @@
   $id = $_GET["id"];
    
   $select_degreeLvl = mysql_query("SELECT dlevel_id, dlevel_title, dlevel_desc FROM degree_level
-							  WHERE dlevel_id = '$id'"); 
+							       WHERE id = '$id'"); 
   
    $list_degreeLvl = array();
       while($fetch_degreeLvl = mysql_fetch_assoc($select_degreeLvl)){

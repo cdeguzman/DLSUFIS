@@ -1,6 +1,6 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_chaptBook = mysql_query("SELECT work_title, paper_title, editors, publisher, date_publication, place_publication, pages, isbn     
