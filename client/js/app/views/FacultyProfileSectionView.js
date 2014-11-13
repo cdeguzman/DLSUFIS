@@ -38,7 +38,11 @@ var FacultyProfileSectionView = Backbone.View.extend({
             		html+='</tr>';
             			_.each(keys, function(key){
 							var val = eval('values['+i+'].'+key)!=null?eval('values['+i+'].'+key):'N/A';
-            				html+='<td>'+val+'</td>';
+            				if(key=="password"){
+            					html+='<td><i>******************</i></td>';
+            				}else{
+            					html+='<td>'+val+'</td>';
+            				}
             			})
                     var menu = '<div class="btn-group"><button type="button" class="btn btn-info ' +this.model.get('sectionId')+"ShowEditBtn"+'" data-value="'+values[i].id+'" data-section-view="'+this.model.get('sectionId')+'"><i class="fa fa-pencil"></i></button><button type="button" class="btn btn-danger '+this.model.get('sectionId')+"RemoveBtn"+'" data-value="'+values[i].id+'"><i class="fa fa-trash-o"></i></button></div>';
 					if(this.model.get('sectionId')=="changePassword" || this.model.get('sectionId')=="updateProfile"){

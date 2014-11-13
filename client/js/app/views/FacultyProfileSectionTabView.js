@@ -12,7 +12,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
     var profActivity1 = ['leadershipInProfOrg', 'membershipInProfOrg', 'awardsRecogAchievements', 'internalFundedResearch', 'externalFundedResearch', 'researchGrants'];
     var profActivity2 = ['journalPublication', 'protoypes', 'patents', 'textbooks', 'chapterBook', 'confPaper', 'publishBook', 'screenPlay' ,'otherResearch', 'conferences'];
     var comService = ['ComSrvDLSU', 'profOrg', 'govOrg', 'otherOrg'];
-    var facInfo = ['facInfo', 'facPassword'];
+    var facInfo = ['facInfo', 'facPassword', 'facInfo2'];
     var html = '';
     html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
         html +='<ul class="nav nav-tabs">';
@@ -742,9 +742,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		facProfileModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
-          el: '#'+facInfo[0],
+          el: '#'+facInfo[1],
           model: facProfileModel
         }));
+
 
 		// Change Password
 		var facPasswordModel = facultyProfileSectionModel.clone();
@@ -764,9 +765,10 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		facPasswordModel.getData();
 
         this.subViews.push(new FacultyProfileSectionView({
-          el: '#'+facInfo[1],
+          el: '#'+facInfo[2],
           model: facPasswordModel
         }));
+	
 	
 //Array Tab End Here 
  },
