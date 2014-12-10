@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_chaptBook = mysql_query("SELECT work_title, paper_title, editors, publisher, date_publication, place_publication, pages, isbn     
+  $select_chaptBook = mysql_query("SELECT work_title, paper_title, editors, publisher, date_publication, place_publication, pages, isbn, local as type     
                                    FROM publication
 					   	           WHERE pub_code = $id
 								   AND pub_type = 'PT006'"); 

@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_otherResearch = mysql_query("SELECT paper_title, paper_type, date_publication, remarks     
+  $select_otherResearch = mysql_query("SELECT paper_title, paper_type, date_publication, remarks, local as type, co_author     
                                    FROM publication
 					   	           WHERE pub_code = '$id'
 								   AND pub_type = 'PT010'"); 

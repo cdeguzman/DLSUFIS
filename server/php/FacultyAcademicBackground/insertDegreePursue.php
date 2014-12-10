@@ -7,7 +7,7 @@
   $degree_stages = $_POST["degree_stages"];
   $units = $_POST["earned_units"];
   $start_date = $_POST["start_date"];
-  $end_date = $_POST["end_date"];
+  $end_date = ucwords($_POST["end_date"]);
   
   if (is_numeric($units)){
     $earned_units = $units;

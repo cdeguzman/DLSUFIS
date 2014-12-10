@@ -12,11 +12,12 @@
   $rank = $_POST["rank"];  
   $acctType = $_POST["acctType"];
   $position = $_POST["position"];
+  $active = $_POST["active"];
   
   $insertNewUser = "INSERT INTO faculty
-                  (fid, username, password, flname, ffname, fmname, unit_code, dept, classification, rank, account_id, position_id)
+                  (fid, username, password, flname, ffname, fmname, unit_code, dept, classification, rank, account_id, position_id, active)
                   VALUES 
-				  ('$ffid', '$username', '$passwd', '$flname', '$ffname', '$fmname', '$unit', '$dept', '$classification', '$rank', '$acctType', '$position')";
+				  ('$ffid', '$username', '$passwd', '$flname', '$ffname', '$fmname', '$unit', '$dept', '$classification', '$rank', '$acctType', '$position', '$active')";
   
   mysql_query($insertNewUser);
   

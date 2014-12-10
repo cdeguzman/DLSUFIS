@@ -1,6 +1,6 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
   $select_awards = mysql_query("SELECT award_title, award_body, award_date   

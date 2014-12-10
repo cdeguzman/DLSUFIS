@@ -5,7 +5,7 @@
   
   //echo "The id $id is now deleted";
   
-  $removeEarnedDegree = "DELETE FROM degree_earned WHERE de_id = $id";
+  $removeEarnedDegree = "DELETE FROM degree_earned WHERE de_id = '$id'";
   mysql_query($removeEarnedDegree);
   
 ?> 

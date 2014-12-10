@@ -13,10 +13,11 @@
   $acctType = $_POST["acctType"];
   $position = $_POST["position"];
   $id = $_POST["id"];
+  $active =$_POST["active"];
    
   $update_user = mysql_query("UPDATE faculty SET fid = '$ffid', username = '$username', password = '$passwd', 
                              flname = '$flname', ffname = '$ffname', fmname = '$fmname', unit_code = '$unit', 
 							 dept = '$dept', classification = '$classification', rank = '$rank', account_id = '$acctType',
-							 position_id = '$position' 
+							 position_id = '$position', active = '$active'  
 							 WHERE fid = '$id'");  
 ?> 

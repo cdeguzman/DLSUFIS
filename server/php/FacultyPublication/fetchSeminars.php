@@ -3,7 +3,7 @@
  // $fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_seminars = mysql_query("SELECT seminar_title, venue_performance, start_date, end_date      
+  $select_seminars = mysql_query("SELECT seminar_title, venue_performance, start_date, end_date, local as type      
                                    FROM publication
 					   	           WHERE pub_code = '$id'
 								   AND pub_type = 'PT011'"); 

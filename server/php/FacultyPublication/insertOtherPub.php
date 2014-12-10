@@ -7,12 +7,13 @@
   $date_publication = $_POST["date_publication"];
   $place_publication = ucwords($_POST["place_publication"]);
   $pages = $_POST["pages"];
+  $local = $_POST["type"];
   $pub_type = "PT008";
   
   $insertOtherPub = "INSERT INTO publication
-                   (pub_type, fid, paper_title, published_in, publisher, date_publication, place_publication, pages)
+                   (pub_type, fid, paper_title, published_in, publisher, date_publication, place_publication, pages, local)
                    VALUES 
-				   ('$pub_type', '$fid', '$paper_title', '$published_in', '$publisher', '$date_publication', '$place_publication', '$pages')";
+				   ('$pub_type', '$fid', '$paper_title', '$published_in', '$publisher', '$date_publication', '$place_publication', '$pages', '$local')";
   
   mysql_query($insertOtherPub);
   

@@ -2,7 +2,7 @@
   include("../connect.php");
   $fid = $_POST["fid"];
   $research_title = ucwords($_POST["research_title"]);
-  $fund_agency = $_POST["fagency_id"];
+  $fagency = ucwords($_POST["fagency"]);
   $amt = $_POST["amount"];
   $start_date = $_POST["start_date"];
   $end_date = $_POST["end_date"];
@@ -17,9 +17,9 @@
   }  
   
   $insertExResearch = "INSERT INTO research_external
-                  (fid, research_title, fagency_id, amount, start_date, end_date, research_type, funding_type, currency)
+                  (fid, research_title, fagency, amount, start_date, end_date, research_type, funding_type, currency)
                   VALUES 
-				  ('$fid', '$research_title', '$fund_agency', '$amount', '$start_date', '$end_date', '$research_type', '$funding_type', '$currency')";
+				  ('$fid', '$research_title', '$fagency', '$amount', '$start_date', '$end_date', '$research_type', '$funding_type', '$currency')";
   
   mysql_query($insertExResearch);
   

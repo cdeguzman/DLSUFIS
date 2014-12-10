@@ -3,9 +3,9 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_journal = mysql_query("SELECT paper_title, journal_id, date_publication, volume_no, issue_no, pages, publication_type as type    
+  $select_journal = mysql_query("SELECT paper_title, journal, date_publication, volume_no, issue_no, pages, publication_type as isi, local as type, co_author    
                                 FROM publication
-					   	        WHERE pub_code = $id
+					   	        WHERE pub_code = '$id'
 								AND pub_type = 'PT001'"); 
   
   $list_journal = array();

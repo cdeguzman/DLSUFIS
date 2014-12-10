@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_confPaper = mysql_query("SELECT conf_title, paper_title, publisher, date_publication, place_publication, pages     
+  $select_confPaper = mysql_query("SELECT conf_title, paper_title, publisher, date_publication, place_publication, pages, local as type, co_author     
                                    FROM publication
 					   	           WHERE pub_code = $id
 								   AND pub_type = 'PT007'"); 

@@ -6,7 +6,7 @@
   $funding_unit = $_POST["unit_title"];
   $amt = $_POST["amount"];
   $start_date = $_POST["start_date"];
-  $end_date = $_POST["end_date"];
+  $end_date = ucwords($_POST["end_date"]);
   //$research_type = 'Funded';
   //$funding_type = 'Internal';
   //$currency = 'PhP';

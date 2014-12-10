@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_govOrg = mysql_query("SELECT description, gov_id, project_site, start_date, end_date        
+  $select_govOrg = mysql_query("SELECT description, gov_name, project_site, start_date, end_date        
                                 FROM community_service
 					   	        WHERE cs_id = $id
 								AND cs_type = 'CS003'"); 

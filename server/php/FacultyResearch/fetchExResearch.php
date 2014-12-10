@@ -1,9 +1,9 @@
 <?php
   include("../connect.php");
-  $fid = $_POST["fid"];
+  //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_exResearch = mysql_query("SELECT research_title, fagency_id, currency, amount, start_date, end_date    
+  $select_exResearch = mysql_query("SELECT research_title, fagency, currency, amount, start_date, end_date    
                                     FROM research_external
 					   	            WHERE research_id = '$id'
 									AND funding_type = 'External'"); 
