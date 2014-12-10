@@ -65,7 +65,10 @@ window.App = {
    positionDropDownUrl: '../server/php/Admin/position.php',
    classificationDropDownUrl: '../server/php/Admin/classification.php',
    journalpubDropDownUrl:'../server/php/Admin/journalpublication.php',
-
+   currencyDropDownUrl: '../server/php/Admin/currency.php',
+   journalTypeDropDownUrl: '../server/php/Admin/journalType.php',
+   coAuthorDropDownUrl: '../server/php/Admin/coAuthor.php',
+   statusDropDownUrl: '../server/php/Admin/status.php',
    
    //Faculty Add Remove Fetch Edit
    degreeEarnedAddUrl: '../server/php/FacultyAcademicBackground/insertEarnedDegree.php',
@@ -243,5 +246,9 @@ window.App = {
    adminRemoveJournalPubUrl: '../server/php/Admin/RemoveRecord/removeJournalPub.php',
    adminFetchJournalPubUrl: '../server/php/Admin/FetchRecord/fetchJournalPub.php',
    adminUpdateJournalPubUrl: '../server/php/Admin/UpdateRecord/updateJournalPub.php',
+   adminAddNewCurrencyUrl: '../server/php/Admin/AddNewRecord/addNewCurrency.php',
+   adminRemoveCurrencyUrl: '../server/php/Admin/RemoveRecord/removeCurrency.php',
+   adminFetchCurrencyUrl: '../server/php/Admin/FetchRecord/fetchCurrency.php',
+   adminUpdateCurrencyUrl: '../server/php/Admin/UpdateRecord/updateCurrency.php',
  
  };

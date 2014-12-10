@@ -16,7 +16,7 @@ var DataAddPanelView = Backbone.View.extend({
   	html += '<table class="table" id="'+this.model.get('sectionId')+"AddTable"+'"></table>';
   	$(this.el).append(html);
   	this.model.get('inputData').forEach(function(inputData){
-  		if(inputData.inputType=="text" || inputData.inputType=="date" || inputData.inputType=="year"){
+  		if(inputData.inputType=="text" || inputData.inputType=="date" || inputData.inputType=="year"|| inputData.inputType=="password"){
           self.subViews.push(new TextFieldView({
             el: "#"+self.model.get('sectionId')+"AddTable",
             elementName: inputData.inputName,

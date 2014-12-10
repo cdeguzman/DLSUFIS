@@ -11,13 +11,13 @@ var AdminTabView = Backbone.View.extend({
 
     var recordSection = ['userRecord','rank','department','unit','position','acctType'];
     var locationSection = ['degree','degreeLevel','academe','industry','organization','places','country'];
-    var publicationSection = ['journals','journalPublication'];
+    var publicationSection = ['journals','journalPublication', 'currency'];
     var html = '';
     html+='<div class="loadingStatus"><i class="fa fa-spinner fa-spin"></i> Loading...</div>';
       html +='<ul class="nav nav-tabs">';
           html +='<li class="active"><a href="#records" data-toggle="tab">DLSU Data</a></li>';
           html +='<li><a href="#location" data-toggle="tab">Degrees, Institution & Location</a></li>';
-	  html +='<li><a href="#publications" data-toggle="tab">Publication</a></li>';
+	  html +='<li><a href="#publications" data-toggle="tab">Publication Data</a></li>';
       html +='</ul>';
     html +='<div class="tab-content">';
           //Tab Content
@@ -56,12 +56,13 @@ var AdminTabView = Backbone.View.extend({
       {inputLabel: "Last Name", inputName: "flname", inputType: "text"},
       {inputLabel: "First Name", inputName: "ffname", inputType: "text"},
       {inputLabel: "Middle Initial", inputName: "fmname", inputType: "text"},
-      {inputLabel: "College/School/Unit", inputName: "unit", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "id", value: "unit_title"}},
-      {inputLabel: "Department/Office", inputName: "dept", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "id", value: "dept_name"}},
-      {inputLabel: "Classification", inputName: "class", inputType: "select", apiUrl:App.classificationDropDownUrl, selectValueDisplay:{id: "id", value: "position_title"}},
-      {inputLabel: "Rank", inputName: "rank", inputType: "select", apiUrl:App.rankDropDownUrl, selectValueDisplay:{id: "id", value: "rank_title"}},
-      {inputLabel: "Account Type", inputName: "acctType", inputType: "select", apiUrl:App.acctTypeDropDownUrl, selectValueDisplay:{id: "id", value: "account_role"}},
-      {inputLabel: "Position", inputName: "position", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay:{id: "id", value: "position_title"}}
+      {inputLabel: "College/School/Unit", inputName: "unit", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
+      {inputLabel: "Department/Office", inputName: "dept", inputType: "select", apiUrl:App.deptDropDownUrl, selectValueDisplay:{id: "dept_code", value: "dept_name"}},
+      {inputLabel: "Classification", inputName: "class", inputType: "select", apiUrl:App.classificationDropDownUrl, selectValueDisplay:{id: "position_id", value: "position_title"}},
+      {inputLabel: "Rank", inputName: "rank", inputType: "select", apiUrl:App.rankDropDownUrl, selectValueDisplay:{id: "rank_code", value: "rank_title"}},
+      {inputLabel: "Account Type", inputName: "acctType", inputType: "select", apiUrl:App.acctTypeDropDownUrl, selectValueDisplay:{id: "account_id", value: "account_role"}},
+      {inputLabel: "Position", inputName: "position", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay:{id: "position_id", value: "position_title"}},
+	  {inputLabel: "Status", inputName: "active", inputType: "select", apiUrl:App.statusDropDownUrl, selectValueDisplay:{id: "id", value: "active"}}
     ));
     userRecordModel.set('addUrl', App.adminAddNewUserUrl);
     userRecordModel.set('removeUrl', App.adminRemoveUserUrl);
@@ -384,6 +385,27 @@ var AdminTabView = Backbone.View.extend({
     model:journalpubRecordModel
     }));
 
+	//Journal Publication Currency Records
+    var currencyRecordModel = facultyProfileSectionModel.clone();
+    currencyRecordModel.set('header','Currency');
+    currencyRecordModel.set('sectionId', 'currencyContent');
+    currencyRecordModel.set('apiUrl', App.currencyDropDownUrl);
+    currencyRecordModel.set('keys', new Array('id', 'currency_name', 'country'));
+    currencyRecordModel.set('collumnNames', new Array('ID', 'Currency', 'Country'));
+    currencyRecordModel.set('inputData', new Array(
+       {inputLabel: "Currency", inputName: "currency_name", inputType: "text"},
+	   {inputLabel: "Country", inputName: "country", inputType: "select", apiUrl:App.countryDropDownUrl, selectValueDisplay:{id: "country_code", value: "country_name"}}
+	 ));
+    currencyRecordModel.set('addUrl', App.adminAddNewCurrencyUrl);
+    currencyRecordModel.set('removeUrl', App.adminRemoveCurrencyUrl);
+    currencyRecordModel.set('fetchRowUrl', App.adminFetchCurrencyUrl);
+	currencyRecordModel.set('editUrl', App.adminUpdateCurrencyUrl);
+	currencyRecordModel.getData();
+
+    this.subViews.push(new FacultyProfileSectionView({
+    el: '#'+publicationSection[2],
+    model:currencyRecordModel
+    }));
  //>> Add here     
  
  },

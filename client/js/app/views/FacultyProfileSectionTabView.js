@@ -57,16 +57,16 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.set('header','Degrees Earned');
         degreeEarnedModel.set('sectionId', 'degEarnedContent');
         degreeEarnedModel.set('apiUrl', App.facultyDegreeEarnedUrl);
-        degreeEarnedModel.set('keys', new Array('dlevel_title', 'degree_title', 'as_title', 'year_obtained', 'institution_name', 'location_name', 'so_num'));
+        degreeEarnedModel.set('keys', new Array('dlevel_title', 'degree_title', 'specialization', 'year_obtained', 'institution_name', 'location_name', 'so_num'));
         degreeEarnedModel.set('collumnNames', new Array('Degree(s) Earned', 'Title of Degree', 'Area of Specialization', 'Year Obtained', 'Educational Institution', 'Location', 'S.O. Number'));
         degreeEarnedModel.set('noteFoot', 'Note: Foreign universities are exempt from S.O. Number.');
         degreeEarnedModel.set('inputData', new Array(
           {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"dlevel_id", value:"dlevel_title"}},
   		  {inputLabel: "Degree Earned", inputName: "degree_id", inputType: "select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},
-          {inputLabel: "Area of Specialization", inputName: "as_code", inputType: "select", apiUrl:App.specializationDropDownUrl, selectValueDisplay:{id: "as_code", value: "as_title"}},
+          {inputLabel: "Area of Specialization", inputName: "specialization", inputType: "text"},
       	  {inputLabel: "Year Obtained", inputName: "year_obtained", inputType: "year"},
       	  {inputLabel: "Institution", inputName: "institution_id", inputType: "select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
-      	  {inputLabel: "Location", inputName: "location_id", inputType: "select", apiUrl:App.locationDropDownUrl, selectValueDisplay:{id: "id", value: "location_name"}},
+      	  {inputLabel: "Location", inputName: "location_id", inputType: "text"},
       	  {inputLabel: "SO Number", inputName: "so_num", inputType: "text"}
 		    ));
         degreeEarnedModel.set('addUrl', App.degreeEarnedAddUrl);
@@ -95,7 +95,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 	      {inputLabel: "Stage of Graduate Studies", inputName: "degree_stages", inputType:"select",apiUrl:App.degreeStagesDropDownUrl, selectValueDisplay:{id: "ds_code", value: "ds_name"}},
 	      {inputLabel: "No. of Units Completed ", inputName: "earned_units", inputType: "text"},
 	      {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-	      {inputLabel: "End Date", inputName: "end_date", inputType: "date"}		   
+	      {inputLabel: "End Date", inputName: "end_date", inputType: "text"}		   
 	    ));
 	   degreePursueModel.set('addUrl', App.degreePursueAddUrl);
        degreePursueModel.set('removeUrl', App.degreePursueRemoveUrl);
@@ -113,14 +113,12 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         specialTrainingModel.set('header','SPECIAL TRAINING (e.g. post-doctoral work, post-baccalaureate diploma, post-baccalaureate certificate, etc.)');
         specialTrainingModel.set('sectionId', 'spcTrainingContent');
         specialTrainingModel.set('apiUrl', App.facultySpecialTrainingUrl);
-        specialTrainingModel.set('keys', new Array('training_title', 'institution_name', 'industry_name', 'org_name', 'venue', 'start_date', 'end_date'));
-        specialTrainingModel.set('collumnNames', new Array('Training Title', 'Academic Institution ', 'Industry' ,'Organization', 'Venue (City,Country)', 'Start Date', 'End Date'));
+        specialTrainingModel.set('keys', new Array('training_title', 'institution', 'venue', 'start_date', 'end_date'));
+        specialTrainingModel.set('collumnNames', new Array('Training Title', 'Institution ', 'Venue (City,Country)', 'Start Date', 'End Date'));
         specialTrainingModel.set('inputData', new Array(
 	       {inputLabel: "Training Title", inputName: "training_title", inputType:"text"},  
-	       {inputLabel: "Academic Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
-	       {inputLabel: "Industry", inputName: "industry_id", inputType: "select", apiUrl:App.industryDropDownUrl, selectValueDisplay:{id: "id", value: "industry_name"}},
-	       {inputLabel: "Organization", inputName: "org_id", inputType: "select", apiUrl:App.orgDropDownUrl, selectValueDisplay:{id: "id", value: "org_name"}},
-           {inputLabel: "Venue (City, Country)", inputName: "venue", inputType:"text"},
+	       {inputLabel: "Institution/Organization", inputName: "institution", inputType: "text"},
+	       {inputLabel: "Venue (City, Country)", inputName: "venue", inputType:"text"},
            {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
            {inputLabel: "End Date", inputName: "end_date", inputType: "date"}		   
         ));
@@ -190,13 +188,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         nonTeachExpModel.set('header','Professional Practice, Industrial Practice, or Employment outside DLSU other than teaching ');
         nonTeachExpModel.set('sectionId', 'nonTeachExpContent');
         nonTeachExpModel.set('apiUrl', App.nonTeachExpUrl);
-        nonTeachExpModel.set('keys', new Array('work_nature', 'institution_name', 'no_years', 'start_date','end_date'));
+        nonTeachExpModel.set('keys', new Array('work_nature', 'institution', 'no_years', 'start_date','end_date'));
         nonTeachExpModel.set('collumnNames', new Array('Nature of Practice/Project', 'Institution', 'Number of Years ', 'Start Date', 'End Date'));
         nonTeachExpModel.set('inputData', new Array(
 	       {inputLabel: "Nature of Project/Project", inputName: "work_nature", inputType: "text"},
-	       {inputLabel: "Academic Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
-	       {inputLabel: "Industry", inputName: "industry_id", inputType: "select", apiUrl:App.industryDropDownUrl, selectValueDisplay:{id: "id", value: "industry_name"}},
-	       {inputLabel: "Organization", inputName: "org_id", inputType: "select", apiUrl:App.orgDropDownUrl, selectValueDisplay:{id: "id", value: "org_name"}},
+	       {inputLabel: "Institution/Organization", inputName: "institution", inputType:"text"},
 	       {inputLabel: "No. of Years", inputName: "no_years", inputType: "text"},
 	       {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 	       {inputLabel: "End Date", inputName: "end_date", inputType: "date"}
@@ -221,9 +217,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         leadershipInOrgProfModel.set('collumnNames', new Array('Designation/Role', 'Professional Organization', 'Start Date', 'End Date'));
         leadershipInOrgProfModel.set('inputData', new Array(
 	       {inputLabel: "Designation/Role", inputName: "designation", inputType: "text"},
-	       {inputLabel: "Organization", inputName: "org_id", inputType: "select", apiUrl:App.orgDropDownUrl, selectValueDisplay:{id: "id", value: "org_name"}},
+	       {inputLabel: "Organization", inputName: "org_name", inputType: "text"},
 	       {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-	       {inputLabel: "End Date", inputName: "end_date", inputType: "date"}
+	       {inputLabel: "End Date (Present or mm/dd/yyyy)", inputName: "end_date", inputType: "text"}
 	    ));
 	    leadershipInOrgProfModel.set('addUrl', App.leadershipAddUrl);
         leadershipInOrgProfModel.set('removeUrl', App.leadershipRemoveUrl);
@@ -245,9 +241,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         membershipInOrgProfModel.set('collumnNames', new Array('Designation/Role', 'Professional Organization', 'Start Date', 'End Date'));
         membershipInOrgProfModel.set('inputData', new Array(
 		  {inputLabel: "Designation/Role", inputName: "designation", inputType: "text"},
-		  {inputLabel: "Organization", inputName: "org_id", inputType: "select", apiUrl:App.orgDropDownUrl, selectValueDisplay:{id: "id", value: "org_name"}},
+		  {inputLabel: "Organization", inputName: "org_name", inputType: "text"},
 		  {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-		  {inputLabel: "End Date", inputName: "end_date", inputType: "date"}
+		  {inputLabel: "End Date (Present or mm/dd/yyyy)", inputName: "end_date", inputType: "text"}
 		));
 		membershipInOrgProfModel.set('addUrl', App.membershipAddUrl);
 		membershipInOrgProfModel.set('removeUrl', App.membershipRemoveUrl);
@@ -296,7 +292,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		  {inputLabel: "Funding Agency/Unit", inputName: "unit_title", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
 		  {inputLabel: "Amount of Research Grant", inputName: "amount", inputType: "text"},
 		  {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-		  {inputLabel: "End Date", inputName: "end_date", inputType: "date"}
+		  {inputLabel: "End Date (On-Going or mm/dd/yyyy)", inputName: "end_date", inputType: "text"}
 		));
 		inResFundedModel.set('addUrl', App.inResFundedAddUrl);
 		inResFundedModel.set('removeUrl', App.inResFundedRemoveUrl);
@@ -314,15 +310,15 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         exResFundedModel.set('header','Externally Funded Research Projects/Activities (since 2005)');
         exResFundedModel.set('sectionId', 'exResFundedContent');
         exResFundedModel.set('apiUrl', App.facExFundedUrl);
-        exResFundedModel.set('keys', new Array('research_title','fagency_name', 'currency', 'amount','start_date', 'end_date'));
+        exResFundedModel.set('keys', new Array('research_title','fagency', 'currency', 'amount','start_date', 'end_date'));
         exResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Currency','Amount of Research Grant', 'Start Date', 'End Date'));
         exResFundedModel.set('inputData', new Array(
 			{inputLabel: "Research Project Activities", inputName: "research_title", inputType: "text"},
-			{inputLabel: "Funding Agency", inputName: "fagency_id", inputType: "select", apiUrl:App.fagencyDropDownUrl, selectValueDisplay:{id: "fagency_id", value: "fagency_name"}},
-			{inputLabel: "Currency", inputName: "currency", inputType: "text"},
+			{inputLabel: "Funding Agency", inputName: "fagency", inputType: "text"},
+			{inputLabel: "Currency", inputName: "currency", inputType: "select", apiUrl:App.currencyDropDownUrl, selectValueDisplay:{id: "id", value: "currency_name"}},
 			{inputLabel: "Amount of Research Grant", inputName: "amount", inputType: "text"},
 			{inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
+			{inputLabel: "End Date (On-Going or mm/dd/yyyy)", inputName: "end_date", inputType: "text"}
 		));
 		exResFundedModel.set('addUrl', App.exResFundedAddUrl);
 		exResFundedModel.set('removeUrl', App.exResFundedRemoveUrl);
@@ -340,13 +336,13 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         resGrantsModel.set('header','Research Grants, Fellowships, Scholarships Received (since 2005)');
         resGrantsModel.set('sectionId', 'resGrantsContent');
         resGrantsModel.set('apiUrl', App.facResGrantsUrl);
-        resGrantsModel.set('keys', new Array('research_title','fagency_name', 'start_date', 'end_date'));
+        resGrantsModel.set('keys', new Array('research_title','fagency', 'start_date', 'end_date'));
         resGrantsModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Start Date', 'End Date'));
         resGrantsModel.set('inputData', new Array(
 		    {inputLabel: "Research Project/Activities", inputName: "research_title", inputType: "text"},
-			{inputLabel: "Funding Agency", inputName: "fagency_id", inputType: "select", apiUrl:App.fagencyDropDownUrl, selectValueDisplay:{id: "fagency_id", value: "fagency_name"}},
+			{inputLabel: "Funding Agency", inputName: "fagency", inputType: "text"},
 			{inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
+			{inputLabel: "End Date (On-Going or mm/dd/yyyy)", inputName: "end_date", inputType: "text"}
 			));
 		resGrantsModel.set('addUrl', App.resGrantModelAddUrl);
 		resGrantsModel.set('removeUrl', App.resGrantModelRemoveUrl);
@@ -364,16 +360,18 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         journalPubModel.set('header','Journal Publication (since 2005)');
         journalPubModel.set('sectionId', 'journalPubContent');
         journalPubModel.set('apiUrl', App.facJournalUrl);
-        journalPubModel.set('keys', new Array('flname','paper_title', 'journal_title', 'date_publication', 'volume_no', 'issue_no', 'pages', 'journalpub_type'));
-        journalPubModel.set('collumnNames', new Array('Author(s)', 'Title', 'Journal Name', 'Date', 'Volume Number', 'Issue Number', 'Pages', 'Type'));
+        journalPubModel.set('keys', new Array('flname','paper_title', 'journal', 'date_publication', 'volume_no', 'issue_no', 'pages', 'journalpub_type'));
+        journalPubModel.set('collumnNames', new Array('Author(s)', 'Title', 'Journal Name', 'Date', 'Volume Number', 'Issue Number', 'Pages', 'ISI'));
         journalPubModel.set('inputData', new Array(
 	        {inputLabel: "Title", inputName: "paper_title", inputType: "text"},
-			{inputLabel: "Journal Name", inputName: "journal_id", inputType: "select", apiUrl:App.journalsDropDownUrl, selectValueDisplay:{id: "id", value: "journal_title"}},
+			{inputLabel: "Journal Name", inputName: "journal", inputType: "text"},
 			{inputLabel: "Publication Date", inputName: "date_publication", inputType: "date"},
 			{inputLabel: "Volume Number", inputName: "volume_no", inputType: "text"},
 			{inputLabel: "Issue Number", inputName: "issue_no", inputType: "text"},
 			{inputLabel: "Pages", inputName: "pages", inputType: "text"},
-			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalpubDropDownUrl, selectValueDisplay:{id: "id", value: "journalpub_type"}}
+			{inputLabel: "ISI/ISBN", inputName: "isi", inputType: "select", apiUrl:App.journalpubDropDownUrl, selectValueDisplay:{id: "id", value: "journalpub_type"}},
+			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}},
+			{inputLabel: "Co-Author", inputName: "co_author", inputType: "select", apiUrl:App.coAuthorDropDownUrl, selectValueDisplay:{id:"id", value: "author_val"}}
 		));
 		journalPubModel.set('addUrl', App.journalPubModelAddUrl);
 		journalPubModel.set('removeUrl', App.journalPubModelRemoveUrl);
@@ -391,11 +389,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         pubPrototypeModel.set('header','Prototype (since 2005)');
         pubPrototypeModel.set('sectionId', 'pubPrototypeContent');
         pubPrototypeModel.set('apiUrl', App.facPrototypeUrl);
-        pubPrototypeModel.set('keys', new Array('flname','paper_title', 'journal_title', 'date_publication', 'volume_no', 'issue_no', 'pages', 'isbn'));
+        pubPrototypeModel.set('keys', new Array('flname','paper_title', 'journal', 'date_publication', 'volume_no', 'issue_no', 'pages', 'isbn'));
         pubPrototypeModel.set('collumnNames', new Array('Author(s)', 'Title', 'Journal Name', 'Date', 'Volume Number', 'Issue Number', 'Pages', 'ISSN/ISBN'));
         pubPrototypeModel.set('inputData', new Array(
 			{inputLabel: "Title", inputName: "paper_title", inputType: "text"},
-			{inputLabel: "Journal Name", inputName: "journal_id", inputType: "select", apiUrl:App.journalsDropDownUrl, selectValueDisplay:{id: "id", value: "journal_title"}},
+			{inputLabel: "Journal Name", inputName: "journal", inputType: "text"},
 			{inputLabel: "Date", inputName: "date_publication", inputType: "date"},
 			{inputLabel: "Volume No", inputName: "volume_no", inputType: "text"},
 			{inputLabel: "Issue No", inputName: "issue_no", inputType: "text"},
@@ -449,7 +447,8 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 		   {inputLabel: "Publisher", inputName: "publisher", inputType: "text"},
 		   {inputLabel: "Place of Publication", inputName: "place_publication", inputType: "text"},
 		   {inputLabel: "Publication Date", inputName: "date_publication", inputType: "date"},
-		   {inputLabel: "ISBN", inputName: "isbn", inputType: "text"}
+		   {inputLabel: "ISBN", inputName: "isbn", inputType: "text"},
+		   {inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}}
 		));
 		textbookModel.set('addUrl', App.textBookModelAddUrl);
 		textbookModel.set('removeUrl', App.textBookModelRemoveUrl);
@@ -477,7 +476,8 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "Place of Publication", inputName: "place_publication", inputType: "text"},
 			{inputLabel: "Date of Publication", inputName: "date_publication", inputType: "date"},
 			{inputLabel: "Pages", inputName: "pages", inputType: "text"},
-			{inputLabel: "ISBN", inputName: "isbn", inputType: "text"}
+			{inputLabel: "ISBN", inputName: "isbn", inputType: "text"},
+			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}}
 		));
 		chapTextbookModel.set('addUrl', App.chapTextbookModelAddUrl);
 		chapTextbookModel.set('removeUrl', App.chapTextbookModelRemoveUrl);
@@ -504,7 +504,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "Publisher", inputName: "publisher", inputType: "text"},
 			{inputLabel: "Place of Publication", inputName: "place_publication", inputType: "text"},
 			{inputLabel: "Pages", inputName: "pages", inputType: "text"},
-			{inputLabel: "Date of Publication", inputName: "date_publication", inputType: "date"}
+			{inputLabel: "Date of Publication", inputName: "date_publication", inputType: "date"},
+			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}},
+			{inputLabel: "Co-Author", inputName: "co_author", inputType: "select", apiUrl:App.coAuthorDropDownUrl, selectValueDisplay:{id:"id", value: "author_val"}}
 		));
 		confPaperModel.set('addUrl', App.confPaperModelAddUrl);
 		confPaperModel.set('removeUrl', App.confPaperModelRemoveUrl);
@@ -530,7 +532,8 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "Publisher", inputName: "publisher", inputType: "text"},
 			{inputLabel: "Place of Publication", inputName: "place_publication", inputType: "text"},
 			{inputLabel: "Pages", inputName: "pages", inputType: "text"},
-			{inputLabel: "Date of Publication", inputName: "date_publication", inputType: "date"}
+			{inputLabel: "Date of Publication", inputName: "date_publication", inputType: "date"},
+			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}}
 		));
 		
 		creativeWorksModel.set('addUrl', App.creativeWorksModelAppUrl);
@@ -579,7 +582,9 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "Title", inputName: "paper_title", inputType: "text"},
 			{inputLabel: "Type", inputName: "paper_type", inputType: "text"},
 			{inputLabel: "Date", inputName: "date_publication", inputType: "date"},
-			{inputLabel: "Remarks", inputName: "remarks", inputType: "text"}
+			{inputLabel: "Remarks", inputName: "remarks", inputType: "text"},
+			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}},
+			{inputLabel: "Co-Author", inputName: "co_author", inputType: "select", apiUrl:App.coAuthorDropDownUrl, selectValueDisplay:{id:"id", value: "author_val"}}
 		));
 		
 		otherResearchModel.set('addUrl', App.otherResearchModelAddUrl);
@@ -605,7 +610,8 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
 			{inputLabel: "Conferences, Workshops", inputName: "seminar_title", inputType: "text"},
 			{inputLabel: "Venue", inputName: "venue_performance", inputType: "text"},
 			{inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
-			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
+			{inputLabel: "End Date", inputName: "end_date", inputType: "date"},
+			{inputLabel: "Type", inputName: "type", inputType: "select", apiUrl:App.journalTypeDropDownUrl, selectValueDisplay:{id:"id", value: "local_type"}}
 		));
 		conferenceModel.set('addUrl', App.conferenceModelAddUrl);
 		conferenceModel.set('removeUrl', App.conferenceModelRemoveUrl);
@@ -653,7 +659,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         profOrgModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Professional Organization', 'Project / Activity Site', 'Start Date','End Date'));
         profOrgModel.set('inputData', new Array(
 			{inputLabel: "Description", inputName: "description", inputType: "text"},
-			{inputLabel: "Organization", inputName: "org_id", inputType: "select", apiUrl:App.orgDropDownUrl, selectValueDisplay:{id: "id", value: "org_name"}},
+			{inputLabel: "Organization", inputName: "org_name", inputType: "text"},
 			{inputLabel: "Project Site", inputName: "project_site", inputType: "text"},
 			{inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
@@ -674,11 +680,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         govOrgModel.set('header','With Government Organizations and Agencies (since 2005)');
         govOrgModel.set('sectionId', 'govOrgContent');
         govOrgModel.set('apiUrl', App.facGovOrgUrl);
-        govOrgModel.set('keys', new Array('description','agency_name', 'project_site', 'start_date', 'end_date'));
+        govOrgModel.set('keys', new Array('description','gov_name', 'project_site', 'start_date', 'end_date'));
         govOrgModel.set('collumnNames', new Array('Description of Involvement/Service/Work Done', 'Government Organization and Agencies', 'Project / Activity Site', 'Start Date','End Date'));
         govOrgModel.set('inputData', new Array(
 			{inputLabel: "Description", inputName: "description", inputType: "text"},
-			{inputLabel: "Agency Name", inputName: "gov_id", inputType: "select", apiUrl:App.gov_agencyDropDownUrl, selectValueDisplay:{id: "gov_id", value: "agency_name"}},
+			{inputLabel: "Agency Name", inputName: "gov_name", inputType: "text"},
 			{inputLabel: "Project Site", inputName: "project_site", inputType: "text"},
 			{inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 			{inputLabel: "End Date", inputName: "end_date", inputType: "date"}
