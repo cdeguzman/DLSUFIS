@@ -15,7 +15,7 @@ var FacultyProfileSectionView = Backbone.View.extend({
         var noteFoot = this.model.get('noteFoot');
         var menuTop = '<div class="btn-group"><button id="'+this.model.get('sectionId')+'ShowAddBtn" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></div>';
 	 	var html ='';
-        if(this.model.get('sectionId')=="changePassword" || this.model.get('sectionId')=="updateProfile"){
+        if(this.model.get('sectionId')=="changePassword" || this.model.get('sectionId')=="updateProfile" || App.currentUserData.read_only==="1"){
             //There is no Add in changePassword and updatePassword
             menuTop ="";
         }
@@ -48,6 +48,9 @@ var FacultyProfileSectionView = Backbone.View.extend({
 					if(this.model.get('sectionId')=="changePassword" || this.model.get('sectionId')=="updateProfile"){
                          //There is no Remove in changePassword and updateProfile
                          menu = '<div class="btn-group"><button type="button" class="btn btn-info ' +this.model.get('sectionId')+"ShowEditBtn"+'" data-value="'+values[i].id+'" data-section-view="'+this.model.get('sectionId')+'"><i class="fa fa-pencil"></i></button></div>';
+                    }
+                    if(App.currentUserData.read_only==="1"){
+                        menu = "";
                     }
 
                     html+='<td class="rowMenu">'+menu+'</td>'

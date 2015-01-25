@@ -6,5 +6,5 @@
   
   $update_facInfo = mysql_query("UPDATE faculty SET password = '$password'   
                                  WHERE fid = '$id'"); 
- 
+  echo "true";
 ?> 

@@ -5,6 +5,7 @@ window.App = {
    minYear: 1900,
    maxYear: 2020,
    currentMode: '',
+   currentUserData: '',
 
 
    /*Api URL's*/
@@ -208,6 +209,7 @@ window.App = {
    adminUpdatePositionUrl: '../server/php/Admin/UpdateRecord/updatePosition.php',
    adminAddNewAcctTypeUrl: '../server/php/Admin/AddNewRecord/addNewAcctType.php',
    adminRemoveAcctTypeUrl: '../server/php/Admin/RemoveRecord/removeAcctType.php',
+   adminFetchAcctTypeUsingAccountIdUrl: '../server/php/Admin/FetchRecord/fetchAcctTypeUsingAccountId.php',
    adminFetchAcctTypeUrl: '../server/php/Admin/FetchRecord/fetchAcctType.php',
    adminUpdateAcctTypeUrl: '../server/php/Admin/UpdateRecord/updateAcctType.php',
    adminAddNewDegreeUrl: '../server/php/Admin/AddNewRecord/addNewDegree.php', 

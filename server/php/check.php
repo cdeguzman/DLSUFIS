@@ -3,7 +3,7 @@
   $username = $_POST["username"];
   $pass = md5($_POST["password"]);
    
-  $select_account = mysql_query("SELECT fid, position_id   
+  $select_account = mysql_query("SELECT fid, position_id, account_id   
                                  FROM faculty 
 								 WHERE username = '$username' 
 								 AND password = '$pass'");

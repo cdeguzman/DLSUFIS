@@ -6,13 +6,15 @@ var FacultyInformationView = Backbone.View.extend({
   },
   
   render: function(){
-      var hidePanel = App.currentMode=="Staff" ? " hidePanel" : ""
-      var hideFacSelect = App.currentMode!="Staff" ? " hideFacSelect" : ""
+      //Show CRUD Panel
+      var hidePanel = App.currentUserData.access_type!=="0" && App.currentUserData.access_type!=="3" ? " hidePanel" : ""
+      //Show Faculty Selection
+      var hideFacSelect = App.currentUserData.access_type!=="1" && App.currentUserData.access_type!=="2" ? " hideFacSelect" : ""
       var html ='';    
-            if(App.currentMode=="Staff"){
+            if(App.currentUserData.access_type==="1" || App.currentUserData.access_type==="2"){
               this.getFacultyList();
             }
-            if(App.currentMode=="Admin"){
+            if(App.currentUserData.access_type==="3"){
               html +='<div id="profileContent" class="'+hidePanel+'"></div>'
               $(this.el).append(html);
               this.subViews.push(new AdminTabView({
@@ -61,6 +63,7 @@ var FacultyInformationView = Backbone.View.extend({
        $.ajax({
            url: App.facultyListUrl,
            type: 'GET',
+           data: {access_type: App.currentUserData.access_type, dept_code: App.currentUserData.dept},
            success: function(data) {
             data = eval("["+data+"]");
               data[0].forEach(function(faculty){

@@ -92,31 +92,32 @@ var LoginBoxView = Backbone.View.extend({
            success: function(data) {
             var response = eval ("["+data+"]");
             var userData = response[0];
-            if(data!=false){
+            if(data){
               //@Code Smell TODO Move this to app.js
               var validMode = false;
-              if(userData.position_id=="P0000"){
-                //Enable Staff Mode /Admin Mode
-                App.currentStaffId = response;
-                validMode = true;
-                App.currentMode = "Admin";
-              }else if(userData.position_id=="P0003" || userData.position_id=="P0004"){
-                App.currentFacultyId = data;
-                validMode = true;
-                App.currentMode = "Faculty";
-              }else if(userData.position_id=="P0005"){
-                  validMode = true;
-                  App.currentMode = "Staff";
-                }
-
-              if(validMode){
-                 var sessionHash = userData.fid; // use this to put a unique session has pref from the server
-                 createSession(sessionHash);// create a sesssion
-                 Backbone.history.navigate('profile', {trigger:true});//trigger redirect route
-              }else{
-                $('#errorLogin').css('display', 'block');// show login error
-              }
-             
+              $.ajax({
+                   url: App.adminFetchAcctTypeUsingAccountIdUrl,
+                   data: {account_id: userData.account_id},
+                   dataType:"json",
+                   type: 'GET',
+                   contentType: "application/json",
+                   success: function(data) {
+                    if(data){
+                      var accountData = data[0];
+                      App.currentMode = accountData.account_role;
+                      if(accountData.account_id=="AC001"){
+                        App.currentStaffId = response;
+                      }else if(accountData.account_id=="AC003"){
+                        App.currentFacultyId = response;
+                      }
+                      var sessionHash = userData.fid; // use this to put a unique session has pref from the server
+                      createSession(sessionHash);// create a sesssion
+                      Backbone.history.navigate('profile', {trigger:true});//trigger redirect route
+                    }else{
+                        $('#errorLogin').css('display', 'block');// show login error
+                    }
+                  }
+                });
              }else{
                 $('#errorLogin').css('display', 'block');// show login error
              }

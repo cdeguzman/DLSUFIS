@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-      $select_info = mysql_query("SELECT fid as id, flname, ffname, fmname, unit_code, dept as dept_code, rank, classification as class 
+      $select_info = mysql_query("SELECT fid as id, flname, ffname, fmname, unit_code, dept as dept_code, rank, classification as class, account_id  
                                   FROM faculty
 								  WHERE fid = '$id'");
       $list_info = array();

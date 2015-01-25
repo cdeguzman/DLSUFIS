@@ -30,7 +30,6 @@ var FacultyInformationModel = Backbone.Model.extend({
 
 	setAttributes: function(data){
 		var facultyData = data[0];
-		if(App.currentStaffId.length!=5){
 	        this.set('flname',facultyData.flname);
 			this.set('ffname',facultyData.ffname);
 			this.set('fmname',facultyData.fmname);
@@ -39,7 +38,6 @@ var FacultyInformationModel = Backbone.Model.extend({
 			this.set('unitTitle',facultyData.unit_title);
 			this.set('classification',facultyData.position_title);
 			this.set('rankTitle',facultyData.rank_title);
-	      }
 
 		this.trigger('fetched',{});
 	}

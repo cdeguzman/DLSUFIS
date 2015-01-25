@@ -32,30 +32,21 @@ var ApplicationRouter = Backbone.Router.extend({
                contentType: "application/json",
                success: function(data) {
                 var userData = data[0];
-                var validMode = false;
-                if(userData.position_id=="P0000"){
-                  //Enable Staff Mode /Admin Mode
-                  validMode = true;
-                  App.currentMode = "Admin";
-                }else if(userData.position_id=="P0003" || userData.position_id=="P0004"){
-                  validMode = true;
-                  App.currentMode = "Faculty";
-                }else if(userData.position_id=="P0005"){
-                  validMode = true;
-                  App.currentMode = "Staff";
-                }
-                if(validMode){
-                  self.loadView(new FacultyProfileView({
-                   el: '#mainContent'
-                  }));
-                 }else{
-                  self.login();
-                }
-
-
-
-
-
+                App.currentUserData = userData;
+                 $.ajax({
+                   url: App.adminFetchAcctTypeUsingAccountIdUrl,
+                   data: {account_id: userData.account_id},
+                   dataType:"json",
+                   type: 'GET',
+                   contentType: "application/json",
+                   success: function(data) {
+                    var accountData = data[0];
+                    App.currentMode = accountData.account_role;
+                    self.loadView(new FacultyProfileView({
+                      el: '#mainContent'
+                    }));
+                  }
+                });
               }
           });
       }else{
