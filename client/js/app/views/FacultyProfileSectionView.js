@@ -151,7 +151,6 @@ var FacultyProfileSectionView = Backbone.View.extend({
                $('[data-sid="'+sid+'"][data-mode="edit"]').each(function(itt){
                     var key = $(this).attr('data-key');
                     var value = eval("data."+key);
-                    console.log("data."+key);
                     $(this).val(value);
                });
              },

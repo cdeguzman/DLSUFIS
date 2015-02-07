@@ -90,6 +90,10 @@ var LoginBoxView = Backbone.View.extend({
            data: {username:self.model.get('userName'), password:self.model.get('passWord')},
            type: 'POST',
            success: function(data) {
+            if(data==="false"){
+              $('#errorLogin').css('display', 'block');// show login error
+              return;
+            }
             var response = eval ("["+data+"]");
             var userData = response[0];
             if(data){
@@ -118,8 +122,6 @@ var LoginBoxView = Backbone.View.extend({
                     }
                   }
                 });
-             }else{
-                $('#errorLogin').css('display', 'block');// show login error
              }
            }
         });

@@ -84,7 +84,8 @@ var DataEditPanelView = Backbone.View.extend({
       eval('var dataTransfer='+dataEdited);
       showLoad(true);
       $.ajax({
-           url: App.facPasswordEditUrl,
+           url: self.model.get('editUrl'),
+           data: dataTransfer,
            type: 'POST',
            success: function(data) {
              showLoad(false);
