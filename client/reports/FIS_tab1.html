@@ -1,0 +1,150 @@
+<html>
+<head><title>Faculty Information Form</title>
+	<link rel="stylesheet" type="text/css" href="css_template.css">
+	<link rel="icon" type="img/png" href="../img/favicon.png" />
+	<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/script.js"></script>
+	<script type="text/javascript" src="../libs/jqcookie/jquery.cookie.js"></script>
+</head>
+<body onload="loadFISForm('page1')">
+<table class="gradienttable">
+<tr>
+ <td><strong>General Instructions</strong><br />
+ This form should be accomplished by  <font color="#cc0000"><strong>DLSU Faculty members.</strong></font><br />
+ Do not leave any item blank. When the answer is none enter <strong>"0"</strong> and when not applicable enter <strong>"NA"</strong>.<br />  
+Rows can be added or deleted as needed.<br /><br />
+
+Please complete this form, save as <font color="#cc0000"><strong><your Lastname. your Firstname.AY12-13></strong></font> and <br />
+email to <strong>iaa_paascu@dlsu.edu.ph</strong> 
+ </td>
+</tr>
+</table>
+<h3 align="center"><font color="#009900">FACULTY INFORMATION</font></h3>
+<hr/>
+<font color="#009900"><strong>FACULTY INFORMATION</strong></font>
+<hr/>
+<p></p>
+<table>
+<tr>
+<td><strong>Faculty ID Number</strong></td><td class="facultyInfo" data-column-name="id"></td>
+</tr>
+<tr>
+<td><strong>NAME</strong></td><td class="facultyInfo" data-column-name="name"></td>
+</tr>
+<tr>
+<td>College/School/Unit</td><td class="facultyInfo" data-column-name="college"></td>
+</tr>
+<tr>
+<td>Department/Office</td><td class="facultyInfo" data-column-name="dept_name"></td>
+</tr>
+<tr>
+<td>Faculty Classification</td><td class="facultyInfo" data-column-name="position_title"></td>
+</tr>
+<tr>
+<td>Rank</td><td class="facultyInfo" data-column-name="rank_title"></td>
+</tr>
+<tr>
+<td>Date Submitted</td><td></td>
+</tr>
+</table>
+<p></p>
+<hr/>
+<font color="#009900"><strong>ACADEMIC BACKGROUND</strong></font>
+<hr/>
+<p></p>
+<table class="gridtable" id="facDegreeEraned">
+<thead>
+  <tr id="facDegreeEarnedData">
+    <th class="degreeLvl" data-column-name="dlevel_title">Degree(s) Earned</th>
+    <th class="degreeTitle" data-column-name="degree_title">Title of Degree</th>
+    <th class="areaSpec" data-column-name="specialization">Area of Specialization</th>
+    <th class="yearObtained" data-column-name="year_obtained">Year Obtained</th>
+    <th class="instName" data-column-name="institution_name">Educational Institution</th>
+    <th class="locName" data-column-name="location_id">Location (City, Country)</th>
+    <th class="soNum" data-column-name="so_num">S.O. Number</th>
+  </tr>
+</thead>
+<tbody id="facDegreeEarnedRow">
+</tbody>
+</table>
+<p>
+<font color="#000099"><strong>Note:</strong> Foreign universities are exempt from S.O. Number. <br />
+For Philippines Universities the S.O. Number is indicated in the T.O.R. Some are EXEMPTED (e.g. UP). </font></p>
+<p>IF <strong>PURSUING GRADUATE STUDIES,</strong> please fill up the following table:</p>
+<table class="gridtable" id="facPursueDegree">
+<thead>
+  <tr id="facPursueDegreeData">
+    <th class="degreeTitle" data-column-name="degree_title">Degree being pursued</th>
+    <th class="instName" data-column-name="institution_name">University</th>
+    <th class="degreeStages" data-column-name="ds_name">Stage of Graduate Studies</th>
+    <th class="unitsEarned" data-column-name="earned_units">No. of units completed</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+	<th class="endDate" data-column-name="end_date">End Date</th>
+  </tr>
+</thead>
+<tbody id="facDegreePursueRow">
+</tbody>
+</table>
+<p><strong>SPECIAL TRAINING (e.g. post-doctoral work, post-baccalaureate diploma, post-baccalaureate certificate, etc.)</strong></p>
+<table class="gridtable" id="facSpecialTraining">
+<thead>
+  <tr id="facSpecialTrainingData">
+    <th class="trainingTitle" data-column-name="training_title">Training Title</th>
+    <th class="instName" data-column-name="institution">Organization / Institution<br />Offering the Training</th>
+    <th class="trainingVenue" data-column-name="venue">Venue (City, Country)</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+    <th class="endDate" data-column-name="end_date">End Date</th>
+  </tr>
+</thead>
+<tbody id="facSpecialTrainingRow">
+</tbody>
+</table>
+<p></p>
+<hr/>
+<font color="#009900"><strong>EDUCATIONAL AND PROFESSIONAL EXPERIENCE</strong></font>
+<hr/>
+<p><strong>1. Teaching Experience and Length of Service</strong></p>
+<table class="gridtable" id="facTeachingExperience">
+<thead>
+  <tr id="facTeachingExperienceDLSUData">
+    <th class="educLevel" data-column-name="el_title"><strong>Level</strong></th>
+    <th class="noOfYears" data-column-name="no_years"><strong>No. of years</strong></th>
+    <th class="instName" data-column-name="institution_name"><strong>Name of school</strong></th>
+	<th class="startDate" data-column-name="start_date"><strong>Start Date</strong></th>
+    <th class="endDate" data-column-name="end_date"><strong>End Date</strong></th>
+    <th class="positionTitle" data-column-name="position_title"><strong>Position</strong></th>
+  </tr>
+</thead>
+<tbody id="facTeachingExperienceRow">
+</tbody>
+</table>
+<p><strong>2. Professional Experience</strong></p>
+<table class="gridtable" id="facProfessionalExperience">
+<thead>
+  <tr id="facProfessionalExperienceData">
+    <th class="yearPassed" data-column-name="year_passed">Year Passed</th>
+    <th class="licensureName" data-column-name="licensure_title">Licensure Examination Passed <br/>(i.e. Government and other Professional Examinations)</th>
+    <th class="licenseNo" data-column-name="license_no">License Number</th>
+    <th class="dateValidity" data-column-name="date_validity">Valid Until</th>
+  </tr>
+</thead>
+<tbody id="facProfessionalExperienceRow">
+</tbody>
+</table>
+<p><strong>Professional Practice, Industrial Practice, or Employment outside DLSU other than teaching <br /> (including consultancy or self-employment)</strong></p>
+<table class="gridtable" id="facIndustryExperience">
+<thead>
+  <tr id="facIndustryExperienceData">
+    <th class="workDesc" data-column-name="work_nature">Nature of Practice/Project</th>
+    <th class="instName" data-column-name="institution">Organization/Institution</th>
+    <th class="noOfYears" data-column-name="no_years">No. of Years</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+    <th class="endDate" data-column-name="end_date">End Date</th>
+  </tr>
+</thead>
+<tbody id="facIndustryExperienceRow">
+</tbody>
+</table>
+<p align="center"><a href="FIS_tab2.html"><strong>CLICK HERE TO PROCEED TO PART 2</strong></a></p>
+</body>
+</html>

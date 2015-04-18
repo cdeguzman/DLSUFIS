@@ -1,0 +1,92 @@
+<html>
+<head><title>Faculty Information Form</title>
+	<link rel="stylesheet" type="text/css" href="css_template.css">
+	<link rel="icon" type="img/png" href="../img/favicon.png" />
+	<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/script.js"></script>
+	<script type="text/javascript" src="../libs/jqcookie/jquery.cookie.js"></script>
+</head>
+<body onload="loadFISForm('page2')">
+<hr/>
+<font color="#009900"><strong>PROFESSIONAL ACTIVITIES</strong></font>
+<hr/>
+<p></p>
+<p><strong>1. Leadership in Professional Organization </strong></p>
+<table class="gridtable" id="facLeadershipProfOrg">
+<thead>
+   <tr id="facLeadershipProfOrgData">
+     <th class="desigRole" data-column-name="designation">Designation / Role</th>
+     <th class="orgName" data-column-name="org_name">Professional Organization</th>
+     <th class="startDate" data-column-name="start_date">Start Date</th>
+	 <th class="endDate" data-column-name="end_date">End Date</th>
+   </tr>
+</thead>
+<tbody id="facLeadershipProfOrgRow">
+</tbody>
+</table>
+<p><strong>2. Membership in Professional Organization</strong></p>
+<table class="gridtable" id="facMembershipProfOrg">
+<thead>
+  <tr id="facMembershipProfOrgData">
+    <th class="desigRole" data-column-name="designation">Designation / Role</th>
+    <th class="orgName" data-column-name="org_name">Professional Organization</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+	<th class="endDate" data-column-name="end_date">End Date</th>
+  </tr>
+</thead>
+<tbody id="facMembershipProfOrgRow">
+</tbody>
+</table>
+<p><strong>3. Outstanding Achievements / Awards / Recognition Received (since 2005) </strong></p>
+<table class="gridtable" id="facAwards">
+<thead>
+   <tr id="facAwardsData">
+     <th class="awardName" data-column-name="award_title">Outstanding Achievements / Awards / Recognition</th>
+     <th class="awardingBody" data-column-name="award_body">Awarding Body</th>
+     <th class="awardDate" data-column-name="award_date">Date</th>
+   </tr>
+</thead>
+<tbody id="facAwarsRow"> </tbody>
+</table>
+<p><strong>4. Internally Funded Research projects/activities (since 2005) </strong></p>
+<table class="gridtable" id="facInternalResearch">
+<thead>
+   <tr id="facInternalResearchDate">
+     <th class="researchTitle" data-column-name="research_title">Research Projects/Activities</th>
+     <th class="fundingUnit" data-column-name="unit_title">Funding Agency/Unit <br />(as applicable)</th>
+     <th class="researchAmt" data-column-name="amount">Amount of Research Grant (Php)</th>
+     <th class="startDate" data-column-name="start_date">Start Date</th>
+	 <th class="endDate" data-column-name="end_date">End Date</th>
+   </tr>
+</thead>
+<tbody id="facInternalResearchRow"> </tbody>   
+</table>
+<p><strong>5. Externally Funded Research projects/activities (since 2005) </strong></p>
+<table class="gridtable" id="facExternalResearch">
+<thead>
+  <tr id="facExternalResearchData">
+    <th class="researchTitle" data-column-name="research_title">Research Projects/Activities</th>
+    <th class="fundingAgency" data-column-name="fagency">Funding Agency</th>
+    <th class="moneyCurrency" data-column-name="currency">Currency</th>
+    <th class="researchAmt" data-column-name="amount">Amount of Research Grant</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+	<th class="endDate" data-column-name="end_date">End Date</th>
+  </tr>
+</thead>  
+<tbody id="facExternalResearchRow"> </tbody>
+</table>
+<p><strong>6. Research grants, fellowships, scholarships received (since 2005) </strong></p>
+<table class="gridtable" id="facResearchGrants">
+<thead>
+   <tr id="facResearchGrantsData">
+    <th class="researchTitle" data-column-name="research_title">Research Projects/Activities</th>
+    <th class="fundingAgency" data-column-name="fagency">Funding Agency</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+	<th class="endDate" data-column-name="end_date">End Date</th>
+   </tr>
+</thead>   
+<tbody id="facResearchGrantsRow"> </tbody>
+</table>
+<p align="center"><a href="FIS_tab3.html"><strong>CLICK HERE TO PROCEED TO PART 3</strong></a></p>
+</body>
+</html>

@@ -26,7 +26,7 @@ var FacultyInformationView = Backbone.View.extend({
               html +='<div id="facultyInformation" class="jumbotron '+hidePanel+'">';
               html +='<div class="panel panel-default">';
                   html +='<!-- Default panel contents -->';
-                  html +='<div class="panel-heading">'+App.currentFacultyId+" - "+this.model.get('flname')+', ' + this.model.get('ffname')+' '+this.model.get('fmname')+'</div>';
+                  html +='<div class="panel-heading">'+App.currentFacultyId+" - "+this.model.get('flname')+', ' + this.model.get('ffname')+' '+this.model.get('fmname')+'<div><button class="btn btn-info"  onclick="viewFISSheet(\''+App.currentFacultyId+'\')"><i class="fa fa-print"></i> View Faculty Information Sheet</button></div></div>';
                   html +='<div class="panel-body">';
                       html +='<h3>'+this.model.get('college')+' - '+this.model.get('unitTitle')+'</h3>';
                       html +='<h4>'+this.model.get('deptName')+'</h4>';

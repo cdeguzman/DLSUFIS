@@ -1,0 +1,159 @@
+<html>
+<head><title>Faculty Information Form</title>
+	<link rel="stylesheet" type="text/css" href="css_template.css">
+	<link rel="icon" type="img/png" href="../img/favicon.png" />
+	<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/script.js"></script>
+	<script type="text/javascript" src="../libs/jqcookie/jquery.cookie.js"></script>
+</head>
+<body onload="loadFISForm('page3')">
+<hr/>
+<font color="#009900"><strong>PROFESSIONAL ACTIVITIES</strong></font>
+<hr/>
+<p></p>
+<p><strong>7. Journal Publication (since 2005)</strong></p>
+<table class="gridtable" id="facJournalPublication">
+<thead>
+  <tr id="facJournalPublicationData">
+   <th class="authorName" data-column-name="flname">Author(s)</th>
+   <th class="paperTitle" data-column-name="paper_title">Title</th>
+   <th class="journalTitle" data-column-name="journal">Journal Name</th>
+   <th class="datePublished" data-column-name="date_publication">Date</th>
+   <th class="volumeNo" data-column-name="volume_no">Volume</th>
+   <th class="issueNo" data-column-name="issue_no">Issue Number</th>
+   <th class="noPages" data-column-name="pages">Pages</th>
+   <th class="journalType" data-column-name="journalpub_type">Type</th>
+  </tr>
+</thead>  
+<tbody id="facJournalPublicationRow"></tbody>
+</table>
+<p><strong>8. Prototypes (since 2005)</strong></p>
+<table class="gridtable" id="facPrototypes">
+<thead>
+  <tr id="facPrototypesData">
+    <th class="authorName" data-column-name="flname">Author(s)</th>
+    <th class="paperTitle" data-column-name="paper_title">Title</th>
+    <th class="journalTitle" data-column-name="journal">Journal Name</th>
+    <th class="datePublished" data-column-name="date_publication">Date</th>
+    <th class="volumeNo" data-column-name="volume_no">Volume</th>
+    <th class="issueNo" data-column-name="issue_no">Issue Number</th>
+    <th class="noPages" data-column-name="pages">Pages</th>
+    <th class="issnNo" data-column-name="isbn">ISSN/ISBN</th>
+  </tr>
+</thead>
+<tbody id="facPrototypesRow"></tbody>  
+</table>
+<p><strong>9. Patents (since 2005)</strong></p>
+<table class="gridtable" id="facPatents">
+<thead>
+  <tr id="facPatentsData">
+    <th class="authorName" data-column-name="flname">Author(s)</th>
+    <th class="patentTitle" data-column-name="paper_title">Title</th>
+    <th class="datePublished" data-column-name="date_publication">Date</th>
+    <th class="issuingCountry" data-column-name="issuing_country">Issuing Country</th>
+    <th class="patentNo" data-column-name="patent_no">Patent Number</th>
+  </tr>
+</thead>
+<tbody id="facPatentsRow"></tbody>
+</table>
+<p><strong>10. Books and Textbooks (since 2005)</strong></p>
+<table class="gridtable" id="facAuthoredBooks">
+<thead>
+  <tr id="facAuthoredBooksData">
+    <th class="authorName" data-column-name="flname">Author(s)</th>
+    <th class="bookTitle" data-column-name="paper_title">Title</th>
+    <th class="publisherName" data-column-name="publisher">Publisher</th>
+    <th class="publicationPlace" data-column-name="place_publication">Place of Publication</th>
+    <th class="publicationDate" data-column-name="date_publication">Date of Publication</th>
+    <th class="isbnNo" data-column-name="isbn">ISBN</th>
+  </tr>
+</thead>
+<tbody id="facAuthoredBooksRow"></tbody>
+</table>
+<p><strong>11. Chapter in Edited Books (since 2005)</strong></p>
+<table class="gridtable" id="facChapterEditedBooks">
+<thead>
+  <tr id="facChapterEditedBooksData">
+    <th class="authorName" data-column-name="flname">Author(s)</th>
+    <th class="workTitle" data-column-name="work_title">Title of Work</th>
+    <th class="paperTitle" data-column-name="paper_title">Title of Book</th>
+    <th class="bookEditor" data-column-name="editors">Editor(s)</th>
+    <th class="bookPublisher" data-column-name="publisher">Publisher</th>
+    <th class="publicationPlace" data-column-name="place_publication">Place of Publication</th>
+    <th class="publicationDate" data-column-name="date_publication">Date of Publication</th>
+    <th class="noPages" data-column-name="pages">Pages</th>
+    <th class="isbnNo" data-column-name="isbn">ISBN</th>
+  </tr>
+</thead>
+<tbody id="facChapterEditedBooksRow"></tbody>
+</table>
+<p><strong>12. Paper published in conference proceedings (since 2005)</strong></p>
+<table class="gridtable" id="facConfPaperContent">
+<thead>
+  <tr id="facConfPaperContentData">
+   <th class="authorName" data-column-name="flname">Author(s)</th>
+   <th class="paperTitle" data-column-name="paper_title">Title of Paper</th>
+   <th class="conferenceTitle" data-column-name="conf_title">Title of Conference Proceedings</th>
+   <th class="publisherName" data-column-name="publisher">Publisher</th>
+   <th class="publicationPlace" data-column-name="place_publication">Place of Publication</th>
+   <th class="noPages" data-column-name="pages">Pages</th>
+   <th class="publicationDate" data-column-name="date_publication">Date</th>
+  </tr>
+</thead>
+<tbody id="facConfPaperContentRow"> </tbody>
+</table>
+<p><strong>13. Published short stories, novel, poetry, play, screenplay, creative work (since 2005)</strong></p>
+<table class="gridtable" id="facCreativeWorkContent">
+<thead>
+   <tr id="facCreativeWorkContentData">
+     <th class="authorName" data-column-name="flname">Author(s)</th>
+     <th class="paperTitle" data-column-name="paper_title">Title</th>
+     <th class="publishedIn" data-column-name="published_in">Published In</th>
+     <th class="publisherName" data-column-name="publisher">Publisher</th>
+     <th class="publicationPlace" data-column-name="place_publication">Place of Publication</th>
+     <th class="noPages" data-column-name="pages">Pages</th>
+     <th class="publicationDate" data-column-name="date_publication">Date</th>
+   </tr>
+</thead>
+<tbody id="facCreativeWorkContentRow"></tbody>
+</table>
+<p><strong>14. Play, screenplay, film, creative work performed or presented (since 2005)</strong></p>
+<table class="gridtable" id="facScreenPlayContent">
+<thead>
+  <tr id="facScreenPlayContentData"> 
+    <th class="authorName" data-column-name="flname">Author(s)</th>
+    <th class="paperTitle" data-column-name="paper_title">Title</th>
+    <th class="venuePerform" data-column-name="venue_performance">Venue of Performance</th>
+    <th class="publicationDate" data-column-name="date_publication">Date</th>
+  </tr>
+</thead>
+<tbody id="facScreenPlayContentRow"></tbody>
+</table>
+<p><strong>15. Other research outputs (working papers; research reports; conference papers/posters, etc) since 2005</strong></p>
+<table class="gridtable" id="facOtherResearchContent">
+<thead>
+   <tr id="facOtherResearchContentData">
+    <th class="authorName" data-column-name="flname">Author(s)</th>
+    <th class="paperTitle" data-column-name="paper_title">Title</th>
+    <th class="paperType" data-column-name="paper_type">Type</th>
+    <th class="publicationDate" data-column-name="date_publication">Date</th>
+    <th class="researchRemarks" data-column-name="remarks">Remarks</th>
+   </tr>
+</thead>
+<tbody id="facOtherResearchContentRow"></tbody>
+</table>
+<p><strong>16. Conferences, workshops, seminars, and training programs attended (since 2005)</strong></p>
+<table class="gridtable" id="facConferenceSeminar">
+<thead>
+  <tr id="facConferenceSeminarData">
+    <th class="seminarName" data-column-name="seminar_title">Conferences, Workshops, Seminars, and Training Programs</th>
+    <th class="venuePerform" data-column-name="venue_performance">Venue</th>
+    <th class="startDate" data-column-name="start_date">Start Date</th>
+	<th class="endDate" data-column-name="end_date">End Date</th>
+  </tr>
+</thead>
+<tbody id="facConferenceSeminarRow"></tbody>
+</table>
+<p align="center"><a href="FIS_tab4.html"><strong>CLICK HERE TO PROCEED TO PART 4</strong></a></p>
+</body>
+</html>

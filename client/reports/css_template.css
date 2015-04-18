@@ -1,0 +1,52 @@
+hr { display: block; height: 0px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 0.5; padding: 0; border-color:#009900; }
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 1000px;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #99FF99;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+
+table.gradienttable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #ffffff;
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 1000px;
+}
+
+table.gradienttable td {
+    border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #ffffff;
+	background-color: #cccccc;
+	text-align: center;
+}
+
+td.noInfoAvailable{
+	text-align: center;
+}
