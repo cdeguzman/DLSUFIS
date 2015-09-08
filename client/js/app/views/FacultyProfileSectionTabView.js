@@ -57,7 +57,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreeEarnedModel.set('header','Degrees Earned');
         degreeEarnedModel.set('sectionId', 'degEarnedContent');
         degreeEarnedModel.set('apiUrl', App.facultyDegreeEarnedUrl);
-        degreeEarnedModel.set('keys', new Array('dlevel_title', 'degree_title', 'specialization', 'year_obtained', 'institution_name', 'location_name', 'so_num'));
+        degreeEarnedModel.set('keys', new Array('dlevel_title', 'degree_title', 'specialization', 'year_obtained', 'institution_id', 'location_id', 'so_num'));
         degreeEarnedModel.set('collumnNames', new Array('Degree(s) Earned', 'Title of Degree', 'Area of Specialization', 'Year Obtained', 'Educational Institution', 'Location', 'S.O. Number'));
         degreeEarnedModel.set('noteFoot', 'Note: Foreign universities are exempt from S.O. Number.');
         degreeEarnedModel.set('inputData', new Array(
@@ -65,7 +65,7 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
   		  {inputLabel: "Degree Earned", inputName: "degree_id", inputType: "select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},
           {inputLabel: "Area of Specialization", inputName: "specialization", inputType: "text"},
       	  {inputLabel: "Year Obtained", inputName: "year_obtained", inputType: "year"},
-      	  {inputLabel: "Institution", inputName: "institution_id", inputType: "select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
+      	  {inputLabel: "Institution", inputName: "institution_id", inputType: "text"},
       	  {inputLabel: "Location", inputName: "location_id", inputType: "text"},
       	  {inputLabel: "SO Number", inputName: "so_num", inputType: "text"}
 		    ));
@@ -85,13 +85,13 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         degreePursueModel.set('header','Degree being pursued');
         degreePursueModel.set('sectionId', 'degPursueContent');
         degreePursueModel.set('apiUrl', App.facultyDegreePursueUrl);
-        degreePursueModel.set('keys', new Array('degree_title', 'institution_name', 'ds_name', 'earned_units', 'start_date', 'end_date'));
+        degreePursueModel.set('keys', new Array('degree_title', 'institution_id', 'ds_name', 'earned_units', 'start_date', 'end_date'));
         degreePursueModel.set('collumnNames', new Array('Degree being pursued', 'Name of Institution', 'Stage of Graduate Studies', 'No. of Units Completed', 'Start Date', 'End Date'));
         degreePursueModel.set('noteHead', 'IF PURSUING GRADUATE STUDIES, please fill up the following table: ');
         degreePursueModel.set('inputData', new Array(
           {inputLabel: "Degree Level", inputName: "dlevel_id", inputType: "select", apiUrl:App.degreeLevelDropDownUrl, selectValueDisplay:{id:"dlevel_id", value:"dlevel_title"}},
     	  {inputLabel: "Degree Being Pursued", inputName: "degree_id", inputType:"select", apiUrl:App.degreeDropDownUrl, selectValueDisplay:{id: "id", value: "degree_title"}},  
-          {inputLabel: "Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
+          {inputLabel: "Institution", inputName: "institution_id", inputType:"text"},
 	      {inputLabel: "Stage of Graduate Studies", inputName: "degree_stages", inputType:"select",apiUrl:App.degreeStagesDropDownUrl, selectValueDisplay:{id: "ds_code", value: "ds_name"}},
 	      {inputLabel: "No. of Units Completed ", inputName: "earned_units", inputType: "text"},
 	      {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
@@ -138,14 +138,14 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         teachExpModel.set('header','Teaching Experience and Length of Service');
         teachExpModel.set('sectionId', 'teachExpContent');
         teachExpModel.set('apiUrl', App.facultyTeachExpUrl);
-        teachExpModel.set('keys', new Array('el_title', 'no_years', 'institution_name', 'start_date', 'end_date', 'position_title'));
+        teachExpModel.set('keys', new Array('el_title', 'no_years', 'institution_id', 'start_date', 'end_date', 'position_title'));
         teachExpModel.set('collumnNames', new Array('Level', 'Number of Years ', 'Institution Name', 'Start Date', 'End Date', 'Position'));
         teachExpModel.set('inputData', new Array(
 	       {inputLabel: "Level", inputName: "el_id", inputType: "select", apiUrl:App.educLevelDropDownUrl, selectValueDisplay:{id: "el_id", value: "el_title"}},
-	       {inputLabel: "Academic Institution", inputName: "institution_id", inputType:"select", apiUrl:App.institutionDropDownUrl, selectValueDisplay:{id: "id", value: "institution_name"}},
+	       {inputLabel: "Academic Institution", inputName: "institution_id", inputType:"text"},
 	       {inputLabel: "No. of Years", inputName: "no_years", inputType: "text"},
 	       {inputLabel: "Start Date", inputName: "start_date", inputType:"date"},
-           {inputLabel: "End Date", inputName: "end_date", inputType: "date"},
+           {inputLabel: "End Date", inputName: "end_date", inputType: "text"},
 	       {inputLabel: "Position", inputName: "position_id", inputType: "select", apiUrl:App.positionDropDownUrl, selectValueDisplay: {id: "position_id", value: "position_title"}}
 	    ));
 	    teachExpModel.set('addUrl', App.teachExpAddUrl);
@@ -285,11 +285,11 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         inResFundedModel.set('header','Internally Funded Research Projects/Activities (since 2005)');
         inResFundedModel.set('sectionId', 'inResFundedContent');
         inResFundedModel.set('apiUrl', App.facInFundedUrl);
-        inResFundedModel.set('keys', new Array('research_title','unit_title', 'amount', 'start_date', 'end_date'));
+        inResFundedModel.set('keys', new Array('research_title','funding_unit', 'amount', 'start_date', 'end_date'));
         inResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Amount of Research Grant', 'Start Date', 'End Date'));
         inResFundedModel.set('inputData', new Array(
 		  {inputLabel: "Research Projects/Activities", inputName: "research_title", inputType: "text"},
-		  {inputLabel: "Funding Agency/Unit", inputName: "unit_title", inputType: "select", apiUrl:App.unitDropDownUrl, selectValueDisplay:{id: "unit_code", value: "unit_title"}},
+		  {inputLabel: "Funding Agency/Unit", inputName: "unit_title", inputType: "text"},
 		  {inputLabel: "Amount of Research Grant", inputName: "amount", inputType: "text"},
 		  {inputLabel: "Start Date", inputName: "start_date", inputType: "date"},
 		  {inputLabel: "End Date (On-Going or mm/dd/yyyy)", inputName: "end_date", inputType: "text"}

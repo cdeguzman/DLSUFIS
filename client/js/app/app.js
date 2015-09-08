@@ -19,16 +19,16 @@ window.App = {
    facultyTeachExpUrl: '../server/php/FacultyTeachingExperience/getFacTeachExp.php', // Faculty Teaching Exp
    licenseUrl: '../server/php/FacultyLicensure/getFacProfExp.php', // Faculty Licensure
    nonTeachExpUrl: '../server/php/FacultyNon-Teaching/getFacProfPrac1.php', // Non Teaching Exp 
+ //--------- 
    facLeaderUrl: '../server/php/FacultyMembership/getFacLeadership.php', // Faculty Leader
    facMemberUrl:'../server/php/FacultyMembership/getFacMembership.php', // Faculty Member
    facAwardsUrl:'../server/php/FacultyAwards/getFacAwards.php', // Faculty Awards
    facInFundedUrl:'../server/php/FacultyResearch/getFacInResearch.php', // Internally Funded Research
    facExFundedUrl:'../server/php/FacultyResearch/getFacExResearch.php', // Externally Funded Research
    facResGrantsUrl:'../server/php/FacultyResearch/getFacResearchGrants.php', // Research Grants
+ //---------- 
    facJournalUrl:'../server/php/FacultyPublication/getFacJournal.php',   // Journal Publication
    facPrototypeUrl:'../server/php/FacultyPublication/getFacPrototype.php', // Published Prototype
-   
-   facComSrvDLSUUrl:'../server/php/FacultyCommunityService/getFacComSrvDLSU.php', // Community Service in DLSU
    facPatentsUrl: '../server/php/FacultyPublication/getFacPatents.php', // Patents
    facTextbooksUrl: '../server/php/FacultyPublication/getFacTextBook.php', //Textbooks
    facChaperBookUrl: '../server/php/FacultyPublication/getFacChaptBook.php', //Chapter Books
@@ -37,7 +37,8 @@ window.App = {
    facScreenPlayUrl: '../server/php/FacultyPublication/getFacScreenPlay.php', // Screen Plays
    facOtherResearchUrl: '../server/php/FacultyPublication/getFacOtherResearch.php', // Other Research
    facConferencesUrl: '../server/php/FacultyPublication/getFacSeminars.php', // Conferences
-
+//------------
+   facComSrvDLSUUrl:'../server/php/FacultyCommunityService/getFacComSrvDLSU.php', // Community Service in DLSU
    facProfOrgUrl: '../server/php/FacultyCommunityService/getFacCSProfOrg.php', //Prof Org
    facGovOrgUrl: '../server/php/FacultyCommunityService/getFacCSGovOrg.php', // Gov Org
    facOtherOrgUrl: '../server/php/FacultyCommunityService/getFacCSOthers.php', //Other Orgs
