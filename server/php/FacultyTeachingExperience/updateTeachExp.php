@@ -4,9 +4,9 @@
   $id = $_POST["id"];
   $el_id = $_POST["el_id"];
   $years = $_POST["no_years"];
-  $institution_id = $_POST["institution_id"]; 
+  $institution_id = ucwords($_POST["institution_id"]); 
   $start_date = $_POST["start_date"];
-  $end_date = $_POST["end_date"];
+  $end_date = ucwords($_POST["end_date"]);
   $position = $_POST["position_id"];
   
   if (is_numeric($years)){
