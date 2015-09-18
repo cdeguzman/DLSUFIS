@@ -55,15 +55,156 @@ function loadFISForm(page){
 			{
 				dataSource : "../../server/php/FacultyAcademicBackground/getFacEarnedDegree.php", //endpoint where to fetch data
 				columnDataNameSourceId: "facDegreeEarnedData", //id of the thead where to get column data
-				renderTargetId: "facDegreeEarnedRow" //id of the tbody where to render the data
+				renderTargetId: "facDegreeEarnedRow",//id of the tbody where to render the data
+			},
+			{
+				dataSource : "../../server/php/FacultyAcademicBackground/getFacDegreePursue.php", 
+				columnDataNameSourceId: "facPursueDegreeData", 
+				renderTargetId: "facDegreePursueRow"
+			},	
+			{
+				dataSource : "../../server/php/FacultySpecialTraining/getFacSpecTrain1.php", 
+				columnDataNameSourceId: "facSpecialTrainingData", 
+				renderTargetId: "facSpecialTrainingRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyTeachingExperience/getFacTeachExp.php", 
+				columnDataNameSourceId: "facTeachingExperienceDLSUData", 
+				renderTargetId: "facTeachingExperienceRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyLicensure/getFacProfExp.php", 
+				columnDataNameSourceId: "facProfessionalExperienceData", 
+				renderTargetId: "facProfessionalExperienceRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyNon-Teaching/getFacProfPrac1.php", 
+				columnDataNameSourceId: "facIndustryExperienceData", 
+				renderTargetId: "facIndustryExperienceRow"
 			}
 		];
 	}else if(page==="page2"){ //FIS_tab2
-		
+	    loadFacultyInfo();
+	
+		fetchRequests = [
+			{
+				dataSource : "../../server/php/FacultyMembership/getFacLeadership.php", 
+				columnDataNameSourceId: "facLeadershipProfOrgData", 
+				renderTargetId: "facLeadershipProfOrgRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyMembership/getFacMembership.php", 
+				columnDataNameSourceId: "facMembershipProfOrgData", 
+				renderTargetId: "facMembershipProfOrgRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyAwards/getFacAwards.php", 
+				columnDataNameSourceId: "facAwardsData", 
+				renderTargetId: "facAwarsRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyResearch/getFacInResearch.php", 
+				columnDataNameSourceId: "facInternalResearchData", 
+				renderTargetId: "facInternalResearchRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyResearch/getFacExResearch.php", 
+				columnDataNameSourceId: "facExternalResearchData", 
+				renderTargetId: "facExternalResearchRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyResearch/getFacResearchGrants.php", 
+				columnDataNameSourceId: "facResearchGrantsData", 
+				renderTargetId: "facResearchGrantsRow"
+			}
+	];	
 	}else if(page==="page3"){ //FIS_tab3
+	    loadFacultyInfo();
+	
+		fetchRequests = [
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacJournal.php", 
+				columnDataNameSourceId: "facJournalPublicationData", 
+				renderTargetId: "facJournalPublicationRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacPrototype.php", 
+				columnDataNameSourceId: "facPrototypesData", 
+				renderTargetId: "facPrototypesRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacPatents.php", 
+				columnDataNameSourceId: "facPatentsData", 
+				renderTargetId: "facPatentsRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/", 
+				columnDataNameSourceId: "", 
+				renderTargetId: ""
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacBooks.php", 
+				columnDataNameSourceId: "facAuthoredBooksData", 
+				renderTargetId: "facAuthoredBooksRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacChaptBook.php", 
+				columnDataNameSourceId: "facChapterEditedBooksData", 
+				renderTargetId: "facChapterEditedBooksRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacConferencePaper.php", 
+				columnDataNameSourceId: "facConfPaperContentData", 
+				renderTargetId: "facConfPaperContentRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacOtherPublished.php", 
+				columnDataNameSourceId: "facCreativeWorkContentData", 
+				renderTargetId: "facCreativeWorkContentRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacScreenPlay.php", 
+				columnDataNameSourceId: "facScreenPlayContentData", 
+				renderTargetId: "facScreenPlayContentRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacOtherResearch.php", 
+				columnDataNameSourceId: "facOtherResearchContentData", 
+				renderTargetId: "facOtherResearchContentRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyPublication/getFacSeminars.php", 
+				columnDataNameSourceId: "facConferenceSeminarData", 
+				renderTargetId: "facConferenceSeminarRow"
+			}
+		];
 		
-	}else if(page==="page4"){ //FIS_tab4
-		
+	}else if(page==="page4"){ //FIS_tab
+		 loadFacultyInfo();
+	
+		 fetchRequests = [
+			{
+				dataSource : "../../server/php/FacultyCommunityService/getFacComSrvDLSU.php", 
+				columnDataNameSourceId: "facComServeDLSUData", 
+				renderTargetId: "facComServeDLSURow"
+			},
+			{
+				dataSource : "../../server/php/FacultyCommunityService/getFacCSProfOrg.php", 
+				columnDataNameSourceId: "facComServeProfOrgData", 
+				renderTargetId: "facComServeProfOrgRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyCommunityService/getFacCSGovOrg.php", 
+				columnDataNameSourceId: "facComServeGovtData", 
+				renderTargetId: "facComServeGovtRow"
+			},
+			{
+				dataSource : "../../server/php/FacultyCommunityService/getFacCSOthers.php", 
+				columnDataNameSourceId: "facComServeOthersData", 
+				renderTargetId: "facComServeOthersRow"
+			}
+		 
+		 ];
 	}
 	
 	fetchData(fetchRequests);
