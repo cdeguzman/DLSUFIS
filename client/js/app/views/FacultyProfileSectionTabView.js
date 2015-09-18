@@ -285,8 +285,13 @@ var FacultyProfileSectionTabView = Backbone.View.extend({
         inResFundedModel.set('header','Internally Funded Research Projects/Activities (since 2005)');
         inResFundedModel.set('sectionId', 'inResFundedContent');
         inResFundedModel.set('apiUrl', App.facInFundedUrl);
+<<<<<<< HEAD
         inResFundedModel.set('keys', new Array('research_title','funding_unit', 'amount', 'year_start', 'year_end'));
         inResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Amount of Research Grant', 'Year Start', 'Year End'));
+=======
+        inResFundedModel.set('keys', new Array('research_title','funding_unit', 'amount', 'start_date', 'end_date'));
+        inResFundedModel.set('collumnNames', new Array('Research Projects/Activites', 'Funding Agency', 'Amount of Research Grant', 'Start Date', 'End Date'));
+>>>>>>> 1caa0c8503922b9b3836b99a256934322bfa3de8
         inResFundedModel.set('inputData', new Array(
 		  {inputLabel: "Research Projects/Activities", inputName: "research_title", inputType: "text"},
 		  {inputLabel: "Funding Agency/Unit", inputName: "unit_title", inputType: "text"},

@@ -143,7 +143,11 @@ function loadFISForm(page){
 				renderTargetId: ""
 			},
 			{
+<<<<<<< HEAD
 				dataSource : "../../server/php/FacultyPublication/getFacBooks.php", 
+=======
+				dataSource : "../../server/php/FacultyPublication/getFacTextBook.php", 
+>>>>>>> 1caa0c8503922b9b3836b99a256934322bfa3de8
 				columnDataNameSourceId: "facAuthoredBooksData", 
 				renderTargetId: "facAuthoredBooksRow"
 			},
@@ -199,7 +203,11 @@ function loadFISForm(page){
 				renderTargetId: "facComServeGovtRow"
 			},
 			{
+<<<<<<< HEAD
 				dataSource : "../../server/php/FacultyCommunityService/getFacCSOthers.php", 
+=======
+				dataSource : "../../server/phpFacultyCommunityService/getFacCSOthers.php", 
+>>>>>>> 1caa0c8503922b9b3836b99a256934322bfa3de8
 				columnDataNameSourceId: "facComServeOthersData", 
 				renderTargetId: "facComServeOthersRow"
 			}
