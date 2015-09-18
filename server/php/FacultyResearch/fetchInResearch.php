@@ -3,8 +3,8 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_inResearch = mysql_query("SELECT research_title, funding_unit as unit_title, amount, start_date, end_date    
-                                    FROM research_internal
+  $select_inResearch = mysql_query("SELECT research_title, funding_unit as unit_title, amount, year_start, year_end
+									FROM research_internal
 					   	            WHERE research_id = '$id'
 									AND funding_type = 'Internal'"); 
   

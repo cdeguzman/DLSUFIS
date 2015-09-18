@@ -6,7 +6,7 @@
   $select_textbook = mysql_query("SELECT paper_title, publisher, date_publication, place_publication, isbn, local as type     
                                  FROM publication
 					   	         WHERE pub_code = $id
-								 AND pub_type = 'PT005'"); 
+								 AND pub_type = 'PT004'"); 
   
   $list_textbook = array();
   while($fetch_textbook = mysql_fetch_assoc($select_textbook)){

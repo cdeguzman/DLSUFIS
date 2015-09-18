@@ -12,6 +12,6 @@
   $update_textBook = mysql_query("UPDATE publication SET paper_title = '$paper_title', publisher = '$publisher',
                                         date_publication = '$date_publication', place_publication = '$place_publication', 
 										isbn = '$isbn', local = '$local'
-                                WHERE pub_code = '$id' AND pub_type ='PT005'"); 
+                                WHERE pub_code = '$id' AND pub_type ='PT004'"); 
  
 ?> 

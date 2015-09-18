@@ -4,7 +4,7 @@
   $paper_title = ucwords($_POST["paper_title"]);
   $journal = ucwords($_POST["journal"]);
   $date_publication = $_POST["date_publication"];
-  $volume = $_POST["volume_no"];
+  $volume = ucwords($_POST["volume_no"]);
   $issue_no = strtoupper($_POST["issue_no"]);
   $pages = strtoupper($_POST["pages"]);
   $publication_type = $_POST["isi"];

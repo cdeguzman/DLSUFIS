@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_comSrvDLSU = mysql_query("SELECT description, unit_code, dept_code, committee, start_date, end_date        
+  $select_comSrvDLSU = mysql_query("SELECT description, committee, start_date, end_date        
                                    FROM community_service
 					   	           WHERE cs_id = '$id'
 								   AND cs_type = 'CS001'"); 

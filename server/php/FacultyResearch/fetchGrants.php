@@ -3,7 +3,7 @@
   //$fid = $_POST["fid"];
   $id = $_GET["id"];
    
-  $select_grants = mysql_query("SELECT research_title, fagency, start_date, end_date    
+  $select_grants = mysql_query("SELECT research_title, fagency, year_start, year_end    
                                 FROM research_external
 					   	        WHERE research_id = '$id'"); 
   

@@ -4,15 +4,15 @@
   $id = $_POST["id"];
   $research_title = ucwords($_POST["research_title"]);
   $fagency = ucwords($_POST["fagency"]);
-  $start_date = $_POST["start_date"];
-  $end_date = ucwords($_POST["end_date"]);
+  $start_year = $_POST["start_year"];
+  $end_year = ucwords($_POST["end_year"]);
   //$research_type = 'Grants';
   //$funding_type = NULL;
   //$currency = NULL;
   //$amount = NULL;  
   
   $update_grants = mysql_query("UPDATE research_external SET research_title = '$research_title', fagency = '$fagency',
-                                       start_date = '$start_date', end_date = '$end_date' 
+                                       year_start = '$start_year', year_end = '$end_year' 
                                 WHERE research_id = '$id'"); 
  
 ?> 
